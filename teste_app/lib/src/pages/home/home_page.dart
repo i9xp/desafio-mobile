@@ -22,6 +22,12 @@ class _HomePageState extends State<HomePage> {
           assetName: 'logo.svg',
         )
       ),
+      body: Flex(
+        direction: Axis.vertical,
+        children: [
+
+        ],
+      ),
     );
   }
 }
