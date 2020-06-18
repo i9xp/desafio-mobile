@@ -17,7 +17,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: colors.grayDark,
+        backgroundColor: colors.grayDarker,
         title: SVGItem(
           assetName: 'logo.svg',
         )
@@ -26,8 +26,10 @@ class _HomePageState extends State<HomePage> {
         direction: Axis.vertical,
         children: [
 
+
         ],
       ),
+      bottomNavigationBar:
     );
   }
 }
