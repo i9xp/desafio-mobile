@@ -4,5 +4,5 @@ class BottomNavItemModel {
   final String nome;
   final IconData icone;
 
-  BottomNavItemModel(this.nome, this.icone);
+  BottomNavItemModel({this.nome, this.icone});
 }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:testeapp/src/models/BottomNavItemModel.dart';
+import 'package:testeapp/src/values/colors.dart' as colors;
+import 'package:testeapp/src/widgets/listitem/BottomNavListItem.dart';
 
 class CustomBottomNavigation extends StatelessWidget {
 
@@ -16,10 +18,22 @@ class CustomBottomNavigation extends StatelessWidget {
       ),
       child: Flex(
         direction: Axis.horizontal,
-        children: [
-
-        ],
+        children: modelToWidget(itens)
       ),
-    ),
+    );
   }
+
+
+  List<Widget> modelToWidget(List<BottomNavItemModel> models){
+      List<Widget> list = [];
+      models.map((e) {
+        Widget listItem = BottomNavListItem(
+          model: e,
+        );
+        list.add(listItem);
+      }).toList();
+      return list;
+  }
+
+
 }
