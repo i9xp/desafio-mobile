@@ -16,7 +16,8 @@ class CustomText extends StatelessWidget {
       text,
       style: TextStyle(
         fontSize: size == TextSize.BIG ? dimens.textTitleBug : size == TextSize.SMALL ? dimens.textSmall : dimens.textMedium,
-        color: color != null ? color : colors.white
+        color: color != null ? color : colors.white,
+        fontFamily:
       ),
     );
   }

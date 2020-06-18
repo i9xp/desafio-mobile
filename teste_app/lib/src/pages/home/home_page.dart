@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:testeapp/src/models/BottomNavItemModel.dart';
+import 'package:testeapp/src/pages/home/home_page_widget.dart';
 import 'package:testeapp/src/values/colors.dart' as colors;
 import 'package:testeapp/src/widgets/CustomBottomNavigation.dart';
 import 'package:testeapp/src/widgets/SvgItem.dart';
@@ -11,7 +12,7 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage> with HomePageWidget{
 
   List<BottomNavItemModel> list = [
     BottomNavItemModel(
@@ -50,12 +51,8 @@ class _HomePageState extends State<HomePage> {
       body: Flex(
         direction: Axis.vertical,
         children: [
-          Flexible(
-            fit: FlexFit.tight,
-            flex: 1,
-            child: Container(
-              color: Colors.red,
-            ),
+          homeListaDeCategorias(
+            context: context
           ),
           Flexible(
             fit: FlexFit.tight,
