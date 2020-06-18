@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:testeapp/src/values/colors.dart' as colors;
 import 'package:testeapp/src/values/dimens.dart' as dimens;
 import 'package:testeapp/src/widgets/Text.dart';
+import 'package:testeapp/src/widgets/listitem/HomeCategoriesListItem.dart';
 class HomePageWidget{
 
   Widget homeListaDeCategorias({BuildContext context}){
@@ -27,18 +28,23 @@ class HomePageWidget{
               ),
             ),
             SizedBox(height: 14,),
-            Container(
-              width: MediaQuery.of(context).size.width,
-              height: 80,
-              child: ListView.builder(
-                itemCount: 4,
-                itemBuilder: (ctx, index){
-                  return Container(
-                    width: 65,
-                    height: 65,
-                    color: Colors.red,
-                  );
-                }
+            Padding(
+              padding: EdgeInsets.only(
+                left: dimens.paddingTittle
+              ),
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                height: 80,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 4,
+                  itemBuilder: (ctx, index){
+                    return HomeCategoriesListItem(
+                      asset: "",
+                      nome: "Apparel",
+                    );
+                  }
+                ),
               ),
             )
           ],
