@@ -1,5 +1,8 @@
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:desafio_mobile/shared/widgets/carousel_card.dart';
 import 'package:desafio_mobile/shared/widgets/categories_itens.dart';
 import 'package:desafio_mobile/shared/widgets/icon_badge.dart';
+import 'package:desafio_mobile/shared/widgets/product_card.dart';
 import 'package:desafio_mobile/shared/widgets/section_title.dart';
 import 'package:flutter/material.dart';
 
@@ -12,6 +15,11 @@ class PrincipalPage extends StatefulWidget {
 
 class _PrincipalPageState extends State<PrincipalPage> {
   ColorsUtil colors = ColorsUtil();
+
+  List<Widget> banners = [
+    CarouselCard("assets/images/banner_1_new.png"),
+    CarouselCard("assets/images/banner_2_new.png"),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +35,7 @@ class _PrincipalPageState extends State<PrincipalPage> {
         actions: <Widget>[
           IconButton(
               icon: IconBadge(
-                icon: Icons.chat_bubble_outline,
+                imgUrl: "assets/images/messages.png",
                 label: "5",
               ),
               onPressed: () {}),
@@ -40,7 +48,6 @@ class _PrincipalPageState extends State<PrincipalPage> {
         ],
       ),
       body: Container(
-        padding: EdgeInsets.symmetric(horizontal: 25.0),
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
@@ -55,58 +62,89 @@ class _PrincipalPageState extends State<PrincipalPage> {
               stops: [0.25, 0.35, 1.0]),
         ),
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Align(
-              alignment: Alignment.centerLeft,
-              child: SectionTitle("Categories"),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: SectionTitle("Categories"),
+              ),
             ),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.02,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                CategoriesItens(
-                  imgUrl: "assets/images/clothes.png",
-                  label: "Clothes",
-                  colors: [
-                    Color(0xFFFFAE4E),
-                    Color(0xFFFF7676),
-                  ],
-                ),
-                CategoriesItens(
-                  imgUrl: "assets/images/beauty.png",
-                  label: "Beauty",
-                  colors: [
-                    Color(0xFF4EFFF8),
-                    Color(0xFF76BAFF),
-                  ],
-                ),
-                CategoriesItens(
-                  imgUrl: "assets/images/shoes.png",
-                  label: "Shoes",
-                  colors: [
-                    Color(0xFFB4FF4E),
-                    Color(0xFF2FC145),
-                  ],
-                ),
-                CategoriesItens(
-                  icon: Icons.arrow_forward_ios,
-                  label: "See All",
-                  colors: [
-                    Color(0xFFFFFFFF),
-                    Color(0xFFFFFFFF),
-                  ],
-                ),
-              ],
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  CategoriesItens(
+                    imgUrl: "assets/images/apparel.png",
+                    label: "Clothes",
+                  ),
+                  CategoriesItens(
+                    imgUrl: "assets/images/beauty.png",
+                    label: "Beauty",
+                  ),
+                  CategoriesItens(
+                    imgUrl: "assets/images/shoes.png",
+                    label: "Shoes",
+                  ),
+                  CategoriesItens(
+                    imgUrl: "assets/images/see_all.png",
+                    label: "See All",
+                  ),
+                ],
+              ),
             ),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.025,
             ),
-            Align(
-              alignment: Alignment.centerLeft,
-              child: SectionTitle("Latest"),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: SectionTitle("Latest"),
+              ),
             ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.01,
+            ),
+            CarouselSlider(
+              items: banners,
+              options: CarouselOptions(
+                autoPlay: false,
+                aspectRatio: 2.0,
+                enableInfiniteScroll: false,
+              ),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.02,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  ProductCard(
+                    imgUrl: "assets/images/women_shoes.png",
+                    label: "Ankle Boots",
+                    price: 49.99,
+                  ),
+                  ProductCard(
+                    imgUrl: "assets/images/backpack.png",
+                    label: "Backpack",
+                    price: 20.58,
+                  ),
+                  ProductCard(
+                    imgUrl: "assets/images/scarf.png",
+                    label: "Red Scarf",
+                    price: 11.00,
+                  ),
+                ],
+              ),
+            )
           ],
         ),
       ),

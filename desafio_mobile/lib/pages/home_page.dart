@@ -33,30 +33,46 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            title: Text('Home'),
-            backgroundColor: colors.bgColorHome
-          ),
+              icon: Image.asset(
+                "assets/images/home.png",
+                height: 24,
+                width: 24,
+                color: _selectedIndex == 0
+                    ? colors.selectedBottomBarIcon
+                    : Colors.white,
+              ),
+              title: Text('Home'),
+              backgroundColor: colors.bgColorHome),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            title: Text('Search'),
-            backgroundColor: colors.bgColorHome
-          ),
+              icon: Icon(Icons.search),
+              title: Text('Search'),
+              backgroundColor: colors.bgColorHome),
           BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart),
-            title: Text('Cart'),
-            backgroundColor: colors.bgColorHome
-          ),
+              icon: Image.asset(
+                "assets/images/cart.png",
+                height: 24,
+                width: 24,
+                color: _selectedIndex == 2
+                    ? colors.selectedBottomBarIcon
+                    : Colors.white,
+              ),
+              title: Text('Cart'),
+              backgroundColor: colors.bgColorHome),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person_outline),
-            title: Text('Profile'),
-            backgroundColor: colors.bgColorHome
-          ),
+              icon: Image.asset(
+                "assets/images/profile.png",
+                height: 24,
+                width: 24,
+                color: _selectedIndex == 3
+                    ? colors.selectedBottomBarIcon
+                    : Colors.white,
+              ),
+              title: Text('Profile'),
+              backgroundColor: colors.bgColorHome),
           BottomNavigationBarItem(
-            icon: Icon(Icons.menu),
-            title: Text('More'),
-            backgroundColor: colors.bgColorHome
-          ),
+              icon: Icon(Icons.menu),
+              title: Text('More'),
+              backgroundColor: colors.bgColorHome),
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: colors.selectedBottomBarIcon,
@@ -66,4 +82,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-

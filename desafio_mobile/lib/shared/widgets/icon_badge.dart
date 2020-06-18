@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 class IconBadge extends StatefulWidget {
   IconData icon;
   String label;
+  String imgUrl;
 
-  IconBadge({@required this.icon, this.label});
+  IconBadge({this.icon, this.label, this.imgUrl});
 
   @override
   _IconBadgeState createState() => _IconBadgeState();
@@ -19,7 +20,7 @@ class _IconBadgeState extends State<IconBadge> {
         Positioned(
           right: -2,
           bottom: 6,
-          child: Icon(widget.icon),
+          child: widget.icon != null ? Icon(widget.icon) : Image.asset(widget.imgUrl, height: 20, width: 20,),
         ),
         Positioned(
           left: 0,
