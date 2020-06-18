@@ -10,7 +10,6 @@ class HomePageWidget{
       flex: 1,
       //todo colocar gradient no container
       child: Container(
-        width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
           color: colors.grayDarker
         ),
@@ -18,9 +17,29 @@ class HomePageWidget{
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CustomText(
-              text: "Categories",
-              size: TextSize.BIG,
+            Padding(
+              padding:  EdgeInsets.only(
+                left: dimens.paddingTittle
+              ),
+              child: CustomText(
+                text: "Categories",
+                size: TextSize.BIG,
+              ),
+            ),
+            SizedBox(height: 14,),
+            Container(
+              width: MediaQuery.of(context).size.width,
+              height: 80,
+              child: ListView.builder(
+                itemCount: 4,
+                itemBuilder: (ctx, index){
+                  return Container(
+                    width: 65,
+                    height: 65,
+                    color: Colors.red,
+                  );
+                }
+              ),
             )
           ],
         ),
