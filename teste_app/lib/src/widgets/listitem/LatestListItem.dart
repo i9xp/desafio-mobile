@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:testeapp/src/widgets/CustomActionButton.dart';
 import 'package:testeapp/src/widgets/Text.dart';
+import 'package:testeapp/src/values/colors.dart' as colors;
 
 class LatestItemList extends StatelessWidget {
   @override
@@ -34,6 +35,10 @@ class LatestItemList extends StatelessWidget {
                 ),
                 CustomActionButton(
                   label: "label",
+                  icone: Icons.arrow_forward_ios,
+                  iconColor: colors.white,
+                  iconBackgroundColor: colors.accentDark,
+
                 )
 
               ],

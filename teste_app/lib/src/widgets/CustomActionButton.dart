@@ -38,10 +38,11 @@ class CustomActionButton extends StatelessWidget {
             height: 34,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(34),
-                color: colors.accentDark
+                color: iconBackgroundColor
             ),
             child: Icon(
-              icone
+              icone,
+              color: iconColor,
             ),
           ),
           SizedBox(width: 8,),

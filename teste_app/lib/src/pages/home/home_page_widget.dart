@@ -11,11 +11,8 @@ class HomePageWidget{
     return Flexible(
       fit: FlexFit.tight,
       flex: 1,
-      //todo colocar gradient no container
       child: Container(
-        decoration: BoxDecoration(
-          color: colors.grayDarker
-        ),
+        color: colors.grayDarker,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -44,12 +41,15 @@ class HomePageWidget{
     return [
       HomeCategoriesListItem(
         nome: "Appearel",
+        asset: "assets/apparel.png",
       ),
       HomeCategoriesListItem(
         nome: "Beauty",
+        asset: "assets/b.png",
       ),
       HomeCategoriesListItem(
         nome: "Shoes",
+        asset: "assets/shoes.png",
       ),
       HomeCategoriesListItem(
         nome: "See All",
@@ -63,7 +63,6 @@ class HomePageWidget{
       flex: 2,
       child: Container(
         width: MediaQuery.of(context).size.width,
-        color: colors.grayDarker,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,

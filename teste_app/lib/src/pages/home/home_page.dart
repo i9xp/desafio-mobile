@@ -42,6 +42,7 @@ class _HomePageState extends State<HomePage> with HomePageWidget{
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: colors.gray,
         appBar: AppBar(
           elevation: 0,
           backgroundColor: colors.grayDarker,
