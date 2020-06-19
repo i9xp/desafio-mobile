@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:testeapp/src/helpers/navigation/nav_slide_from_right.dart';
 import 'package:testeapp/src/pages/detail/ProductDetail.dart';
 import 'package:testeapp/src/values/colors.dart' as colors;
 import 'package:testeapp/src/widgets/Text.dart';
@@ -71,10 +72,8 @@ class ProductListItem extends StatelessWidget {
   }
 
   void navigateToDetails({BuildContext context}){
-    Navigator.push(context, MaterialPageRoute(
-      builder: (context){
-        return ProductDetail();
-      }
+    Navigator.push(context, NavSlideFromRight(
+      page: ProductDetail()
     ));
   }
 }
