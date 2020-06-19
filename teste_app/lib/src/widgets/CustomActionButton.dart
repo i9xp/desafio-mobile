@@ -19,7 +19,7 @@ class CustomActionButton extends StatelessWidget {
       height: 46,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(24),
-        color: colors.grayLight
+        color: btnBackgroundColor
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,

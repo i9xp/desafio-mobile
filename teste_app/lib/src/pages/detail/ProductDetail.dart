@@ -33,30 +33,46 @@ class ProductDetail extends StatelessWidget with ProductDetailWidget {
           )
         ],
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
+      body: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
+          Column(
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Container(
-                width: 301,
-                height: 206,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    fit: BoxFit.fill,
-                    image: AssetImage(
-                      "assets/shoes_detail.png",
-                    )
-                  ),
-                )
-              ),
-            ],
-          )
+              SizedBox(height: 48,),
+              productDetailImage(),
+              Padding(
+                padding: const EdgeInsets.only(
+                    top:32.0
+                ),
+                child: rowWithLabels(),
+              )
 
+
+//          Row(
+//            crossAxisAlignment: CrossAxisAlignment.center,
+//            mainAxisAlignment: MainAxisAlignment.center,
+//            children: [
+//              Container(
+//                width: 301,
+//                height: 206,
+//                decoration: BoxDecoration(
+//                  image: DecorationImage(
+//                    fit: BoxFit.fill,
+//                    image: AssetImage(
+//                      "assets/shoes_detail.png",
+//                    )
+//                  ),
+//                )
+//              ),
+//            ],
+//          )
+
+            ],
+          ),
         ],
       ),
+      bottomNavigationBar: customDetailBottomNav(),
 
     );
   }
