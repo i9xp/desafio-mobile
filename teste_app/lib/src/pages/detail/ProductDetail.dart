@@ -63,7 +63,9 @@ class ProductDetail extends StatelessWidget with ProductDetailWidget {
           ),
         ],
       ),
-      bottomNavigationBar: customDetailBottomNav(),
+      bottomNavigationBar: customDetailBottomNav(
+        context: context
+      ),
 
     );
   }

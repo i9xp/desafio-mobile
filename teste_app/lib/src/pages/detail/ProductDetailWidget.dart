@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:testeapp/src/helpers/navigation/nav_slide_from_top.dart';
+import 'package:testeapp/src/pages/cart/CartPage.dart';
 
-import 'package:testeapp/src/values/colors.dart' as colors;
 import 'package:testeapp/src/values/dimens.dart' as dimens;
+import 'package:testeapp/src/values/colors.dart' as colors;
 import 'package:testeapp/src/widgets/CustomActionButton.dart';
 import 'package:testeapp/src/widgets/Text.dart';
 import 'package:testeapp/src/widgets/listitem/DetailLabelNameListItem.dart';
@@ -41,7 +43,7 @@ class ProductDetailWidget {
     );
   }
 
-  Widget customDetailBottomNav(){
+  Widget customDetailBottomNav({BuildContext context}){
     return Container(
       color: colors.grayDarker,
       height: 78,
@@ -61,10 +63,17 @@ class ProductDetailWidget {
             iconColor: colors.accentDark,
             icone: Icons.arrow_forward_ios,
             btnBackgroundColor: colors.accentDark,
+            onPressed: () => navigateToCart(context: context),
           )
         ],
       ),
     );
+  }
+
+  void navigateToCart({BuildContext context}){
+    Navigator.push(context, NavSlideFromTop(
+      page: CartPage()
+    ));
   }
 
   Widget productInfoWidget({String label,String labelValue,String subTitle,String subTitleValue, BuildContext context}){

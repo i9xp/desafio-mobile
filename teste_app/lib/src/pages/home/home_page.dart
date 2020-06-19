@@ -59,7 +59,15 @@ class _HomePageState extends State<HomePage> with HomePageWidget{
             title: Image.asset(
                 "assets/logo.png",
               height: 30,
+            ),
+          actions: [
+            IconButton(
+              icon: Icon(Icons.message,color: colors.white,),
+            ),
+            IconButton(
+              icon: Icon(Icons.add_alert,color: colors.white,),
             )
+          ],
         ),
         body: Flex(
           direction: Axis.vertical,
