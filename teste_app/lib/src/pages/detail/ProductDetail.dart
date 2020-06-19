@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:testeapp/src/pages/detail/ProductDetailWidget.dart';
 import 'package:testeapp/src/values/colors.dart' as colors;
 import 'package:testeapp/src/values/dimens.dart' as dimens;
 import 'package:testeapp/src/widgets/Text.dart';
 
-class ProductDetail extends StatelessWidget {
+class ProductDetail extends StatelessWidget with ProductDetailWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
