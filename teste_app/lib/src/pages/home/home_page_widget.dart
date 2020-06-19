@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:testeapp/src/models/BannerModel.dart';
 import 'package:testeapp/src/values/colors.dart' as colors;
 import 'package:testeapp/src/values/dimens.dart' as dimens;
 import 'package:testeapp/src/widgets/Text.dart';
@@ -57,6 +58,21 @@ class HomePageWidget{
     ];
   }
 
+  List<BannerModel> bannerlist(){
+    return [
+      BannerModel(
+        "For all your summer clothing needs",
+        "SEE MORE",
+        "assets/banner1.png"
+      ),
+      BannerModel(
+          "For all your summer clothing needs",
+          "SEE MORE",
+          "assets/banner2.png"
+      )
+    ];
+  }
+
   Widget homeListLatest({BuildContext context}){
     return Flexible(
       fit: FlexFit.tight,
@@ -85,9 +101,15 @@ class HomePageWidget{
               width: MediaQuery.of(context).size.width,
               height: 205,
               child: ListView.builder(
+                itemCount: bannerlist().length,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (ctx,index){
-                  return LatestItemList();
+                  final obj = bannerlist()[index];
+                  return LatestItemList(
+                    text: obj.text,
+                    assets: obj.assets,
+                    buttonLabel: obj.buttonLabel,
+                  );
                 }
               ),
             )
