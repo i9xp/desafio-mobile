@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:testeapp/src/values/colors.dart' as colors;
 import 'package:testeapp/src/values/dimens.dart' as dimens;
 import 'package:testeapp/src/widgets/CustomActionButton.dart';
+import 'package:testeapp/src/widgets/Text.dart';
 import 'package:testeapp/src/widgets/listitem/DetailLabelNameListItem.dart';
 
 class ProductDetailWidget {
@@ -62,6 +63,51 @@ class ProductDetailWidget {
             btnBackgroundColor: colors.accentDark,
           )
         ],
+      ),
+    );
+  }
+
+  Widget productInfoWidget({String label,String labelValue,String subTitle,String subTitleValue, BuildContext context}){
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      height: 90,
+      child: Padding(
+        padding: EdgeInsets.only(top: 8,left: 16,right: 16),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  CustomText(
+                    text: "BRAND",
+                    color: colors.white,
+                  ),
+                  CustomText(
+                    text: "Lily's Ankle Boots",
+                    color: colors.white,
+                  ),
+                ],
+              ),
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                CustomText(
+                  text: "SKU",
+                  color: colors.white,
+                ),
+                CustomText(
+                  text: "0025556052511515",
+                  color: colors.white,
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
 

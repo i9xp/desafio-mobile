@@ -46,27 +46,18 @@ class ProductDetail extends StatelessWidget with ProductDetailWidget {
                     top:32.0
                 ),
                 child: rowWithLabels(),
+              ),
+              SizedBox(height: 48,),
+              productInfoWidget(
+                context: context
+              ),
+              productInfoWidget(
+                  context: context
+              ),
+              productInfoWidget(
+                  context: context
               )
 
-
-//          Row(
-//            crossAxisAlignment: CrossAxisAlignment.center,
-//            mainAxisAlignment: MainAxisAlignment.center,
-//            children: [
-//              Container(
-//                width: 301,
-//                height: 206,
-//                decoration: BoxDecoration(
-//                  image: DecorationImage(
-//                    fit: BoxFit.fill,
-//                    image: AssetImage(
-//                      "assets/shoes_detail.png",
-//                    )
-//                  ),
-//                )
-//              ),
-//            ],
-//          )
 
             ],
           ),
