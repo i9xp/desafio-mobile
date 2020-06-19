@@ -3,6 +3,7 @@ import 'package:testeapp/src/values/colors.dart' as colors;
 import 'package:testeapp/src/values/dimens.dart' as dimens;
 import 'package:testeapp/src/widgets/Text.dart';
 import 'package:testeapp/src/widgets/listitem/HomeCategoriesListItem.dart';
+import 'package:testeapp/src/widgets/listitem/LatestListItem.dart';
 class HomePageWidget{
 
   Widget homeListaDeCategorias({BuildContext context}){
@@ -53,5 +54,46 @@ class HomePageWidget{
         nome: "See All",
       )
     ];
+  }
+
+  Widget homeListLatest({BuildContext context}){
+    return Flexible(
+      fit: FlexFit.tight,
+      flex: 2,
+      child: Container(
+        width: MediaQuery.of(context).size.width,
+        color: colors.grayDarker,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: 32,),
+            Padding(
+              padding:  EdgeInsets.only(
+                  left: dimens.paddingTittle
+              ),
+              child: CustomText(
+                text: "Latest",
+                size: TextSize.BIG,
+              ),
+            ),
+            SizedBox(height: 14,),
+            Container(
+              padding: EdgeInsets.only(
+                left: 16
+              ),
+              width: MediaQuery.of(context).size.width,
+              height: 225,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (ctx,index){
+                  return LatestItemList();
+                }
+              ),
+            )
+          ],
+        ),
+      ),
+    );
   }
 }

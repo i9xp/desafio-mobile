@@ -44,6 +44,7 @@ class _HomePageState extends State<HomePage> with HomePageWidget{
       appBar: AppBar(
         elevation: 0,
         backgroundColor: colors.grayDarker,
+        centerTitle: false,
         title: SVGItem(
           assetName: 'assets/logo.svg',
         )
@@ -54,13 +55,10 @@ class _HomePageState extends State<HomePage> with HomePageWidget{
           homeListaDeCategorias(
             context: context
           ),
-          Flexible(
-            fit: FlexFit.tight,
-            flex: 2,
-            child: Container(
-              color: Colors.green,
-            ),
+          homeListLatest(
+            context: context
           ),
+
           Flexible(
             fit: FlexFit.tight,
             flex: 1,
