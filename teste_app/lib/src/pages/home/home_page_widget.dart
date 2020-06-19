@@ -4,6 +4,7 @@ import 'package:testeapp/src/values/dimens.dart' as dimens;
 import 'package:testeapp/src/widgets/Text.dart';
 import 'package:testeapp/src/widgets/listitem/HomeCategoriesListItem.dart';
 import 'package:testeapp/src/widgets/listitem/LatestListItem.dart';
+import 'package:testeapp/src/widgets/listitem/ProductsListItem.dart';
 class HomePageWidget{
 
   Widget homeListaDeCategorias({BuildContext context}){
@@ -94,6 +95,21 @@ class HomePageWidget{
           ],
         ),
       ),
+    );
+  }
+
+  Widget homeLastItens({BuildContext context}){
+    return  Flexible(
+      fit: FlexFit.tight,
+      flex: 1,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          ProductListIte(),
+          ProductListIte(),
+          ProductListIte(),
+        ],
+      )
     );
   }
 }

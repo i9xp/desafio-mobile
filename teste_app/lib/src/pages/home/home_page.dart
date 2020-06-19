@@ -59,13 +59,8 @@ class _HomePageState extends State<HomePage> with HomePageWidget{
             homeListLatest(
               context: context
             ),
-
-            Flexible(
-              fit: FlexFit.tight,
-              flex: 1,
-              child: Container(
-                color: Colors.blue,
-              ),
+            homeLastItens(
+              context: context
             )
           ],
         ),
