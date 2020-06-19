@@ -1,7 +1,2 @@
 library i9xp_visual_pkg;
-
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+export 'package:i9xp_visual_pkg/src/app_assets/app_images/app_image.dart';

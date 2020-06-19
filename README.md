@@ -9,7 +9,7 @@
 
 #### Run "flutter doctor" for information about installing additional components.
 
-## Runnig the app
+## Running the app
 
 ### First of all, open ios simulator if it's not opened yet
 $ open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app/
@@ -20,6 +20,7 @@ $ cd i9xp_visual_pkg && flutter pub get && cd ../i9xp_app && flutter pub get && 
 
 ### Running scripts in order to run the app on ios simulator in devevelopment or production mode:
 $ run_ios.sh dev
+
 $ run_ios.sh prod
 
 ---------------------

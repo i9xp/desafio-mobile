@@ -74,6 +74,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  i9xp_visual_pkg:
+    dependency: "direct main"
+    description:
+      path: "../i9xp_visual_pkg"
+      relative: true
+    source: path
+    version: "0.0.1"
   image:
     dependency: transitive
     description:
