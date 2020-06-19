@@ -56,8 +56,9 @@ class _HomePageState extends State<HomePage> with HomePageWidget{
             elevation: 0,
             backgroundColor: colors.grayDarker,
             centerTitle: false,
-            title: SVGItem(
-              assetName: 'assets/logo.svg',
+            title: Image.asset(
+                "assets/logo.png",
+              height: 30,
             )
         ),
         body: Flex(
