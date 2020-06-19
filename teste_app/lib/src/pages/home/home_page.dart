@@ -1,4 +1,6 @@
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:testeapp/src/models/BottomNavItemModel.dart';
 import 'package:testeapp/src/pages/home/home_page_widget.dart';
@@ -40,35 +42,41 @@ class _HomePageState extends State<HomePage> with HomePageWidget{
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
+    return Platform.isIOS ?
+        SafeArea(
+          child: homeBody(),
+        )
+        : homeBody();
+  }
+
+  Widget homeBody(){
+    return Scaffold(
         backgroundColor: colors.gray,
         appBar: AppBar(
-          elevation: 0,
-          backgroundColor: colors.grayDarker,
-          centerTitle: false,
-          title: SVGItem(
-            assetName: 'assets/logo.svg',
-          )
+            elevation: 0,
+            backgroundColor: colors.grayDarker,
+            centerTitle: false,
+            title: SVGItem(
+              assetName: 'assets/logo.svg',
+            )
         ),
         body: Flex(
           direction: Axis.vertical,
           children: [
             homeListaDeCategorias(
-              context: context
+                context: context
             ),
             homeListLatest(
-              context: context
+                context: context
             ),
             homeLastItens(
-              context: context
+                context: context
             )
           ],
         ),
         bottomNavigationBar: CustomBottomNavigation(
           itens: list,
         )
-      ),
     );
   }
 }

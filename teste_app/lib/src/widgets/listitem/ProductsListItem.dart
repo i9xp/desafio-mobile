@@ -2,41 +2,62 @@ import 'package:flutter/material.dart';
 import 'package:testeapp/src/values/colors.dart' as colors;
 import 'package:testeapp/src/widgets/Text.dart';
 
-class ProductListIte extends StatelessWidget {
+class ProductListItem extends StatelessWidget {
+
+  final String text;
+  final String asset;
+  final String value;
+
+  const ProductListItem({Key key, this.text, this.asset, this.value}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
       width: 111,
       height: 145,
       decoration: BoxDecoration(
-          color: colors.accentDark,
+          color: colors.white,
           borderRadius: BorderRadius.all(Radius.circular(24))
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            width: 111,
-            height: 95,
-            decoration: BoxDecoration(
-                color: colors.white,
-                borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(24),
-                  topLeft: Radius.circular(24)
-                )
+          Padding(
+            padding: const EdgeInsets.only(
+              top: 8,
+              left: 8,
+              right: 8
+            ),
+            child: Container(
+              width: 111,
+              height: 95,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      fit: BoxFit.fill,
+                      image: AssetImage(
+                        asset,
+                      )
+                  ),
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(24),
+                    topLeft: Radius.circular(24)
+                  )
+              ),
             ),
           ),
           Padding(
             padding: const EdgeInsets.only(left:8.0),
             child: CustomText(
-              text: "Nome",
+              text: text,
+              color: colors.grayDark,
             ),
           ),
           Padding(
             padding: const EdgeInsets.only(left:8.0),
             child: CustomText(
               size: TextSize.SMALL,
-              text: r"R$ 49.99",
+              color: colors.grayDark,
+              text: r"R$"+ "$value",
             ),
           ),
 

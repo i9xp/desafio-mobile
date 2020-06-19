@@ -126,9 +126,21 @@ class HomePageWidget{
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          ProductListIte(),
-          ProductListIte(),
-          ProductListIte(),
+          ProductListItem(
+            text: "Ankl Boots",
+            asset: "assets/high_hels.png",
+            value: "49.00",
+          ),
+          ProductListItem(
+            value: "20.58",
+            asset: "assets/backpack.png",
+            text: "Backpack",
+          ),
+          ProductListItem(
+            text: "Red Scarf",
+            asset: "assets/scarf.png",
+            value: "11.00",
+          ),
         ],
       )
     );
