@@ -11,28 +11,27 @@ class HomeCategoriesListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding:  EdgeInsets.only(
-        right: dimens.paddingCategoriesItens
-      ),
+    return  Flexible(
+      fit: FlexFit.tight,
+      flex: 1,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Container(
-            width: 65,
-            height: 65,
-            decoration: BoxDecoration(
-              color: Colors.red,
-              borderRadius: BorderRadius.all(Radius.circular(65))
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              width: 65,
+              height: 65,
+              decoration: BoxDecoration(
+                color: Colors.red,
+                borderRadius: BorderRadius.circular(65)
+              ),
             ),
-          ),
-          CustomText(
-            text: nome,
-            size: TextSize.SMALL,
-          )
-        ],
-      ),
+            CustomText(
+              text: nome,
+              size: TextSize.SMALL,
+            )
+          ],
+        ),
     );
   }
 }

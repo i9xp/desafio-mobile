@@ -28,28 +28,30 @@ class HomePageWidget{
               ),
             ),
             SizedBox(height: 14,),
-            Padding(
-              padding: EdgeInsets.only(
-                left: dimens.paddingTittle
-              ),
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                height: 80,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 4,
-                  itemBuilder: (ctx, index){
-                    return HomeCategoriesListItem(
-                      asset: "",
-                      nome: "Apparel",
-                    );
-                  }
-                ),
-              ),
+             Flex(
+              direction: Axis.horizontal,
+              children: homeItens(),
             )
           ],
         ),
       ),
     );
+  }
+
+  List<Widget> homeItens(){
+    return [
+      HomeCategoriesListItem(
+        nome: "Appearel",
+      ),
+      HomeCategoriesListItem(
+        nome: "Beauty",
+      ),
+      HomeCategoriesListItem(
+        nome: "Shoes",
+      ),
+      HomeCategoriesListItem(
+        nome: "See All",
+      )
+    ];
   }
 }
