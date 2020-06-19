@@ -17,7 +17,12 @@ class CustomText extends StatelessWidget {
     return Text(
       text,
       style: style != null ? style : TextStyle(
-        fontSize: size == TextSize.BIG ? dimens.textTitleBug : size == TextSize.SMALL ? dimens.textSmall : dimens.textMedium,
+        fontSize: size == TextSize.BIG ?
+          dimens.textTitleBug :
+          size == TextSize.SMALL ? dimens.textSmall
+          : size == TextSize.BANNER ?
+              dimens.textBanner
+              : dimens.textMedium,
         color: color != null ? color : colors.white,
       ),
     );
@@ -25,5 +30,5 @@ class CustomText extends StatelessWidget {
 }
 
 enum TextSize{
-  BIG,NORMAL,SMALL
+  BIG,NORMAL,SMALL,BANNER
 }

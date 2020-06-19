@@ -83,7 +83,7 @@ class HomePageWidget{
                 left: 16
               ),
               width: MediaQuery.of(context).size.width,
-              height: 225,
+              height: 205,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (ctx,index){
