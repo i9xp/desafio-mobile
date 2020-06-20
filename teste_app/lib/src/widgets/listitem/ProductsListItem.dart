@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:testeapp/src/helpers/navigation/nav_slide_from_right.dart';
+import 'package:testeapp/src/models/ProductModel.dart';
 import 'package:testeapp/src/pages/detail/ProductDetail.dart';
 import 'package:testeapp/src/values/colors.dart' as colors;
 import 'package:testeapp/src/widgets/Text.dart';
 
 class ProductListItem extends StatelessWidget {
 
-  final String text;
-  final String asset;
-  final String value;
+  final ProductModel productModel;
 
-  const ProductListItem({Key key, this.text, this.asset, this.value}) : super(key: key);
+  const ProductListItem({Key key,this.productModel}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +38,7 @@ class ProductListItem extends StatelessWidget {
                     image: DecorationImage(
                         fit: BoxFit.fill,
                         image: AssetImage(
-                          asset,
+                          productModel.asset,
                         )
                     ),
                     borderRadius: BorderRadius.only(
@@ -52,7 +51,7 @@ class ProductListItem extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left:8.0),
               child: CustomText(
-                text: text,
+                text: productModel.name,
                 color: colors.grayDark,
               ),
             ),
@@ -61,7 +60,7 @@ class ProductListItem extends StatelessWidget {
               child: CustomText(
                 size: TextSize.SMALL,
                 color: colors.grayDark,
-                text: r"R$"+ "$value",
+                text: r"R$"+ "${productModel.value}",
               ),
             ),
 

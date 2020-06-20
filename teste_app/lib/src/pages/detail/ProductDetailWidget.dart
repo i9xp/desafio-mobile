@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:testeapp/src/bloc/CarrinhoBloc.dart';
 import 'package:testeapp/src/helpers/navigation/nav_slide_from_bottom.dart';
 import 'package:testeapp/src/helpers/navigation/nav_slide_from_top.dart';
+import 'package:testeapp/src/models/ProductModel.dart';
 import 'package:testeapp/src/pages/cart/CartPage.dart';
 
 import 'package:testeapp/src/values/dimens.dart' as dimens;
@@ -44,7 +46,7 @@ class ProductDetailWidget {
     );
   }
 
-  Widget customDetailBottomNav({BuildContext context}){
+  Widget customDetailBottomNav({BuildContext context, CarrinhoBloc carrinhoBloc}){
     return Container(
       color: colors.grayDarker,
       height: 78,
@@ -64,11 +66,18 @@ class ProductDetailWidget {
             iconColor: colors.accentDark,
             icone: Icons.arrow_forward_ios,
             btnBackgroundColor: colors.accentDark,
-            onPressed: () => navigateToCart(context: context),
+            onPressed: () => addItemToCart(
+              carrinhoBloc: carrinhoBloc,
+              //model: 
+            )
           )
         ],
       ),
     );
+  }
+
+  void addItemToCart({CarrinhoBloc carrinhoBloc,ProductModel model}){
+    carrinhoBloc.addProduct(product: model);
   }
 
   void navigateToCart({BuildContext context}){

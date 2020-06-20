@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:testeapp/src/models/BannerModel.dart';
+import 'package:testeapp/src/models/ProductModel.dart';
 import 'package:testeapp/src/values/colors.dart' as colors;
 import 'package:testeapp/src/values/dimens.dart' as dimens;
 import 'package:testeapp/src/widgets/Text.dart';
@@ -127,19 +128,25 @@ class HomePageWidget{
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           ProductListItem(
-            text: "Ankl Boots",
-            asset: "assets/high_hels.png",
-            value: "49.00",
+            productModel: ProductModel(
+             "Ankl Boots",
+             49.00,
+             "assets/high_hels.png",
+            ),
           ),
           ProductListItem(
-            value: "20.58",
-            asset: "assets/backpack.png",
-            text: "Backpack",
+            productModel: ProductModel(
+             "Backpack",
+             20.58,
+             "assets/backpack.png",
+            ),
           ),
           ProductListItem(
-            text: "Red Scarf",
-            asset: "assets/scarf.png",
-            value: "11.00",
+            productModel: ProductModel(
+             "Red Scarf",
+             11.00,
+             "assets/scarf.png",
+            ),
           ),
         ],
       )
