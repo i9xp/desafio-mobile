@@ -1,11 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:testeapp/src/bloc/CarrinhoBloc.dart';
 import 'package:testeapp/src/models/BottomNavItemModel.dart';
 import 'package:testeapp/src/pages/cart/CartPageWidget.dart';
 import 'package:testeapp/src/values/dimens.dart' as dimens;
 import 'package:testeapp/src/values/colors.dart' as colors;
 import 'package:testeapp/src/widgets/CustomBottomNavigation.dart';
 
-class CartPage extends StatelessWidget with CartPageWidget {
+class CartPage extends StatefulWidget {
+  @override
+  _CartPageState createState() => _CartPageState();
+}
+
+class _CartPageState extends State<CartPage>  with CartPageWidget {
+
+  CarrinhoBloc carrinhoBloc;
+
+  @override
+  void didChangeDependencies() {
+    carrinhoBloc = Provider.of<CarrinhoBloc>(context);
+    super.didChangeDependencies();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

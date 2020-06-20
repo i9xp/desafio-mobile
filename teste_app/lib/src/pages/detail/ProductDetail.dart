@@ -35,7 +35,7 @@ class _ProductDetailState extends State<ProductDetail> with ProductDetailWidget 
         elevation: 0,
         backgroundColor: colors.gray,
         leading: IconButton(
-          onPressed: ()=> Navigator.pop(context),
+          onPressed: () => Navigator.pop(context),
           icon: Icon(Icons.arrow_back_ios,color: colors.accentDark,),
         ),
         centerTitle: true,
