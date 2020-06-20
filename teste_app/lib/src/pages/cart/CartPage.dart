@@ -32,7 +32,9 @@ class _CartPageState extends State<CartPage>  with CartPageWidget {
           SizedBox(height: 48,),
           rowWithActions(),
           rowWithTitle(),
-          cartListItens(),
+          cartListItens(
+            carrinhoBloc: carrinhoBloc
+          ),
           cartSubtotal(
             context: context
           )

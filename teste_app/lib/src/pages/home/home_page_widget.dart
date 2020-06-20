@@ -132,6 +132,7 @@ class HomePageWidget{
              "Ankl Boots",
              49.00,
              "assets/high_hels.png",
+             "7 Hot pink"
             ),
           ),
           ProductListItem(
@@ -139,6 +140,7 @@ class HomePageWidget{
              "Backpack",
              20.58,
              "assets/backpack.png",
+             "Medium Green"
             ),
           ),
           ProductListItem(
@@ -146,6 +148,7 @@ class HomePageWidget{
              "Red Scarf",
              11.00,
              "assets/scarf.png",
+             "2ft, Dark Red"
             ),
           ),
         ],

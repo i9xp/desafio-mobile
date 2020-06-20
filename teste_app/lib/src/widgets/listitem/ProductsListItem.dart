@@ -14,7 +14,7 @@ class ProductListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap:() => navigateToDetails(context: context),
+      onTap:() => navigateToDetails(context: context,productModel: productModel),
       child: Container(
         width: 111,
         height: 145,
@@ -70,9 +70,11 @@ class ProductListItem extends StatelessWidget {
     );
   }
 
-  void navigateToDetails({BuildContext context}){
+  void navigateToDetails({BuildContext context,ProductModel productModel}){
     Navigator.push(context, NavSlideFromRight(
-      page: ProductDetail()
+      page: ProductDetail(
+        productModel: productModel,
+      )
     ));
   }
 }

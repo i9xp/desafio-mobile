@@ -1,18 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:testeapp/src/bloc/CarrinhoBloc.dart';
-import 'package:testeapp/src/helpers/navigation/nav_slide_from_bottom.dart';
-import 'package:testeapp/src/helpers/navigation/nav_slide_from_top.dart';
 import 'package:testeapp/src/models/ProductModel.dart';
-import 'package:testeapp/src/pages/cart/CartPage.dart';
-
-import 'package:testeapp/src/values/dimens.dart' as dimens;
 import 'package:testeapp/src/values/colors.dart' as colors;
 import 'package:testeapp/src/widgets/CustomActionButton.dart';
 import 'package:testeapp/src/widgets/Text.dart';
 import 'package:testeapp/src/widgets/listitem/DetailLabelNameListItem.dart';
 
 class ProductDetailWidget {
-  Widget productDetailImage(){
+  Widget productDetailImage({String assets}){
     return Container(
         width: 301,
         height: 206,
@@ -20,7 +15,7 @@ class ProductDetailWidget {
           image: DecorationImage(
               fit: BoxFit.fill,
               image: AssetImage(
-                "assets/shoes_detail.png",
+                assets//"assets/shoes_detail.png",
               )
           ),
         )
@@ -46,7 +41,7 @@ class ProductDetailWidget {
     );
   }
 
-  Widget customDetailBottomNav({BuildContext context, CarrinhoBloc carrinhoBloc}){
+  Widget customDetailBottomNav({BuildContext context, CarrinhoBloc carrinhoBloc, ProductModel productModel}){
     return Container(
       color: colors.grayDarker,
       height: 78,
@@ -68,6 +63,7 @@ class ProductDetailWidget {
             btnBackgroundColor: colors.accentDark,
             onPressed: () => addItemToCart(
               carrinhoBloc: carrinhoBloc,
+              model: productModel
               //model: 
             )
           )
@@ -80,11 +76,7 @@ class ProductDetailWidget {
     carrinhoBloc.addProduct(product: model);
   }
 
-  void navigateToCart({BuildContext context}){
-    Navigator.push(context, NavSlideFromBottom(
-      page: CartPage()
-    ));
-  }
+
 
   Widget productInfoWidget({String label,String labelValue,String subTitle,String subTitleValue, BuildContext context}){
     return Container(

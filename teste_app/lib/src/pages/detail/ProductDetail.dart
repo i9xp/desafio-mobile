@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:testeapp/src/bloc/CarrinhoBloc.dart';
+import 'package:testeapp/src/helpers/navigation/nav_slide_from_bottom.dart';
 import 'package:testeapp/src/models/ProductModel.dart';
+import 'package:testeapp/src/pages/cart/CartPage.dart';
 import 'package:testeapp/src/pages/detail/ProductDetailWidget.dart';
 import 'package:testeapp/src/values/colors.dart' as colors;
 import 'package:testeapp/src/values/dimens.dart' as dimens;
@@ -42,15 +44,16 @@ class _ProductDetailState extends State<ProductDetail> with ProductDetailWidget 
         title: Column(
           children: [
             CustomText(
-              text: "FauxSued Ankle Boots",
+              text: "${widget.productModel.name}",
             ),
             CustomText(
-              text: r"$"+"49.99",
+              text: r"$"+"${widget.productModel.value}",
             )
           ],
         ),
         actions: [
           IconButton(
+            onPressed: () => navigateToCart(context: context),
             icon: Icon(Icons.add_shopping_cart,color: colors.white,),
           )
         ],
@@ -62,7 +65,9 @@ class _ProductDetailState extends State<ProductDetail> with ProductDetailWidget 
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               SizedBox(height: 48,),
-              productDetailImage(),
+              productDetailImage(
+                assets: widget.productModel.asset
+              ),
               Padding(
                 padding: const EdgeInsets.only(
                     top:32.0
@@ -85,9 +90,16 @@ class _ProductDetailState extends State<ProductDetail> with ProductDetailWidget 
       ),
       bottomNavigationBar: customDetailBottomNav(
         context: context,
-        carrinhoBloc: carrinhoBloc
+        carrinhoBloc: carrinhoBloc,
+        productModel: widget.productModel
       ),
 
     );
+  }
+
+  void navigateToCart({BuildContext context}){
+    Navigator.push(context, NavSlideFromBottom(
+      page: CartPage()
+    ));
   }
 }

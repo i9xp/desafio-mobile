@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:testeapp/src/models/CarrinhoItemModel.dart';
 
 import 'package:testeapp/src/values/colors.dart' as colors;
 import 'package:testeapp/src/values/dimens.dart' as dimens;
 import 'package:testeapp/src/widgets/Text.dart';
 
 class CarrinhoListItem extends StatelessWidget {
+
+  final CarrinhoItemModel item;
+
+  const CarrinhoListItem({Key key, this.item}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -25,7 +31,7 @@ class CarrinhoListItem extends StatelessWidget {
               ),
               child: Center(
                 child: Image.asset(
-                    'assets/high_hels.png',
+                    item.produto.asset,
                   height: 60,
                 ),
               ),
@@ -39,14 +45,14 @@ class CarrinhoListItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   CustomText(
-                    text: "Nome do produto",
+                    text: item.produto.name,
                   ),
                   CustomText(
-                    text: "Nome do produto",
+                    text: item.produto.description,
                   ),
                   SizedBox(height: 16,),
                   CustomText(
-                    text: "Nome do produto",
+                    text: r"$" + "${item.produto.value}",
                   ),
                   SizedBox(height: 8,),
                   Row(

@@ -10,7 +10,6 @@ class CarrinhoBloc with ChangeNotifier {
 
   void addProduct({ProductModel product}){
     var currentList = _carrinho.value;
-
     currentList.add(CarrinhoItemModel(
       1, product
     ));

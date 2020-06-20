@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:testeapp/src/bloc/CarrinhoBloc.dart';
 import 'package:testeapp/src/helpers/navigation/nav_fade.dart';
+import 'package:testeapp/src/models/CarrinhoItemModel.dart';
 import 'package:testeapp/src/pages/checkout/CheckoutPage.dart';
 import 'package:testeapp/src/values/colors.dart' as colors;
 import 'package:testeapp/src/values/dimens.dart' as dimens;
@@ -50,10 +51,21 @@ class CartPageWidget {
       flex: 10,
       child: Padding(
         padding: EdgeInsets.only(left: 24),
-        child: ListView.builder(
-            itemBuilder: (context,index){  
-              return CarrinhoListItem();
-            }
+        child: StreamBuilder<List<CarrinhoItemModel>>(
+          initialData: [],
+          stream: carrinhoBloc.carrinho,
+          builder: (context, snapshot) {
+            return ListView.builder(
+              itemCount: snapshot.data.length,
+              itemBuilder: (context,index){ 
+                final obj = snapshot.data[index]; 
+                print(obj.produto.asset);
+                return CarrinhoListItem(
+                  item: obj,
+                );
+              }
+            );
+          }
         )
       ),
     );
