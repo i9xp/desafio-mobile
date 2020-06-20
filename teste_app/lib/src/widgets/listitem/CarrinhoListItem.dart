@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:testeapp/src/bloc/CarrinhoBloc.dart';
 import 'package:testeapp/src/models/CarrinhoItemModel.dart';
 
 import 'package:testeapp/src/values/colors.dart' as colors;
 import 'package:testeapp/src/values/dimens.dart' as dimens;
+import 'package:testeapp/src/widgets/CustomQuantityButton.dart';
 import 'package:testeapp/src/widgets/Text.dart';
 
 class CarrinhoListItem extends StatelessWidget {
 
   final CarrinhoItemModel item;
+  final CarrinhoBloc carrinhoBloc;
 
-  const CarrinhoListItem({Key key, this.item}) : super(key: key);
+  const CarrinhoListItem({Key key,this.carrinhoBloc, this.item}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -57,16 +60,9 @@ class CarrinhoListItem extends StatelessWidget {
                   SizedBox(height: 8,),
                   Row(
                     children: [
-                      Container(
-                        width: 24,
-                        height: 24,
-                        decoration: BoxDecoration(
-                          color: colors.accentDark,
-                          borderRadius: BorderRadius.circular(24)
-                        ),
-                        child: Center(
-                          child: Icon(Icons.remove,color:colors.white),
-                        ),
+                      CustomQuantityButton(
+                        onTap: null,
+                        icone: Icons.remove,
                       ),
                       Padding(
                         padding:  EdgeInsets.symmetric(
@@ -76,16 +72,9 @@ class CarrinhoListItem extends StatelessWidget {
                           text: "1",
                         ),
                       ),
-                      Container(
-                        width: 24,
-                        height: 24,
-                        decoration: BoxDecoration(
-                            color: colors.accentDark,
-                            borderRadius: BorderRadius.circular(24)
-                        ),
-                        child: Center(
-                          child: Icon(Icons.add,color:colors.white),
-                        ),
+                      CustomQuantityButton(
+                        onTap: null,
+                        icone: Icons.add,
                       )
                     ],
                   )

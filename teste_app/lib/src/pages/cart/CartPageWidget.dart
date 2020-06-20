@@ -58,8 +58,7 @@ class CartPageWidget {
             return ListView.builder(
               itemCount: snapshot.data.length,
               itemBuilder: (context,index){ 
-                final obj = snapshot.data[index]; 
-                print(obj.produto.asset);
+                final obj = snapshot.data[index];
                 return CarrinhoListItem(
                   item: obj,
                 );
@@ -71,48 +70,54 @@ class CartPageWidget {
     );
   }
 
-  Widget cartSubtotal({BuildContext context}){
-    return Flexible(
-      flex: 1,
-      child: Padding(
-        padding: EdgeInsets.only(left: 24,right: 24),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  CustomText(
-                    text: "TOTAL",
-                    color: colors.white,
-                    size: TextSize.SMALL,
+  Widget cartSubtotal({BuildContext context,CarrinhoBloc carrinhoBloc}){
+    return StreamBuilder<double>(
+      stream: carrinhoBloc.total,
+      initialData: 0.0,
+      builder: (context, snapshot) {
+        return Flexible(
+          flex: 1,
+          child: Padding(
+            padding: EdgeInsets.only(left: 24,right: 24),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      CustomText(
+                        text: "TOTAL",
+                        color: colors.white,
+                        size: TextSize.SMALL,
+                      ),
+                      CustomText(
+                        text: r"$"+ "${snapshot.data}",
+                        color: colors.white,
+                        size: TextSize.NORMAL,
+                      ),
+                      CustomText(
+                        text: snapshot.data > 99.00 ? "Free shipping" : "Shipping tax: 9.99",
+                        color: colors.white,
+                        size: TextSize.SMALL,
+                      )
+                    ],
                   ),
-                  CustomText(
-                    text: r"$81.47",
-                    color: colors.white,
-                    size: TextSize.NORMAL,
-                  ),
-                  CustomText(
-                    text: "Free shipping",
-                    color: colors.white,
-                    size: TextSize.SMALL,
-                  )
-                ],
-              ),
+                ),
+                CustomActionButton(
+                  label: "CHECKOUT",
+                  iconBackgroundColor: colors.white,
+                  iconColor: colors.accentDark,
+                  icone: Icons.arrow_forward_ios,
+                  btnBackgroundColor: colors.accentDark,
+                  onPressed: () => navigateToCheckout(context: context),
+                )
+              ],
             ),
-            CustomActionButton(
-              label: "CHECKOUT",
-              iconBackgroundColor: colors.white,
-              iconColor: colors.accentDark,
-              icone: Icons.arrow_forward_ios,
-              btnBackgroundColor: colors.accentDark,
-              onPressed: () => navigateToCheckout(context: context),
-            )
-          ],
-        ),
-      ),
+          ),
+        );
+      }
     );
   }
 

@@ -129,6 +129,7 @@ class HomePageWidget{
         children: [
           ProductListItem(
             productModel: ProductModel(
+              1,
              "Ankl Boots",
              49.00,
              "assets/high_hels.png",
@@ -137,6 +138,7 @@ class HomePageWidget{
           ),
           ProductListItem(
             productModel: ProductModel(
+              2,
              "Backpack",
              20.58,
              "assets/backpack.png",
@@ -145,6 +147,7 @@ class HomePageWidget{
           ),
           ProductListItem(
             productModel: ProductModel(
+              3,
              "Red Scarf",
              11.00,
              "assets/scarf.png",

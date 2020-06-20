@@ -36,7 +36,8 @@ class _CartPageState extends State<CartPage>  with CartPageWidget {
             carrinhoBloc: carrinhoBloc
           ),
           cartSubtotal(
-            context: context
+            context: context,
+            carrinhoBloc: carrinhoBloc
           )
         ],
       ),
