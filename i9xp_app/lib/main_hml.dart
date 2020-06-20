@@ -7,7 +7,7 @@ import 'package:i9xp_app/main.dart' as Bootstrap;
 void main() {
   
   debugPrint = (String message, {int wrapWidth}) {
-    final formattedMessage = "[${DateTime.now().toLocal().toString().split('.').first}] $message";
+    final formattedMessage = "[${DateTime.now().toUtc()}] $message";
     debugPrintSynchronously(formattedMessage);
   };
 

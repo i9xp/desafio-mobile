@@ -18,4 +18,25 @@ dev_dependencies:
 flutter:
 
   assets:
-   - assets/images/
+   - lib/images/
+
+  fonts:
+    - family: NeusaNextStd-Light
+      fonts:
+        - asset: lib/fonts/NeusaNextStd-Light.ttf
+
+    - family: NeusaNextStd-Medium
+      fonts:
+        - asset: lib/fonts/NeusaNextStd-Medium.ttf
+
+    - family: NeusaNextStd-Regular
+      fonts:
+        - asset: lib/fonts/NeusaNextStd-Regular.ttf
+
+    - family: NeusaNextStd-Bold
+      fonts:
+        - asset: lib/fonts/NeusaNextStd-Bold.ttf
+
+    - family: NeusaNextStd-Italic
+      fonts:
+        - asset: lib/fonts/NeusaNextStd-Italic.ttf
