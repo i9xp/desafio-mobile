@@ -56,6 +56,7 @@ class _HomePageState extends State<HomePage> with HomePageWidget{
             elevation: 0,
             backgroundColor: colors.grayDarker,
             centerTitle: false,
+            leading: Container(),
             title: Image.asset(
                 "assets/logo.png",
               height: 30,
