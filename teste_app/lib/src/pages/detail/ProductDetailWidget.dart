@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:testeapp/src/helpers/navigation/nav_slide_from_bottom.dart';
 import 'package:testeapp/src/helpers/navigation/nav_slide_from_top.dart';
 import 'package:testeapp/src/pages/cart/CartPage.dart';
 
@@ -71,7 +72,7 @@ class ProductDetailWidget {
   }
 
   void navigateToCart({BuildContext context}){
-    Navigator.push(context, NavSlideFromTop(
+    Navigator.push(context, NavSlideFromBottom(
       page: CartPage()
     ));
   }

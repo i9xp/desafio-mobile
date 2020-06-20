@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:testeapp/src/helpers/navigation/nav_fade.dart';
+import 'package:testeapp/src/pages/checkout/CheckoutPage.dart';
 import 'package:testeapp/src/values/colors.dart' as colors;
 import 'package:testeapp/src/values/dimens.dart' as dimens;
 import 'package:testeapp/src/widgets/CustomActionButton.dart';
@@ -139,7 +141,7 @@ class CartPageWidget {
     );
   }
 
-  Widget cartSubtotal(){
+  Widget cartSubtotal({BuildContext context}){
     return Flexible(
       flex: 1,
       child: Padding(
@@ -171,15 +173,22 @@ class CartPageWidget {
               ),
             ),
             CustomActionButton(
-              label: "ADD TO CART",
+              label: "CHECKOUT",
               iconBackgroundColor: colors.white,
               iconColor: colors.accentDark,
               icone: Icons.arrow_forward_ios,
               btnBackgroundColor: colors.accentDark,
+              onPressed: () => navigateToCheckout(context: context),
             )
           ],
         ),
       ),
     );
+  }
+
+  void navigateToCheckout({BuildContext context}){
+    Navigator.push(context, NavFade(
+      page: CheckoutPage()
+    ));
   }
 }

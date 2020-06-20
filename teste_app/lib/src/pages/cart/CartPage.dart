@@ -17,7 +17,9 @@ class CartPage extends StatelessWidget with CartPageWidget {
           rowWithActions(),
           rowWithTitle(),
           cartListItens(),
-          cartSubtotal()
+          cartSubtotal(
+            context: context
+          )
         ],
       ),
       bottomNavigationBar: CustomBottomNavigation(
