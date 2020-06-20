@@ -55,7 +55,14 @@ class CartPageWidget {
           initialData: [],
           stream: carrinhoBloc.carrinho,
           builder: (context, snapshot) {
-            return ListView.builder(
+            return snapshot.data.length == 0 ?
+                Center(
+                  child: CustomText(
+                    text: "Você nao tem itens no carrinho ainda",
+                  ),
+                )
+                :
+            ListView.builder(
               itemCount: snapshot.data.length,
               itemBuilder: (context,index){ 
                 final obj = snapshot.data[index];
@@ -111,7 +118,10 @@ class CartPageWidget {
                   iconColor: colors.accentDark,
                   icone: Icons.arrow_forward_ios,
                   btnBackgroundColor: colors.accentDark,
-                  onPressed: () => navigateToCheckout(context: context),
+                  onPressed: () {
+                    carrinhoBloc.clearAll();
+                    navigateToCheckout(context: context);
+                  } ,
                 )
               ],
             ),

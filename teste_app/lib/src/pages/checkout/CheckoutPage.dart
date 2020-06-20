@@ -18,6 +18,7 @@ class CheckoutPage extends StatelessWidget {
         leading: Container(),
         actions: [
           IconButton(
+            onPressed: () => navigateToHome(context: context),
             icon: Icon(Icons.close,color: colors.accentDark,),
           )
         ],
