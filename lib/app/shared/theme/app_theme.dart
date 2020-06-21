@@ -22,22 +22,22 @@ ThemeData buildTheme(BuildContext context) {
         ///Category title style
         subtitle1: TextStyle(
           fontSize: 15,
-          color: Theme.of(context).accentColor,
+          color: Colors.white,
           fontFamily: "Neusa",
         ),
 
         ///Product name style
         bodyText1: TextStyle(
-          fontSize: 12,
-          color: Theme.of(context).primaryColorLight,
+          fontSize: 14,
+          color: Color(0xFF2E3746),
           fontFamily: "Neusa",
-          fontWeight: FontWeight.w200,
+          fontWeight: FontWeight.w400,
         ),
 
         ///Price style
         bodyText2: TextStyle(
-          fontSize: 10,
-          color: Theme.of(context).primaryColorLight,
+          fontSize: 12,
+          color: Color(0xFF515C6F),
           fontFamily: "Neusa",
           fontWeight: FontWeight.w700,
         )),

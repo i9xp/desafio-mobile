@@ -17,10 +17,10 @@ void main() {
       expect(app, isInstanceOf<AppController>());
     });
 
-    test("Set Value", () {
-      expect(app.value, equals(0));
-      app.increment();
-      expect(app.value, equals(1));
+    test("Get List", () {
+      expect(app.categories.length, equals(null));
+      app.populateCategory();
+      expectLater(app.categories.length, equals(!null));
     });
   });
 }

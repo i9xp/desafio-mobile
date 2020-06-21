@@ -12,16 +12,12 @@ class DefaultAppbarWidget extends StatelessWidget
   /// elevation of the appbar
   final double elevation;
 
-  /// list of products inside the cart
-  final List products;
-
-  const DefaultAppbarWidget(
-      {Key key,
-      @required this.titleComponent,
-      this.centerTitle = false,
-      this.elevation = 0,
-      this.products})
-      : assert(titleComponent != null),
+  const DefaultAppbarWidget({
+    Key key,
+    @required this.titleComponent,
+    this.centerTitle = false,
+    this.elevation = 0,
+  })  : assert(titleComponent != null),
         super(key: key);
 
   @override
