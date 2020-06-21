@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:i9xp_app/app/pages/home/home_page.dart';
 import 'package:i9xp_app/app/pages/product_detail.dart/product_detail_page.dart';
+import 'package:i9xp_app/app/pages/success.dart/success_page.dart';
+import 'package:i9xp_app/app/pages/tab_views/host_view.dart';
 
 class AppNavigator {
 
@@ -13,7 +14,6 @@ class AppNavigator {
     navKey = GlobalKey<NavigatorState>();
     debugPrint('--> AppNavigator initialized.'); 
   }
-
 }
 
 class AppRouter {
@@ -21,8 +21,9 @@ class AppRouter {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
 
-      case AppRoutes.home: return MaterialPageRoute(builder: (context) => HomePage(title: settings.arguments.toString(),));
+      case AppRoutes.host: return MaterialPageRoute(builder: (context) => HostView());
       case AppRoutes.productDetail: return MaterialPageRoute(builder: (context) => ProductDetailPage());
+      case AppRoutes.success: return MaterialPageRoute(builder: (context) => SuccessPage());
 
       default:
         return MaterialPageRoute(
@@ -38,6 +39,7 @@ class AppRouter {
 }
 
 class AppRoutes {
-  static const String home = 'home';
+  static const String host = 'host';
   static const String productDetail = 'product_detail';
+  static const String success = 'success';
 }

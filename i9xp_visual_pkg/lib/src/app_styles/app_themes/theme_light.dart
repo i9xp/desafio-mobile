@@ -6,11 +6,12 @@ class ThemeLight {
   ThemeData get theme => ThemeData(
         brightness: Brightness.light,
         primarySwatch: PRIMARY_SWATCH,
-        primaryColor: PRIMARY_SWATCH,
+        primaryColor: ORANGE_1,
         accentColor: ORANGE_2,
         backgroundColor: WHITE,
         scaffoldBackgroundColor: GREY_3,
         buttonColor: WHITE,
+        canvasColor: GREY_4,
         iconTheme: IconThemeData(
           color: WHITE,
         ),

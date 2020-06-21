@@ -31,6 +31,8 @@ final TextStyle DISPLAY3 = _medium.copyWith(color: ORANGE_1, fontSize: 15);
 // ignore:non_constant_identifier_names
 final TextStyle DISPLAY4 = _medium.copyWith(color: ORANGE_1, fontSize: 10);
 // ignore:non_constant_identifier_names
+final TextStyle DISPLAY5 = _light.copyWith(color: GREY_4, fontSize: 12);
+// ignore:non_constant_identifier_names
 final TextStyle OVERLINE = _bold.copyWith(color: WHITE, fontSize: 10);
 // ignore:non_constant_identifier_names
 final TextStyle CAPTION = _regular.copyWith(color: WHITE, fontSize: 12);
