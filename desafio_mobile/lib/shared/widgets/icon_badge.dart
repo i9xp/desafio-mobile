@@ -5,7 +5,7 @@ class IconBadge extends StatefulWidget {
   String label;
   String imgUrl;
 
-  IconBadge({this.icon, this.label, this.imgUrl});
+  IconBadge({this.icon, this.label = "0", this.imgUrl});
 
   @override
   _IconBadgeState createState() => _IconBadgeState();
@@ -18,7 +18,7 @@ class _IconBadgeState extends State<IconBadge> {
         child: Stack(
       children: [
         Positioned(
-          right: -2,
+          right: 3,
           bottom: 6,
           child: widget.icon != null ? Icon(widget.icon) : Image.asset(widget.imgUrl, height: 20, width: 20,),
         ),
