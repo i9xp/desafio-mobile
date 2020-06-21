@@ -18,25 +18,27 @@
 
 ## Design
 
+ # Home
+
  ![picture](screenshots/home.png)
  
- Home
+ # Empty Cart
  
  ![picture](screenshots/empty_cart.png)
  
- Empty Cart 
+ # Product page
  
  ![picture](screenshots/product_page.png)
  
- Product page
+ # Cart with product
  
  ![picture](screenshots/cart.png)
  
- Cart with product
+ # Order placed
  
  ![picture](screenshots/completed.png)
  
- Order placed
+ 
  
 
 
