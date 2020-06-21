@@ -13,10 +13,6 @@ dependencies:
   # Gerenciamento de estado
   mobx: ^1.2.1+1
   flutter_mobx: ^1.1.0+1
-
-  # Widgets utilitários
-  mobx_widget: 
-    git: https://github.com/emanuel-braz/mobx_widget.git
   
   # Ícones cupertino
   cupertino_icons: ^0.1.2
@@ -24,7 +20,11 @@ dependencies:
   # Local visual components package
   i9xp_visual_pkg:
     path: ../i9xp_visual_pkg
-
+  
+  # Servicos
+  i9xp_services_pkg:
+    path: ../i9xp_services_pkg
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter

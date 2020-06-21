@@ -22,7 +22,7 @@ class AppRouter {
     switch (settings.name) {
 
       case AppRoutes.host: return MaterialPageRoute(builder: (context) => HostView());
-      case AppRoutes.productDetail: return MaterialPageRoute(builder: (context) => ProductDetailPage());
+      case AppRoutes.productDetail: return MaterialPageRoute(builder: (context) => ProductDetailPage(product: settings.arguments,));
       case AppRoutes.success: return MaterialPageRoute(builder: (context) => SuccessPage());
 
       default:

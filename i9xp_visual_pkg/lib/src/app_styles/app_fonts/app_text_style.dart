@@ -13,7 +13,6 @@ const TextStyle _bold = TextStyle(fontFamily: 'NeusaNextStd-Bold', package: pack
 
 // ignore:non_constant_identifier_names
 final TextStyle TITLE = _bold.copyWith(color: WHITE, fontSize: 30);
-// final TextStyle TITLE = TextStyle(fontFamily: 'NeusaNextStd-Bold');
 // ignore:non_constant_identifier_names
 final TextStyle BODY1 = _regular.copyWith(color: WHITE, fontSize: 15);
 // ignore:non_constant_identifier_names

@@ -167,6 +167,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_mobx:
+    dependency: transitive
+    description:
+      name: flutter_mobx
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.0+1"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -207,6 +214,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.1.4"
+  i9xp_services_pkg:
+    dependency: "direct main"
+    description:
+      path: "../i9xp_services_pkg"
+      relative: true
+    source: path
+    version: "0.0.1"
   image:
     dependency: transitive
     description:
@@ -277,6 +291,15 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.0+1"
+  mobx_widget:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: HEAD
+      resolved-ref: f17c2940360e73ae92372a5e47f2e2fe58d458cf
+      url: "https://github.com/emanuel-braz/mobx_widget.git"
+    source: git
+    version: "0.4.1"
   node_interop:
     dependency: transitive
     description:

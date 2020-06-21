@@ -7,12 +7,13 @@ class AppBadge extends StatefulWidget {
   final AssetImage icon;
   final int counter;
   final double iconSize;
+  final VoidCallback onTap;
 
   const AppBadge(
       {Key key,
       @required this.icon,
       @required this.counter,
-      this.iconSize = 45})
+      this.iconSize = 45, this.onTap})
       : assert(icon != null, 'Parametro obrigatório: Informe o ícone'),
         assert(icon != null, 'Parametro obrigatório: Informe o counter'),
         super(key: key);
@@ -27,21 +28,24 @@ class _AppBadgeState extends State<AppBadge> {
     final double fontSize = widget.iconSize * .11 + 7;
     final double iconSize = math.max(widget.iconSize, 35);
 
-    return Container(
-        width: iconSize,
-        height: iconSize,
-        child: Stack(
-          children: [
-            Container(
-                alignment: Alignment.topRight,
-                child: Image(
-                    image: widget.icon,
-                    height: iconSize * .7,
-                    width: iconSize * .7,
-                    fit: BoxFit.contain)),
-            _Chip(widget.counter, iconSize, fontSize),
-          ],
-        ));
+    return GestureDetector(
+      onTap: widget.onTap,
+          child: Container(
+          width: iconSize,
+          height: iconSize,
+          child: Stack(
+            children: [
+              Container(
+                  alignment: Alignment.topRight,
+                  child: Image(
+                      image: widget.icon,
+                      height: iconSize * .7,
+                      width: iconSize * .7,
+                      fit: BoxFit.contain)),
+              _Chip(widget.counter, iconSize, fontSize),
+            ],
+          )),
+    );
   }
 }
 

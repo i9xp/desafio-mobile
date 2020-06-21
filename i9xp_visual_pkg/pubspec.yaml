@@ -12,6 +12,13 @@ dependencies:
     sdk: flutter
   mobx: ^1.2.1+1
 
+  # Widgets utilitários
+  mobx_widget: 
+    git: https://github.com/emanuel-braz/mobx_widget.git
+
+  i9xp_services_pkg:
+    path: ../i9xp_services_pkg
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

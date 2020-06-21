@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:i9xp_app/app/shared/controllers/app_controller.dart';
+import 'package:i9xp_app/app/utils/navigators/app_navigator.dart';
 import 'package:i9xp_visual_pkg/i9xp_visual_pkg.dart';
 
 class HomeView extends StatefulWidget {
@@ -23,7 +25,12 @@ class _HomeViewState extends State<HomeView> {
           children: <Widget>[
             Categories(),
             LatestWidget(),
-            ProductsCaroselHome(),
+            ProductsCaroselHome(
+              future: app.model.productsFuture,
+              openDetail: (product) => {
+                app.nav.pushNamed(AppRoutes.productDetail, arguments: product)
+              },
+            ),
             VSpace()
           ],
         ),
