@@ -20,7 +20,7 @@ abstract class _AppModelBase with Store {
   @observable ObservableList<CartItemModel> cartList = ObservableList<CartItemModel>();
   @computed double get cartPriceTotal => cartList.sum((item) => item.product.price * item.quantity);
 
-  addToCart(CartItemModel model){
+  void addToCart(CartItemModel model){
     var filtered = cartList.where((item) => item.product.sku == model.product.sku);
     var exists = (filtered?.length ?? 0) > 0;
     if (exists){
@@ -28,6 +28,15 @@ abstract class _AppModelBase with Store {
     } else {
       cartList.add(model..add());
     }
+  }
+
+  @action
+  void reset() {
+    cartList.forEach((item) {
+      item.dispose();
+      item = null;
+    });
+    cartList = ObservableList<CartItemModel>();
   }
 
   @computed int get cartProductLength => cartList.length;

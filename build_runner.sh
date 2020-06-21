@@ -3,6 +3,10 @@
 
 for d in */ ; do
     cd "$d"
+    echo '---->'
+    pwd
+    echo ' '
+    echo ' '
     flutter pub get
     flutter pub run build_runner build --delete-conflicting-outputs
     cd ../

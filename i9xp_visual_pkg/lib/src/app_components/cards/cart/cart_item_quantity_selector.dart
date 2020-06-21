@@ -18,7 +18,7 @@ class CartItemQuantitySelector extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               CircularButton(
-                onTap: model.minus,
+                onTap: model.remove,
                 icon: Icons.remove,
               ),
               HSpace(),

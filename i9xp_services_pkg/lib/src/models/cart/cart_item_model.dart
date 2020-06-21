@@ -22,11 +22,16 @@ abstract class _CartItemModelBase with Store {
       // TODO: salvar a quantidade em disco
     });
   } 
-  @action minus() {
+  @action remove() {
     quantity == 0 ? quantity = 0 : quantity--;
      DataKit.debounce(debounce, (){
       // TODO: salvar a quantidade em disco
     });
   }
   ProductModel product;
+
+  void dispose(){
+    quantity = null;
+    debounce?.cancel();
+  }
 }

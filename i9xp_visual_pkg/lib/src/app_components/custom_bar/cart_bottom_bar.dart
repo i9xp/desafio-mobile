@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:i9xp_visual_pkg/src/app_components/buttons/app_button.dart';
+import 'package:i9xp_visual_pkg/src/app_components/spacers/hspace.dart';
 import 'package:i9xp_visual_pkg/src/app_styles/app_colors/app_color.dart';
 import 'package:i9xp_visual_pkg/src/app_styles/app_dimens/app_dimens.dart';
 import 'package:i9xp_visual_pkg/src/app_styles/app_fonts/app_text_style.dart';
@@ -7,10 +8,15 @@ import 'package:i9xp_visual_pkg/src/app_styles/app_fonts/app_text_style.dart';
 class CartBottomBar extends StatelessWidget {
 
   final String total;
-  const CartBottomBar([this.total]);
+  final VoidCallback onCheckout;
+  const CartBottomBar([this.total, this.onCheckout]);
 
   @override
   Widget build(BuildContext context) {
+
+    double width = MediaQuery.of(context).size.width;
+    double paddingPlus = width > 320 ? PADDING_S : 0;
+
     return Container(
             padding: EdgeInsets.only(left: PADDING, right: PADDING_S),
             color: GREY_3,
@@ -31,9 +37,11 @@ class CartBottomBar extends StatelessWidget {
                 ),
                 Expanded(
                   child: AppButton(
-                    label: '  CHECKOUT  ',
+                    label: ' CHECKOUT ',
+                    onTap: onCheckout,
                   )
-                )
+                ),
+                HSpace(paddingPlus),
               ],
             ),
           );

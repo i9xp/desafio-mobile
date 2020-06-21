@@ -12,6 +12,10 @@ class ProductDetailPage extends StatelessWidget {
   const ProductDetailPage({Key key, @required this.product}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+
+    double width = MediaQuery.of(context).size.width;
+    double paddingPlus = width > 320 ? PADDING_S : 0;
+
     return Scaffold(
       body: Column(
         children: <Widget>[
@@ -146,6 +150,7 @@ class ProductDetailPage extends StatelessWidget {
           ),
           CustomBottomBar(
             children: <Widget>[
+              HSpace(paddingPlus),
               Expanded(
                 child: AppButton(
                   label: 'SHARE THIS',
@@ -153,7 +158,7 @@ class ProductDetailPage extends StatelessWidget {
                   imageIcon: AppImage.up,
                 ),
               ),
-              HSpace(PADDING_S),
+              HSpace(PADDING_S + paddingPlus),
               Expanded(
                 child: AppButton(
                   label: 'ADD TO CART',
@@ -163,7 +168,8 @@ class ProductDetailPage extends StatelessWidget {
                     app.model.setTabViewIndex(2);
                   },
                 ),
-              )
+              ),
+              HSpace(paddingPlus),
             ],
           )
         ],

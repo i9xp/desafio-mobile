@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:i9xp_app/app/shared/controllers/app_controller.dart';
+import 'package:i9xp_app/app/utils/navigators/app_navigator.dart';
 import 'package:i9xp_visual_pkg/i9xp_visual_pkg.dart';
 
 class CartView extends StatelessWidget {
@@ -30,7 +31,11 @@ class CartView extends StatelessWidget {
                   itemBuilder: (_, index) => ProductCartItem(model: app.model.cartList.reversed.toList()[index]))
             ),
           Divider(height: 1, thickness: 1, color: GREY_2,),
-          Observer(builder: (_) => CartBottomBar(app.model?.cartPriceTotal?.toStringAsFixed(2)?.toString() ?? '0'))
+          Observer(builder: (_) => CartBottomBar(app.model?.cartPriceTotal?.toStringAsFixed(2)?.toString() ?? '0', (){
+            app.model.reset();
+            app.model.setTabViewIndex(0);
+            app.nav.pushNamed(AppRoutes.success);
+          }))
         ],
       ),
     );
