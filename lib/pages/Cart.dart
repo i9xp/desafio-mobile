@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:i9xpapp/blocs/CartBloc.dart';
 import 'package:i9xpapp/components/IconLabel.dart';
 import 'package:i9xpapp/components/ListItems.dart';
 import 'package:i9xpapp/components/Menu.dart';
@@ -6,6 +7,7 @@ import 'package:i9xpapp/components/RoundedButton.dart';
 import 'package:i9xpapp/components/MainTitle.dart';
 import 'package:i9xpapp/components/TotalCart.dart';
 import 'package:i9xpapp/pages/Finished.dart';
+import 'package:provider/provider.dart';
 
 class Cart extends StatefulWidget {
   @override
@@ -15,6 +17,8 @@ class Cart extends StatefulWidget {
 class _CartState extends State<Cart> {
   @override
   Widget build(BuildContext context) {
+    final cartBloc = Provider.of<CartBloc>(context);
+    cartBloc.getTotal();
     return Scaffold(
       body: Stack(
         children: <Widget>[

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:i9xpapp/blocs/CartBloc.dart';
 import 'package:provider/provider.dart';
-
 import 'ItemCart.dart';
 
 class ListItems extends StatefulWidget {
@@ -13,6 +12,7 @@ class _ListItemsState extends State<ListItems> {
   @override
   Widget build(BuildContext context) {
     final cartBloc = Provider.of<CartBloc>(context);
+    cartBloc.recoveryCart();
     return ListView.builder(
       itemCount: cartBloc.cart.length,
       itemBuilder: (BuildContext ctxt, int index) {

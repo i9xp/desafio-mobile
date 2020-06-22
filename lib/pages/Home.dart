@@ -6,6 +6,7 @@ import 'package:i9xpapp/components/MainTitle.dart';
 import 'package:i9xpapp/components/Menu.dart';
 import 'package:i9xpapp/components/ProductBox.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Home extends StatefulWidget {
   @override

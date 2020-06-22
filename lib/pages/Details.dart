@@ -19,10 +19,15 @@ class Details extends StatefulWidget {
 }
 
 class _DetailsState extends State<Details> {
+  String _totalItems = '0';
+
   @override
   Widget build(BuildContext context) {
     final cartBloc = Provider.of<CartBloc>(context);
     final pagesBloc = Provider.of<PagesBloc>(context);
+    cartBloc.getItems().then((value) => setState(() {
+          _totalItems = value.toString();
+        }));
     return Scaffold(
       body: Stack(
         children: <Widget>[
@@ -99,9 +104,24 @@ class _DetailsState extends State<Details> {
                         )
                       ],
                     ),
-                    IconLabel(
-                      icon: Image.asset('assets/images/Cart.png'),
-                      label: '7',
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          pagesBloc.setIndex(3);
+                        });
+                        cartBloc.getTotal();
+                        Navigator.of(context).pop();
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Cart(),
+                          ),
+                        );
+                      },
+                      child: IconLabel(
+                        icon: Image.asset('assets/images/Cart.png'),
+                        label: _totalItems,
+                      ),
                     ),
                   ],
                 ),
@@ -215,8 +235,12 @@ class _DetailsState extends State<Details> {
                           if (!cartBloc.cart
                               .contains(cartBloc.products[widget.index]))
                             cartBloc.cart.add(cartBloc.products[widget.index]);
+                          cartBloc.setQnty(
+                              cartBloc.products[widget.index]["title"], 1);
                         } else {
                           cartBloc.cart.add(cartBloc.products[widget.index]);
+                          cartBloc.setQnty(
+                              cartBloc.products[widget.index]["title"], 1);
                         }
                         setState(() {
                           pagesBloc.setIndex(3);
