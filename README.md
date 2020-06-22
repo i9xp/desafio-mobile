@@ -9,20 +9,34 @@
 
 #### Run "flutter doctor" for information about installing additional components.
 
-## Running the app
+### Sobre
+O projeto possui 2 bibliotecas internas, uma para serviços [i9xp_services] e outra para componentes visuais compartilháveis [i9xp_visual]
+O projeto utiliza geradores de código para jsons e para Stores do State Managment MobX. Por isso será necessário executar o comando abaixo ou usar o script que acessa todos os projetos e gera os códigos de forma recursiva.
+`$ flutter pub run build_runner build --delete-conflicting-outputs`
+`$ sh build_runner.sh`
 
-### First of all, open ios simulator if it's not opened yet
+## Excutando a aplicação
+
+### Abra o simulador do iPhone antes de rodar o aplicativo
 $ open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app/
 
-### Use scripts to speed up the configuration and run the app, or type manually this in terminal:
-#### PAY ATTENTION: Make sure you are in the root folder of the project [desafio-mobile]
-$ cd i9xp_visual_pkg && flutter pub get && cd ../i9xp_app && flutter pub get && flutter run -t lib/main_dev.dart && cd ../
+### Execute o comando de geração de arquivos na raiz de cada um dos 3 projetos
+Na pasta i9xp_app `$ flutter pub run build_runner build --delete-conflicting-outputs`
+Na pasta i9xp_services `$ flutter pub run build_runner build --delete-conflicting-outputs`
+Na pasta i9xp_visual `$ flutter pub run build_runner build --delete-conflicting-outputs`
 
-### Running scripts in order to run the app on ios simulator in devevelopment or production mode:
-$ run_ios.sh dev
+### Você pode usar os scripts para gerar apk ou rodar o aplicativo em um dispositivo
+`$ sh run_app.sh`
+`$ run_app.sh dev`
+`$ run_app.sh prod`
 
-$ run_ios.sh prod
+`$ sh build_apk.sh`
 
+#### Alternativamente você pode rodar o aplicativo via terminal usando o comando abaixo:
+#### No diretório raiz [desafio-mobile] digite o comando abaixo
+`$ cd i9xp_visual_pkg && flutter pub get && flutter pub run build_runner build --delete-conflicting-outputs && cd ../i9xp_services_pkg && flutter pub get && flutter pub run build_runner build --delete-conflicting-outputs && cd ../i9xp_app && flutter pub get && flutter pub run build_runner build --delete-conflicting-outputs && flutter run -t lib/main_dev.dart && cd ../`
+
+Baixar apk: https://drive.google.com/file/d/1nZTVP0TJvyKWKclXb5jAcduZ_4Z4o4eE/view?usp=sharing
 ---------------------
 
 ## Instruções
