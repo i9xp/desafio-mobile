@@ -6,7 +6,6 @@ import 'package:i9xpapp/components/MainTitle.dart';
 import 'package:i9xpapp/components/Menu.dart';
 import 'package:i9xpapp/components/ProductBox.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -17,6 +16,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     final cartBloc = Provider.of<CartBloc>(context);
+    cartBloc.getProducts();
     return Scaffold(
       body: Container(
         color: Color.fromRGBO(81, 92, 111, 1),

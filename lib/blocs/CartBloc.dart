@@ -1,5 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:async';
+import 'package:http/http.dart' as http;
 
 class CartBloc extends ChangeNotifier {
   var total = 0.0;
@@ -13,7 +17,7 @@ class CartBloc extends ChangeNotifier {
       "title": "Faux Sued Ankle Boots",
       "subtitle": "7. Hot Pink",
       "price": 49.99,
-      "qnty": 1,
+      "qnty": 1
     },
     {
       "imagePath": "assets/images/item2.png",
@@ -23,7 +27,7 @@ class CartBloc extends ChangeNotifier {
       "title": "Bottle Green Backpack",
       "subtitle": "Medium, Green",
       "price": 20.58,
-      "qnty": 1,
+      "qnty": 1
     },
     {
       "imagePath": "assets/images/item3.png",
@@ -33,11 +37,22 @@ class CartBloc extends ChangeNotifier {
       "title": "Red Cotton Scarf",
       "subtitle": "2ft. Dark Red",
       "price": 11.00,
-      "qnty": 1,
-    },
+      "qnty": 1
+    }
   ];
 
   var cart = [];
+
+  void getProducts() async {
+    try {
+      var response = await http
+          .get("https://run.mocky.io/v3/50f31a1b-365d-492c-a8ae-cb7963bdafb5");
+      var body = jsonDecode(response.body);
+      print(body);
+    } catch (e) {
+      print(e);
+    }
+  }
 
   Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
