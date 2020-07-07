@@ -21,6 +21,8 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  flutter_screenutil: ^2.2.0
+  google_fonts: ^1.1.0
   dio: ^3.0.9
   flutter_mobx: ^1.1.0+1
   mobx: ^1.2.1+1
