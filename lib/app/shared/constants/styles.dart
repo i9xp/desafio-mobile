@@ -39,8 +39,11 @@ class AppStyles {
 
   // ignore: non_constant_identifier_names
   static final BADGE_NUMBER = TextStyle(
-    fontSize: 10.sp,
+    fontSize: 10,
     color: AppColors.ON_BACKGROUND,
     fontWeight: FontWeight.bold,
   );
+
+  // ignore: non_constant_identifier_names
+  static final BADGE_NUMBER_TEN = AppStyles.BADGE_NUMBER.copyWith(fontSize: 9);
 }

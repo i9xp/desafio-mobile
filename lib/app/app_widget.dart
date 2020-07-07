@@ -8,6 +8,7 @@ class AppWidget extends StatelessWidget {
     return MaterialApp(
       navigatorKey: Modular.navigatorKey,
       title: 'i9xp',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: AppColors.HOME_BACKGROUND_A,
       ),
