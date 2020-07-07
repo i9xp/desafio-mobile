@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:i9xp/app/shared/constants/colors.dart';
 
 class AppWidget extends StatelessWidget {
   @override
@@ -8,7 +9,7 @@ class AppWidget extends StatelessWidget {
       navigatorKey: Modular.navigatorKey,
       title: 'i9xp',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primaryColor: AppColors.HOME_BACKGROUND_A,
       ),
       initialRoute: '/',
       onGenerateRoute: Modular.generateRoute,
