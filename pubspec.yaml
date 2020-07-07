@@ -58,9 +58,24 @@ scripts:
     mobx_watch: $clean & $get & $runner watch --delete-conflicting-outputs
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+assets:
+  - img/home/apparel.jpeg
+  - img/home/backpack.jpeg
+  - img/home/banner_1.jpeg
+  - img/home/banner_2.jpeg
+  - img/home/beauty.jpeg
+  - img/home/cart.jpeg
+  - img/home/grupo.jpeg
+  - img/home/home.jpeg
+  - img/home/messages.jpeg
+  - img/home/more.jpeg
+  - img/home/notifications.jpeg
+  - img/home/profile.jpeg
+  - img/home/scarf.jpeg
+  - img/home/search.jpeg
+  - img/home/see_all.jpeg
+  - img/home/shoes.jpeg
+  - img/home/women.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
