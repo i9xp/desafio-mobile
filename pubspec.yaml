@@ -17,6 +17,14 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 version: 1.0.0+1
 
+vars: 
+    clean: flutter clean
+    get: flutter pub get
+    runner: flutter pub run build_runner
+scripts: 
+    mobx_build: $clean & $get & $runner build --delete-conflicting-outputs
+    mobx_watch: $clean & $get & $runner watch --delete-conflicting-outputs
+
 environment:
   sdk: ">=2.7.0 <3.0.0"
 
@@ -51,33 +59,26 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
-vars: 
-    clean: flutter clean
-    get: flutter pub get
-    runner: flutter pub run build_runner
-scripts: 
-    mobx_build: $clean & $get & $runner build --delete-conflicting-outputs
-    mobx_watch: $clean & $get & $runner watch --delete-conflicting-outputs
 
   # To add assets to your application, add an assets section, like this:
-assets:
-  - img/home/apparel.jpeg
-  - img/home/backpack.jpeg
-  - img/home/banner_1.jpeg
-  - img/home/banner_2.jpeg
-  - img/home/beauty.jpeg
-  - img/home/cart.jpeg
-  - img/home/grupo.jpeg
-  - img/home/home.jpeg
-  - img/home/messages.jpeg
-  - img/home/more.jpeg
-  - img/home/notifications.jpeg
-  - img/home/profile.jpeg
-  - img/home/scarf.jpeg
-  - img/home/search.jpeg
-  - img/home/see_all.jpeg
-  - img/home/shoes.jpeg
-  - img/home/women.jpeg
+  assets:
+    - assets/img/home/apparel.png
+    - assets/img/home/backpack.png
+    - assets/img/home/banner_1.png
+    - assets/img/home/banner_2.png
+    - assets/img/home/beauty.png
+    - assets/img/home/cart.png
+    - assets/img/home/grupo.png
+    - assets/img/home/home.png
+    - assets/img/home/messages.png
+    - assets/img/home/more.png
+    - assets/img/home/notifications.png
+    - assets/img/home/profile.png
+    - assets/img/home/scarf.png
+    - assets/img/home/search.png
+    - assets/img/home/see_all.png
+    - assets/img/home/shoes.png
+    - assets/img/home/women_shoes.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
