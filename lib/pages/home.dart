@@ -1,8 +1,11 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:marketplace/features/category/bloc/category_bloc.dart';
 import 'package:marketplace/features/dashboard/bloc/dashboard_bloc.dart';
+import 'package:marketplace/widgets/card_campain.dart';
+import 'package:marketplace/widgets/shortcut_category.dart';
 
 class HomePage extends StatefulWidget {
   final scaffoldKey;
@@ -43,12 +46,12 @@ class _HomeState extends State<HomePage> {
           Container(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
-            margin: EdgeInsets.fromLTRB(25, 30, 25, 0),
+            margin: EdgeInsets.only(top: 20),
             child: Column(
               children: <Widget>[
                 Container(
-                  height: 36,
-                  padding: EdgeInsets.only(bottom: 10),
+                  height: 43,
+                  padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
                   alignment: Alignment(-1, 0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -69,7 +72,7 @@ class _HomeState extends State<HomePage> {
                               ),
                             ),
                             SizedBox(
-                              width: 25,
+                              width: 30,
                             ),
                             Container(
                               child: Image(
@@ -85,6 +88,7 @@ class _HomeState extends State<HomePage> {
                 ),
                 Container(
                   alignment: Alignment(-1, 0),
+                  padding: EdgeInsets.symmetric(horizontal: 25),
                   child: Text(
                     'Categories',
                     style: Theme.of(context).textTheme.title,
@@ -102,52 +106,28 @@ class _HomeState extends State<HomePage> {
                       List<Widget> shortcutsCategory = [];
 
                       state.categories.forEach((cat) {
-                        shortcutsCategory.add(Container(
-                          width: ((MediaQuery.of(context).size.width - 90) / 4),
-                          height:
-                              ((MediaQuery.of(context).size.width - 90) / 4) +
-                                  24,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              Container(
-                                child: Image.network(cat.imageURL),
-                              ),
-                              Text(cat.name),
-                            ],
-                          ),
+                        shortcutsCategory.add(ShotcutCategory(
+                          title: cat.name,
+                          illustration: Image.network(cat.imageURL),
                         ));
-
-                        shortcutsCategory.add(
-                          SizedBox(
-                            width: 10,
-                          ),
-                        );
                       });
 
                       if (state.categories.length >= 3) {
-                        shortcutsCategory.add(Container(
-                          width: ((MediaQuery.of(context).size.width - 90) / 4),
-                          height:
-                              ((MediaQuery.of(context).size.width - 90) / 4) +
-                                  24,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              Container(
-                                child: Image(
-                                  image: AssetImage(
-                                      'assets/images/button-next.png'),
-                                ),
-                              ),
-                              Text('See All'),
-                            ],
+                        shortcutsCategory.add(
+                          ShotcutCategory(
+                            title: 'See All',
+                            illustration: Image(
+                              image:
+                                  AssetImage('assets/images/button-next.png'),
+                            ),
                           ),
-                        ));
+                        );
                       }
 
                       return Container(
+                        padding: EdgeInsets.symmetric(horizontal: 25),
                         child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: shortcutsCategory,
                         ),
                       );
@@ -172,6 +152,7 @@ class _HomeState extends State<HomePage> {
                 ),
                 Container(
                   alignment: Alignment(-1, 0),
+                  padding: EdgeInsets.symmetric(horizontal: 25),
                   child: Text(
                     'Latest',
                     style: Theme.of(context).textTheme.title,
@@ -184,7 +165,33 @@ class _HomeState extends State<HomePage> {
                       // ignore: missing_return
                       builder: (context, stateDashboard) {
                     if (stateDashboard is DashboardStateLoaded) {
-                      return Container();
+                      List<CardCampain> cards = [];
+
+                      stateDashboard.dashboard.campains.forEach((campain) {
+                        cards.add(CardCampain(
+                          illustration: Image.network(campain.imageURL),
+                        ));
+                      });
+
+                      return CarouselSlider(
+                        items: cards,
+                        options: CarouselOptions(
+                          height:
+                              MediaQuery.of(context).size.width * (265 / 406),
+                          aspectRatio: 406 / 265,
+                          viewportFraction: 0.2,
+                          initialPage: 0,
+                          enableInfiniteScroll: false,
+                          reverse: false,
+                          autoPlayInterval: Duration(seconds: 3),
+                          autoPlayAnimationDuration:
+                              Duration(milliseconds: 800),
+                          autoPlayCurve: Curves.fastOutSlowIn,
+                          enlargeCenterPage: true,
+                          // onPageChanged: callbackFunction,
+                          scrollDirection: Axis.horizontal,
+                        ),
+                      );
                     } else {
                       return Center(
                         child: Column(
