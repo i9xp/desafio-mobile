@@ -1,10 +1,11 @@
+import 'package:challenge/app/screens/home/home.dart';
 import 'package:flutter/material.dart';
 
 class CategoriesWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var _width = MediaQuery.of(context).size.width;
-    var _height = MediaQuery.of(context).size.height;
+
     return Container(
       width: _width,
       child: Column(
@@ -38,7 +39,7 @@ class CategoriesWidget extends StatelessWidget {
                             width: 65,
                             height: 65,
                             decoration: BoxDecoration(
-                              color: Colors.black,
+                              color: Colors.white,
                               shape: BoxShape.circle,
                             ),
                           ),

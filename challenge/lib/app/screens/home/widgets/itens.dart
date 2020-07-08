@@ -1,15 +1,21 @@
+import 'package:challenge/app/screens/product/product.dart';
 import 'package:flutter/material.dart';
 
 class ItensWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var _width = MediaQuery.of(context).size.width;
-    var _height = MediaQuery.of(context).size.height;
     return ListView.builder(
       itemCount: 6,
       scrollDirection: Axis.horizontal,
       itemBuilder: (context, index) {
         return GestureDetector(
+          onTap: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ProductScreen(),
+                ));
+          },
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(

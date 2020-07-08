@@ -1,7 +1,8 @@
-import 'package:challenge/app/screens/widgets/appBar.dart';
-import 'package:challenge/app/screens/widgets/categories.dart';
-import 'package:challenge/app/screens/widgets/itens.dart';
-import 'package:challenge/app/screens/widgets/latest.dart';
+import 'package:challenge/app/screens/home/widgets/appBar.dart';
+import 'package:challenge/app/screens/home/widgets/bottomNavigationBar.dart';
+import 'package:challenge/app/screens/home/widgets/categories.dart';
+import 'package:challenge/app/screens/home/widgets/itens.dart';
+import 'package:challenge/app/screens/home/widgets/latest.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -16,10 +17,15 @@ class _HomeScreenState extends State<HomeScreen> {
     var _height = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Container(
-        color: Color(0xff515C6F),
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [Color(0xff2B3340), Color(0xff515C6F)])),
         width: _width,
         height: _height,
         child: Stack(
+          alignment: Alignment.center,
           children: <Widget>[
             Positioned(
               left: 0,
@@ -45,12 +51,13 @@ class _HomeScreenState extends State<HomeScreen> {
               height: _height * .22,
               left: 20,
               right: 0,
-              bottom: 55 + MediaQuery.of(context).padding.bottom,
+              bottom: 2 + MediaQuery.of(context).padding.bottom,
               child: ItensWidget(),
             ),
           ],
         ),
       ),
+      bottomNavigationBar: bottomNavigation(),
     );
   }
 }

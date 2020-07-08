@@ -1,4 +1,4 @@
-import 'package:challenge/app/screens/home.dart';
+import 'package:challenge/app/screens/home/home.dart';
 import 'package:flutter/material.dart';
 
 void main() {
