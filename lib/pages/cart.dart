@@ -15,6 +15,8 @@ class CartPage extends StatefulWidget {
 class _CartState extends State<CartPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      body: Container(),
+    );
   }
 }

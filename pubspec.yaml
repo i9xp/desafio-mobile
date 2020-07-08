@@ -12,6 +12,10 @@ dependencies:
 
   cupertino_icons: ^0.1.2
   flutter_svg: ^0.15.0
+  http: ^0.12.1
+  flutter_bloc: ^4.0.0
+  equatable: ^1.2.0
+  bloc_test: ^5.1.0
 
 dev_dependencies:
   flutter_test:
@@ -23,6 +27,7 @@ flutter:
     - assets/images/logo-alpha.png
     - assets/icons/icon-notification.png
     - assets/icons/icon-messages.png
+    - assets/images/button-next.png
     - assets/icons/icon-home.svg
     - assets/icons/icon-search.svg
     - assets/icons/icon-cart.svg
