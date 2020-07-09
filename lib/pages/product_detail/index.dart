@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:i9xp_commerce/commons/action_notification.dart';
 import 'package:i9xp_commerce/utils/app_colors.dart';
 
+import 'widgets/product_actions.dart';
+
 class ProductDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -41,11 +43,7 @@ class ProductDetail extends StatelessWidget {
       body: SafeArea(
         child: Container(),
       ),
-      bottomNavigationBar: Container(
-        height: 80,
-        padding: EdgeInsets.all(15),
-        color: AppColors.marine,
-      ),
+      bottomNavigationBar: ProductActions(),
     );
   }
 }

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static MaterialColor yellow = AppColors._factoryColor(0xFFFFC600);
-  static MaterialColor mustard = AppColors._factoryColor(0xFFF9C705);
-  static MaterialColor marine = AppColors._factoryColor(0xFF2E3746);
-  static MaterialColor marineDark = AppColors._factoryColor(0xFF2B3340);
-  static MaterialColor marineLight = AppColors._factoryColor(0xFF515C6F);
-  static MaterialColor ice = AppColors._factoryColor(0xFF2B334000);
-  static MaterialColor muted = AppColors._factoryColor(0xFFE7EAF0);
-  static MaterialColor white = AppColors._factoryColor(0xffffffff);
-  static MaterialColor black = AppColors._factoryColor(0xff000000);  
+  static final MaterialColor yellow = AppColors._factoryColor(0xFFFFC600);
+  static final MaterialColor mustard = AppColors._factoryColor(0xFFF9C705);
+  static final MaterialColor marine = AppColors._factoryColor(0xFF2E3746);
+  static final MaterialColor marineDark = AppColors._factoryColor(0xFF2B3340);
+  static final MaterialColor marineLight = AppColors._factoryColor(0xFF515C6F);
+  static final MaterialColor ice = AppColors._factoryColor(0xFF2B334000);
+  static final MaterialColor muted = AppColors._factoryColor(0xFFE7EAF0);
+  static final MaterialColor white = AppColors._factoryColor(0xffffffff);
+  static final MaterialColor black = AppColors._factoryColor(0xff000000);  
   static MaterialColor hex(String hex) => AppColors._factoryColor(AppColors._getColorHexFromStr(hex));
 
   static MaterialColor _factoryColor(int color) {
