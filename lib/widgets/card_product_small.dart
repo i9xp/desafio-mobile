@@ -26,6 +26,14 @@ class CardProductSmall extends StatelessWidget {
           borderRadius: new BorderRadius.all(
             const Radius.circular(10.0),
           ),
+          boxShadow: [
+            BoxShadow(
+              color: Color(0x77E7EAF0),
+              spreadRadius: 0,
+              blurRadius: 5,
+              offset: Offset(2, 2), // changes position of shadow
+            ),
+          ],
         ),
         width: (MediaQuery.of(context).size.width - 72) / 3,
         padding: EdgeInsets.all(11),
