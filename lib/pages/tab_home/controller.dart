@@ -2,34 +2,45 @@ import 'package:get/state_manager.dart';
 import 'package:i9xp_commerce/models/campaign.model.dart';
 import 'package:i9xp_commerce/models/category.model.dart';
 import 'package:i9xp_commerce/models/product.model.dart';
+import 'package:i9xp_commerce/services/api.dart';
+import 'package:i9xp_commerce/utils/api_response.dart';
 
 class TabHomeController extends GetxController{
 
+  final Api api = Api();
   RxList<CategoryModel> categories = RxList<CategoryModel>([]);
   RxList<CampaignModel> campaigns = RxList<CampaignModel>([]);
   RxList<ProductModel> products = RxList<ProductModel>([]);
 
   TabHomeController(){
-    _init();
+    _fetch();
   }
 
-  _init(){
-    const String baseurl = "https://i9xp-commerce.s3.amazonaws.com";
-    categories.addAll([
-      new CategoryModel(id: 1, name: "Apparel", imageUrl: "$baseurl/categories/0001.png"),
-      new CategoryModel(id: 2, name: "Beauty", imageUrl: "$baseurl/categories/0002.png"),
-      new CategoryModel(id: 3, name: "Shoes", imageUrl: "$baseurl/categories/0003.png"),
-      new CategoryModel(name: "See More"),
+  _fetch() async{
+    
+    List<ApiResponse> responses = await Future.wait([
+      api.get("/categories"),
+      api.get("/campaigns"),
     ]);
-    campaigns.addAll([
-      new CampaignModel(id: 1, cta: "SEE MORE", title: "For all your summer clothing needs", titleColorHex: "#000000", imageUrl: "$baseurl/campaigns/0001.png"),
-      new CampaignModel(id: 2, imageUrl: "$baseurl/campaigns/0002.png"),
-    ]);
-    products.addAll([
-      new ProductModel(id: 1, name: "Anke boots", price: 49.99, imageUrl: "$baseurl/products/0001.png"),
-      new ProductModel(id: 2, name: "Backpack", price: 20.58, imageUrl: "$baseurl/products/0002.png"),
-      new ProductModel(id: 3, name: "Red Scaft", price: 11.00, imageUrl: "$baseurl/products/0003.png"),
-    ]);
+
+    if(responses[0].getStatusMessage().code == 200){
+      categories.clear();
+      categories.addAll(List<CategoryModel>.from(responses[0].getContent().map((m) => CategoryModel().parser(m))));
+      categories.add(CategoryModel(name: "See All"));
+      //Union all products of all categories
+      products.clear();
+      responses[0].getContent().forEach((category){
+        if(category['products'] != null){
+          products.addAll(List<ProductModel>.from(category['products'].map((m) => ProductModel().parser(m))));
+        }
+      });
+    }
+
+    if(responses[1].getStatusMessage().code == 200){
+      campaigns.clear();
+      campaigns.addAll(List<CampaignModel>.from(responses[1].getContent().map((m) => CampaignModel().parser(m))));
+    }
+    
   }
 
 }

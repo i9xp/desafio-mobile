@@ -1,6 +1,7 @@
 import 'package:get/state_manager.dart';
+import 'package:i9xp_commerce/core/model/index.dart';
 
-class ProductModel {
+class ProductModel extends Model<ProductModel> {
   ProductModel({
     int id,
     int brandId,
@@ -39,4 +40,30 @@ class ProductModel {
 
   RxString sku = RxString(null);
   setSku(String value) => this.sku.value = value;
+
+  @override
+  ProductModel parser(Map<String, dynamic> body) {
+    return ProductModel(
+      id: int.parse(body['id'].toString()),
+      //brandId: int.parse(body['brand_id'].toString()),
+      categoryId: int.parse(body['category_id'].toString()),
+      name: body['name'],
+      price: double.parse(body['price'].toString()),
+      imageUrl: body['image_url'],
+      sku: body['sku'].toString(),
+    );
+  }
+
+  @override
+  Map<String, dynamic> serializer() {
+    return <String, dynamic>{
+      'id': this.id.value,
+      'brand_id': this.brandId.value,
+      'category_id': this.categoryId.value,
+      'name': this.name.value,
+      'price': this.price.value,
+      'image_url': this.imageUrl.value,
+      'sku': this.sku.value,
+    };
+  }
 }

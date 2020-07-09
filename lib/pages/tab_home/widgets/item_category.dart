@@ -42,6 +42,8 @@ class ItemCategory extends StatelessWidget {
           SizedBox(height: 10),
           Text(
             this.category.name.value,
+            overflow: TextOverflow.ellipsis,
+            maxLines: 1,
             style: TextStyle(
               fontSize: 15,
               color: AppColors.white,

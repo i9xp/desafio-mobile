@@ -20,7 +20,7 @@ class ListCategories extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Obx(() => SizedBox(
       height: cardWidth + 30,
       child: ListView.separated(
         padding: EdgeInsets.symmetric(horizontal: horizontalMargin),
@@ -30,6 +30,6 @@ class ListCategories extends StatelessWidget {
         itemBuilder: (_, int index) =>
             ItemCategory(controller.categories[index], cardWidth),
       ),
-    );
+    ));
   }
 }

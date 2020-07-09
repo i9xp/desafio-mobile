@@ -17,7 +17,7 @@ class ItemProduct extends StatelessWidget {
       height: height,
       width: width,
       child: RawMaterialButton(
-        onPressed: () => Get.toNamed("/products/${this.product.id.value.toString()}"),
+        onPressed: () => Get.toNamed("categories/${this.product.categoryId.value.toString()}/products/${this.product.id.value.toString()}"),
         padding: EdgeInsets.all(10),
         fillColor: AppColors.white,
         shape: RoundedRectangleBorder(

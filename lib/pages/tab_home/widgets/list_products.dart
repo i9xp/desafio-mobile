@@ -22,7 +22,7 @@ class ListProducts extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Obx(() => SizedBox(
       height: cardHeight,
       child: ListView.separated(
         padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
@@ -31,6 +31,6 @@ class ListProducts extends StatelessWidget {
         separatorBuilder: (_, __) => SizedBox(width: separatorMargin),
         itemBuilder: (_, int index) => ItemProduct(cardWidth, cardHeight, controller.products[index]),
       ),
-    );
+    ));
   }
 }

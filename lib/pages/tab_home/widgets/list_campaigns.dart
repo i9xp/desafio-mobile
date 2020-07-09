@@ -21,7 +21,7 @@ class ListCampaigns extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Obx(() => SizedBox(
       height: 184,
       child: ListView.separated(
         padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
@@ -30,6 +30,6 @@ class ListCampaigns extends StatelessWidget {
         separatorBuilder: (_, __) => SizedBox(width: separatorMargin),
         itemBuilder: (_, int index) => ItemCampaign(cardWidth, controller.campaigns[index]),
       ),
-    );
+    ));
   }
 }

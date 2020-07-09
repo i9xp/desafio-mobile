@@ -4,5 +4,5 @@ import 'pages/tab_panel/index.dart';
 
 routes() => [
   GetPage(name: "/", page: () => TabPanel()),
-  GetPage(name: "/products/:id", page: () => ProductDetail(), transition: Transition.rightToLeft, transitionDuration: Duration(milliseconds: 250)),
+  GetPage(name: "/categories/:category_id/products/:product_id", page: () => ProductDetail(), transition: Transition.rightToLeft, transitionDuration: Duration(milliseconds: 250)),
 ];
