@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:get/get.dart';
 import 'package:i9xp_commerce/commons/action_notification.dart';
+import 'package:i9xp_commerce/commons/rate.dart';
 import 'package:i9xp_commerce/utils/app_colors.dart';
+import 'package:i9xp_commerce/utils/formatters.dart';
 
 import 'widgets/product_actions.dart';
 
@@ -41,7 +43,29 @@ class ProductDetail extends StatelessWidget {
         ),
       ),
       body: SafeArea(
-        child: Container(),
+        child: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    Formatters.brl(49.99).symbolOnLeft,
+                    style: TextStyle(
+                      fontSize: 15,
+                      height: 1.4,
+                      color: AppColors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(width: 15),
+                  Rate(4.9)
+                ],
+              )
+            ],
+          ),
+        ),
       ),
       bottomNavigationBar: ProductActions(),
     );
