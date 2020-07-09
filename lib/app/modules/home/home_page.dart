@@ -6,6 +6,8 @@ import 'package:i9xp/app/modules/home/components/category_title.dart';
 import 'package:i9xp/app/modules/home/components/logo_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:i9xp/app/modules/home/models/action_type.dart';
+import 'package:i9xp/app/modules/home/models/category_image.dart';
+import 'package:i9xp/app/modules/home/models/category_item_model.dart';
 import 'package:i9xp/app/shared/constants/colors.dart';
 import 'home_controller.dart';
 
@@ -18,7 +20,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends ModularState<HomePage, HomeController> {
-  //use 'controller' variable to access controller
+  final categories = [
+    CategoryItemModel("Apparel", CategoryImage.APPAREL),
+    CategoryItemModel("Beauty", CategoryImage.BEAUTY),
+    CategoryItemModel("Shoes", CategoryImage.SHOES),
+    CategoryItemModel("See all", CategoryImage.SEE_ALL),
+  ];
+
   num get pagePadding => 25.h;
 
   void _initScreenUtil() {
@@ -58,7 +66,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
             children: <Widget>[
               CategoryTitle(title: "Categories"),
               SizedBox(height: 14),
-              CategoryList(),
+              CategoryList(categories: categories),
               SizedBox(height: 27),
               CategoryTitle(title: "Latest")
             ],
