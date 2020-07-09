@@ -1,3 +1,5 @@
+import 'package:challenge/app/screens/cart/cart.dart';
+import 'package:challenge/app/screens/order/order.dart';
 import 'package:flutter/material.dart';
 
 class AppBarCustom extends StatelessWidget {
@@ -8,10 +10,14 @@ class AppBarCustom extends StatelessWidget {
         children: <Widget>[
           Container(
             margin: EdgeInsets.only(left: 20),
-            child: Image.asset(
-              'assets/img/logo.png',
-              width: 50,
-              height: 50,
+            child: Row(
+              children: <Widget>[
+                Image.asset(
+                  'assets/img/logo.png',
+                  width: 50,
+                  height: 50,
+                ),
+              ],
             ),
           ),
         ],
