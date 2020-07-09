@@ -10,8 +10,8 @@ class AppWidget extends StatelessWidget {
       title: 'i9xp',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor: AppColors.HOME_BACKGROUND_A,
-      ),
+          primaryColor: AppColors.HOME_BACKGROUND_A,
+          canvasColor: AppColors.TABBAR_COLOR),
       initialRoute: '/',
       onGenerateRoute: Modular.generateRoute,
     );

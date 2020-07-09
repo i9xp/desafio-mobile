@@ -38,6 +38,12 @@ class AppStyles {
   );
 
   // ignore: non_constant_identifier_names
+  static final SELECTED_TABBAR_ITEM = TextStyle(
+    fontSize: 11.sp,
+    color: AppColors.SELECTED_TAB,
+  );
+
+  // ignore: non_constant_identifier_names
   static final BADGE_NUMBER = TextStyle(
     fontSize: 10,
     color: AppColors.ON_BACKGROUND,

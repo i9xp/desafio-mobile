@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:i9xp/app/modules/home/components/app_navigation_bar_widget.dart';
 import 'package:i9xp/app/modules/home/components/appbar_home_title.dart';
 import 'package:i9xp/app/modules/home/components/category_list.dart';
 import 'package:i9xp/app/modules/home/components/category_title.dart';
@@ -9,6 +11,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:i9xp/app/modules/home/components/product_list.dart';
 import 'package:i9xp/app/modules/home/models/action_model.dart';
 import 'package:i9xp/app/modules/home/models/action_type.dart';
+import 'package:i9xp/app/modules/home/models/bottom_bar_item_model.dart';
+import 'package:i9xp/app/modules/home/models/bottom_bar_item_type.dart';
 import 'package:i9xp/app/modules/home/models/category_image.dart';
 import 'package:i9xp/app/modules/home/models/category_item_model.dart';
 import 'package:i9xp/app/modules/home/models/product_model.dart';
@@ -43,6 +47,14 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
     ProductModel("Red Scarf", 11.00, AppAssets.SCARF),
   ];
 
+  final bottomBarItems = <BottomBarItem>[
+    BottomBarItem("HOME", BottombarItemType.HOME),
+    BottomBarItem("SEARCH", BottombarItemType.SEARCH),
+    BottomBarItem("CART", BottombarItemType.CART),
+    BottomBarItem("PROFILE", BottombarItemType.PROFILE),
+    BottomBarItem("MORE", BottombarItemType.MORE),
+  ];
+
   num get pagePadding => 25.h;
 
   void _initScreenUtil() {
@@ -75,10 +87,18 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
               CategoryTitle(title: "Latest"),
               LatestPageView(),
               ProductList(products: products),
+              SizedBox(height: 8),
             ],
           ),
         ),
       ),
+      bottomNavigationBar: Observer(builder: (_) {
+        return AppBottomNavigationBar(
+          currentIndex: controller.bottomBarCurrentIndex,
+          onTap: controller.setBottomBarIndex,
+          items: bottomBarItems,
+        );
+      }),
     );
   }
 }
