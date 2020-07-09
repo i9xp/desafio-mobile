@@ -25,7 +25,6 @@ class _HomeScreenState extends State<HomeScreen> {
         width: _width,
         height: _height,
         child: Stack(
-          alignment: Alignment.center,
           children: <Widget>[
             Positioned(
               left: 0,

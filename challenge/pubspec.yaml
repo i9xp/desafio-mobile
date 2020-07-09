@@ -29,3 +29,6 @@ flutter:
     - assets/img/arrow.png
     - assets/img/banner.png
     - assets/img/backpack.png
+    - assets/img/item.png
+    - assets/img/icon_arrow.svg
+    - assets/img/icon_up.svg

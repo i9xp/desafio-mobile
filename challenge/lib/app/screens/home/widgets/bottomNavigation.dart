@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Widget bottomNavigation() {
+Widget bottomNavigationHome() {
   return BottomNavigationBar(
     items: const <BottomNavigationBarItem>[
       BottomNavigationBarItem(
