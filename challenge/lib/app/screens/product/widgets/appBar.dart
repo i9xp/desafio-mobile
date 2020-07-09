@@ -1,3 +1,4 @@
+import 'package:challenge/app/screens/cart/cart.dart';
 import 'package:flutter/material.dart';
 
 class AppBarCustomProduct extends StatelessWidget {
@@ -21,16 +22,21 @@ class AppBarCustomProduct extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               Text(
-                'asdasasdsadasdsadsadasddad',
-                style: TextStyle(fontFamily: 'NeusaNextStd'),
+                'Título',
               ),
-              Text('asdasdasdas'),
+              Text('Título two'),
             ],
           ),
           IconButton(
             icon: Icon(Icons.shopping_cart),
             color: Colors.white,
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => CartScreen(),
+                  ));
+            },
           ),
         ],
       ),
