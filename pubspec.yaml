@@ -30,3 +30,16 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  fonts:
+    - family: Montserrat
+      fonts:
+        - asset: assets/fonts/neusa-next-std/NeusaNextStd-Light.otf
+          weight: 200
+        - asset: assets/fonts/neusa-next-std/NeusaNextStd-Regular.otf
+          weight: 300
+        - asset: assets/fonts/neusa-next-std/NeusaNextStd-Medium.otf
+          weight: 500
+        - asset: assets/fonts/neusa-next-std/NeusaNextStd-Regular.otf
+          weight: 700
+  assets:
+    - assets/images/
