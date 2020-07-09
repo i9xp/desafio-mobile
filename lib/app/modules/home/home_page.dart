@@ -6,6 +6,7 @@ import 'package:i9xp/app/modules/home/components/category_title.dart';
 import 'package:i9xp/app/modules/home/components/latest_page_view.dart';
 import 'package:i9xp/app/modules/home/components/logo_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:i9xp/app/modules/home/models/action_model.dart';
 import 'package:i9xp/app/modules/home/models/action_type.dart';
 import 'package:i9xp/app/modules/home/models/category_image.dart';
 import 'package:i9xp/app/modules/home/models/category_item_model.dart';
@@ -28,6 +29,11 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
     CategoryItemModel("See all", CategoryImage.SEE_ALL),
   ];
 
+  final appbarActions = <ActionModel>[
+    ActionModel(ActionType.MESSAGES, notifications: 5),
+    ActionModel(ActionType.NOTIFICATIONS, notifications: 10),
+  ];
+
   num get pagePadding => 25.h;
 
   void _initScreenUtil() {
@@ -42,21 +48,9 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
       appBar: AppBar(
         titleSpacing: pagePadding,
         elevation: 0,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Logo(),
-            Container(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  AppAction(type: ActionType.MESSAGES, number: 5),
-                  SizedBox(width: 20),
-                  AppAction(type: ActionType.NOTIFICATIONS, number: 10),
-                ],
-              ),
-            ),
-          ],
+        title: AppbarHomeTitle(
+          leading: Logo(),
+          actions: appbarActions,
         ),
       ),
       body: SingleChildScrollView(
@@ -76,5 +70,49 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
         ),
       ),
     );
+  }
+}
+
+class AppbarHomeTitle extends StatelessWidget {
+  final List<ActionModel> actions;
+  final Widget leading;
+
+  const AppbarHomeTitle({
+    Key key,
+    this.actions = const <ActionModel>[],
+    this.leading,
+  }) : super(key: key);
+
+  bool get hasActions => actions.length > 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        leading ?? Container(),
+        if (hasActions)
+          Container(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: _modelToWidget(),
+            ),
+          ),
+      ],
+    );
+  }
+
+  List<Widget> _modelToWidget() {
+    return actions.fold(
+      <Widget>[],
+      (List<Widget> previousValue, element) {
+        return previousValue
+          ..addAll([
+            AppAction(type: element.type, number: element.notifications),
+            SizedBox(width: 20),
+          ]);
+      },
+    ).toList()
+      ..removeLast();
   }
 }
