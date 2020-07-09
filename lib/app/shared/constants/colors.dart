@@ -5,6 +5,9 @@ class AppColors {
   static final HOME_BACKGROUND_A = Color(0xff2B3340);
 
   // ignore: non_constant_identifier_names
+  static final HOME_BACKGROUND_B = Colors.white;
+
+  // ignore: non_constant_identifier_names
   static final ON_BACKGROUND = Colors.white;
 
   // ignore: non_constant_identifier_names

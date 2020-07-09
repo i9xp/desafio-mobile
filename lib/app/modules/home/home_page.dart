@@ -4,6 +4,8 @@ import 'package:i9xp/app/modules/home/components/app_action_widget.dart';
 import 'package:i9xp/app/modules/home/components/logo_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:i9xp/app/modules/home/models/action_type.dart';
+import 'package:i9xp/app/shared/constants/colors.dart';
+import 'package:i9xp/app/shared/constants/styles.dart';
 import 'home_controller.dart';
 
 class HomePage extends StatefulWidget {
@@ -16,6 +18,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends ModularState<HomePage, HomeController> {
   //use 'controller' variable to access controller
+  num get pagePadding => 25.h;
 
   void _initScreenUtil() {
     ScreenUtil.init(width: 375, height: 667, allowFontScaling: false);
@@ -25,7 +28,10 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
   Widget build(BuildContext context) {
     _initScreenUtil();
     return Scaffold(
+      backgroundColor: AppColors.HOME_BACKGROUND_A,
       appBar: AppBar(
+        titleSpacing: pagePadding,
+        elevation: 0,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -43,9 +49,38 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
           ],
         ),
       ),
-      body: Column(
-        children: <Widget>[],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: pagePadding),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              CategoryTitle(
+                title: "Categories",
+              ),
+              CategoryTitle(
+                title: "Latest",
+              )
+            ],
+          ),
+        ),
       ),
+    );
+  }
+}
+
+class CategoryTitle extends StatelessWidget {
+  final String title;
+  const CategoryTitle({
+    Key key,
+    @required this.title,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      title,
+      style: AppStyles.SECTION_TITLE,
     );
   }
 }
