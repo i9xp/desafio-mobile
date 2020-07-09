@@ -13,8 +13,22 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    PageController _pagecontroller;
+    int _currentPageIndex;
+
+    initState() {
+      _currentPageIndex = 0;
+      super.initState();
+    }
+
+    dispose() {
+      _pagecontroller = PageController();
+      super.dispose();
+    }
+
     var _width = MediaQuery.of(context).size.width;
     var _height = MediaQuery.of(context).size.height;
+
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -25,7 +39,6 @@ class _HomeScreenState extends State<HomeScreen> {
         width: _width,
         height: _height,
         child: Stack(
-          alignment: Alignment.center,
           children: <Widget>[
             Positioned(
               left: 0,

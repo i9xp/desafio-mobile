@@ -20,7 +20,10 @@ class AppBarCustomProduct extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
-              Text('asdasasdsadasdsadsadasddad'),
+              Text(
+                'asdasasdsadasdsadsadasddad',
+                style: TextStyle(fontFamily: 'NeusaNextStd'),
+              ),
               Text('asdasdasdas'),
             ],
           ),
