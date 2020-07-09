@@ -7,7 +7,6 @@ import 'package:i9xp_commerce/utils/api_response.dart';
 
 class TabHomeController extends GetxController{
 
-  final Api api = Api();
   RxList<CategoryModel> categories = RxList<CategoryModel>([]);
   RxList<CampaignModel> campaigns = RxList<CampaignModel>([]);
   RxList<ProductModel> products = RxList<ProductModel>([]);
@@ -19,8 +18,8 @@ class TabHomeController extends GetxController{
   _fetch() async{
     
     List<ApiResponse> responses = await Future.wait([
-      api.get("/categories"),
-      api.get("/campaigns"),
+      Api.get("/categories"),
+      Api.get("/campaigns"),
     ]);
 
     if(responses[0].getStatusMessage().code == 200){

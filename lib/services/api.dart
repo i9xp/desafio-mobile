@@ -7,9 +7,9 @@ import '../env.dart';
 
 class Api {
   
-  final String _endpoint = Uri.encodeFull(environment['baseUrl']);
+  static final String _endpoint = Uri.encodeFull(environment['baseUrl']);
   
-  Future<ApiResponse> get(String resource, {int timeout: 5000}) async {
+  static Future<ApiResponse> get(String resource, {int timeout: 5000}) async {
     try {
       dio.Response response = await dio.Dio(
         new dio.BaseOptions(
@@ -17,21 +17,21 @@ class Api {
           connectTimeout: timeout,
           receiveTimeout: timeout,
           sendTimeout: timeout,
-          headers: await buildHeader(),
+          headers: await _buildHeader(),
         ),
       ).get(Uri.encodeFull(resource));
-      return buildOut(response);
+      return _buildOut(response);
     } catch (_error) {
       dio.DioError error = _error as dio.DioError;
       if (error.response == null) {
         return _errorNoResponse(error);
       } else {
-        return buildOut(error.response);
+        return _buildOut(error.response);
       }
     }
   }
 
-  ApiResponse buildOut(dio.Response response) {
+  static ApiResponse _buildOut(dio.Response response) {
     ApiResponse apiResponse = new ApiResponse();
     if (response.statusCode == 400) {
       Map<String, dynamic> review = {};
@@ -78,13 +78,13 @@ class Api {
     return apiResponse;
   }
 
-  Future<Map<String, String>> buildHeader() async {
+  static Future<Map<String, String>> _buildHeader() async {
     return {
       "Accept": "application/json",
     };
   }
 
-  ApiResponse _errorNoResponse(dio.DioError error) {
+  static ApiResponse _errorNoResponse(dio.DioError error) {
     if (error.error is SocketException) {
       return new ApiResponse(
           statusMessage: HttpStatusMessage(
