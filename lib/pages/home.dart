@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:marketplace/features/category/bloc/category_bloc.dart';
 import 'package:marketplace/features/dashboard/bloc/dashboard_bloc.dart';
 import 'package:marketplace/widgets/card_campain.dart';
+import 'package:marketplace/widgets/card_product_small.dart';
 import 'package:marketplace/widgets/shortcut_category.dart';
 
 class HomePage extends StatefulWidget {
@@ -173,14 +174,26 @@ class _HomeState extends State<HomePage> {
                         ));
                       });
 
+                      List<CardProductSmall> products = [];
+
+                      stateDashboard.dashboard.highlightsProducts
+                          .forEach((product) {
+                        products.add(CardProductSmall(
+                          productId: product.productId,
+                          illustration: Image.network(product.previewURL),
+                          productName: product.name,
+                          productValue: product.price,
+                        ));
+                      });
+
                       return Column(children: <Widget>[
                         CarouselSlider(
                           items: cards,
                           options: CarouselOptions(
                             height: MediaQuery.of(context).size.width *
-                                    (725 / 1218) -
-                                10,
-                            aspectRatio: 1218 / 725,
+                                    (356 / 609) -
+                                20,
+                            aspectRatio: 1218 / 712,
                             viewportFraction: 0.9,
                             // enlargeStrategy: CenterPageEnlargeStrategy.height,
                             initialPage: 0,
@@ -198,41 +211,8 @@ class _HomeState extends State<HomePage> {
                         Container(
                           padding: EdgeInsets.symmetric(horizontal: 25),
                           child: Row(
-                            children: <Widget>[
-                              Container(
-                                height: 135,
-                                width:
-                                    (MediaQuery.of(context).size.width - 72) /
-                                        3,
-                                color: Colors.red,
-                                child: Text(stateDashboard
-                                    .dashboard.highlightsProducts[0].name),
-                              ),
-                              SizedBox(
-                                width: 11,
-                              ),
-                              Container(
-                                height: 135,
-                                width:
-                                    (MediaQuery.of(context).size.width - 72) /
-                                        3,
-                                color: Colors.red,
-                                child: Text(stateDashboard
-                                    .dashboard.highlightsProducts[1].name),
-                              ),
-                              SizedBox(
-                                width: 11,
-                              ),
-                              Container(
-                                height: 135,
-                                width:
-                                    (MediaQuery.of(context).size.width - 72) /
-                                        3,
-                                color: Colors.red,
-                                child: Text(stateDashboard
-                                    .dashboard.highlightsProducts[2].name),
-                              ),
-                            ],
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: products,
                           ),
                         )
                       ]);
