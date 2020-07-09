@@ -3,6 +3,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:i9xp/app/modules/home/components/app_action_widget.dart';
 import 'package:i9xp/app/modules/home/components/category_list.dart';
 import 'package:i9xp/app/modules/home/components/category_title.dart';
+import 'package:i9xp/app/modules/home/components/latest_page_view.dart';
 import 'package:i9xp/app/modules/home/components/logo_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:i9xp/app/modules/home/models/action_type.dart';
@@ -68,7 +69,8 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
               SizedBox(height: 14),
               CategoryList(categories: categories),
               SizedBox(height: 27),
-              CategoryTitle(title: "Latest")
+              CategoryTitle(title: "Latest"),
+              LatestPageView(),
             ],
           ),
         ),
