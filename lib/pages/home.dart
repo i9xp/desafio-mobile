@@ -177,10 +177,11 @@ class _HomeState extends State<HomePage> {
                         items: cards,
                         options: CarouselOptions(
                           height:
-                              MediaQuery.of(context).size.width * (265 / 406),
+                              MediaQuery.of(context).size.width * (265 / 406) -
+                                  10,
                           aspectRatio: 406 / 265,
-                          viewportFraction: 0.85,
-                          enlargeStrategy: CenterPageEnlargeStrategy.height,
+                          viewportFraction: 0.9,
+                          // enlargeStrategy: CenterPageEnlargeStrategy.height,
                           initialPage: 0,
                           enableInfiniteScroll: false,
                           reverse: false,
@@ -188,7 +189,7 @@ class _HomeState extends State<HomePage> {
                           autoPlayAnimationDuration:
                               Duration(milliseconds: 800),
                           autoPlayCurve: Curves.fastOutSlowIn,
-                          enlargeCenterPage: true,
+                          enlargeCenterPage: false,
                           // onPageChanged: callbackFunction,
                           scrollDirection: Axis.horizontal,
                         ),
