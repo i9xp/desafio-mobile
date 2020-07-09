@@ -179,7 +179,8 @@ class _HomeState extends State<HomePage> {
                           height:
                               MediaQuery.of(context).size.width * (265 / 406),
                           aspectRatio: 406 / 265,
-                          viewportFraction: 0.2,
+                          viewportFraction: 0.85,
+                          enlargeStrategy: CenterPageEnlargeStrategy.height,
                           initialPage: 0,
                           enableInfiniteScroll: false,
                           reverse: false,
