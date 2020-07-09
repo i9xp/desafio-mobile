@@ -48,5 +48,5 @@ class AppAssets {
   static final SHOES = "assets/img/home/shoes.png";
 
   // ignore: non_constant_identifier_names
-  static final WOMAN_SHOES = "assets/img/home/woman_shoes.png";
+  static final WOMEN_SHOES = "assets/img/home/women_shoes.png";
 }

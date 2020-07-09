@@ -6,10 +6,13 @@ import 'package:i9xp/app/modules/home/components/category_title.dart';
 import 'package:i9xp/app/modules/home/components/latest_page_view.dart';
 import 'package:i9xp/app/modules/home/components/logo_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:i9xp/app/modules/home/components/product_list.dart';
 import 'package:i9xp/app/modules/home/models/action_model.dart';
 import 'package:i9xp/app/modules/home/models/action_type.dart';
 import 'package:i9xp/app/modules/home/models/category_image.dart';
 import 'package:i9xp/app/modules/home/models/category_item_model.dart';
+import 'package:i9xp/app/modules/home/models/product_model.dart';
+import 'package:i9xp/app/shared/constants/assets.dart';
 import 'package:i9xp/app/shared/constants/colors.dart';
 import 'home_controller.dart';
 
@@ -32,6 +35,12 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
   final appbarActions = <ActionModel>[
     ActionModel(ActionType.MESSAGES, notifications: 5),
     ActionModel(ActionType.NOTIFICATIONS, notifications: 10),
+  ];
+
+  final products = <ProductModel>[
+    ProductModel("Ankle Boots", 49.99, AppAssets.WOMEN_SHOES),
+    ProductModel("Backpack", 20.58, AppAssets.BACKPACK),
+    ProductModel("Red Scarf", 11.00, AppAssets.SCARF),
   ];
 
   num get pagePadding => 25.h;
@@ -65,6 +74,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
               SizedBox(height: 27),
               CategoryTitle(title: "Latest"),
               LatestPageView(),
+              ProductList(products: products),
             ],
           ),
         ),
