@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:i9xp/app/modules/home/components/app_action_widget.dart';
+import 'package:i9xp/app/modules/home/components/category_list.dart';
+import 'package:i9xp/app/modules/home/components/category_title.dart';
 import 'package:i9xp/app/modules/home/components/logo_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:i9xp/app/modules/home/models/action_type.dart';
 import 'package:i9xp/app/shared/constants/colors.dart';
-import 'package:i9xp/app/shared/constants/styles.dart';
 import 'home_controller.dart';
 
 class HomePage extends StatefulWidget {
@@ -55,32 +56,15 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              CategoryTitle(
-                title: "Categories",
-              ),
-              CategoryTitle(
-                title: "Latest",
-              )
+              CategoryTitle(title: "Categories"),
+              SizedBox(height: 14),
+              CategoryList(),
+              SizedBox(height: 27),
+              CategoryTitle(title: "Latest")
             ],
           ),
         ),
       ),
-    );
-  }
-}
-
-class CategoryTitle extends StatelessWidget {
-  final String title;
-  const CategoryTitle({
-    Key key,
-    @required this.title,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      title,
-      style: AppStyles.SECTION_TITLE,
     );
   }
 }
