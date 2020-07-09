@@ -35,6 +35,7 @@ class ProductCard extends StatelessWidget {
               height: 77.h,
               child: Image.asset(image),
             ),
+            SizedBox(height: 3),
             Text(title, style: AppStyles.PRODUCT_TITLE),
             SizedBox(height: 3),
             Text(priceToString, style: AppStyles.PRODUCT_PRICE)
