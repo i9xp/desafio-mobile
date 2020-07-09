@@ -14,4 +14,17 @@ class Formatters {
       ),
     ).output;
   }
+
+  static double horizontalScrollItemWidth(
+    double screenWidth,
+    double leftMargin,
+    double separatorMargin,
+    int itemsPerPage,
+    { 
+      double saveBorder = 0
+    }
+  ) {
+    return (screenWidth - leftMargin - (itemsPerPage * separatorMargin) - saveBorder) /
+        itemsPerPage;
+  }
 }

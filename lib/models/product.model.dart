@@ -1,6 +1,23 @@
 import 'package:get/state_manager.dart';
 
-class ProductModel{
+class ProductModel {
+  ProductModel({
+    int id,
+    int brandId,
+    int categoryId,
+    String name,
+    double price,
+    String imageUrl,
+    String sku,
+  }) {
+    this.setId(id);
+    this.setBrandId(brandId);
+    this.setCategoryId(categoryId);
+    this.setName(name);
+    this.setPrice(price);
+    this.setImageUrl(imageUrl);
+    this.setSku(sku);
+  }
 
   RxInt id = RxInt(null);
   setId(int value) => this.id.value = value;
@@ -22,5 +39,4 @@ class ProductModel{
 
   RxString sku = RxString(null);
   setSku(String value) => this.sku.value = value;
-
 }
