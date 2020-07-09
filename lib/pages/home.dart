@@ -173,27 +173,69 @@ class _HomeState extends State<HomePage> {
                         ));
                       });
 
-                      return CarouselSlider(
-                        items: cards,
-                        options: CarouselOptions(
-                          height:
-                              MediaQuery.of(context).size.width * (265 / 406) -
-                                  10,
-                          aspectRatio: 406 / 265,
-                          viewportFraction: 0.9,
-                          // enlargeStrategy: CenterPageEnlargeStrategy.height,
-                          initialPage: 0,
-                          enableInfiniteScroll: false,
-                          reverse: false,
-                          autoPlayInterval: Duration(seconds: 3),
-                          autoPlayAnimationDuration:
-                              Duration(milliseconds: 800),
-                          autoPlayCurve: Curves.fastOutSlowIn,
-                          enlargeCenterPage: false,
-                          // onPageChanged: callbackFunction,
-                          scrollDirection: Axis.horizontal,
+                      return Column(children: <Widget>[
+                        CarouselSlider(
+                          items: cards,
+                          options: CarouselOptions(
+                            height: MediaQuery.of(context).size.width *
+                                    (725 / 1218) -
+                                10,
+                            aspectRatio: 1218 / 725,
+                            viewportFraction: 0.9,
+                            // enlargeStrategy: CenterPageEnlargeStrategy.height,
+                            initialPage: 0,
+                            enableInfiniteScroll: false,
+                            reverse: false,
+                            autoPlayInterval: Duration(seconds: 3),
+                            autoPlayAnimationDuration:
+                                Duration(milliseconds: 800),
+                            autoPlayCurve: Curves.fastOutSlowIn,
+                            enlargeCenterPage: false,
+                            // onPageChanged: callbackFunction,
+                            scrollDirection: Axis.horizontal,
+                          ),
                         ),
-                      );
+                        Container(
+                          padding: EdgeInsets.symmetric(horizontal: 25),
+                          child: Row(
+                            children: <Widget>[
+                              Container(
+                                height: 135,
+                                width:
+                                    (MediaQuery.of(context).size.width - 72) /
+                                        3,
+                                color: Colors.red,
+                                child: Text(stateDashboard
+                                    .dashboard.highlightsProducts[0].name),
+                              ),
+                              SizedBox(
+                                width: 11,
+                              ),
+                              Container(
+                                height: 135,
+                                width:
+                                    (MediaQuery.of(context).size.width - 72) /
+                                        3,
+                                color: Colors.red,
+                                child: Text(stateDashboard
+                                    .dashboard.highlightsProducts[1].name),
+                              ),
+                              SizedBox(
+                                width: 11,
+                              ),
+                              Container(
+                                height: 135,
+                                width:
+                                    (MediaQuery.of(context).size.width - 72) /
+                                        3,
+                                color: Colors.red,
+                                child: Text(stateDashboard
+                                    .dashboard.highlightsProducts[2].name),
+                              ),
+                            ],
+                          ),
+                        )
+                      ]);
                     } else {
                       return Center(
                         child: Column(
