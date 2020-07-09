@@ -11,7 +11,9 @@ class NavItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: double.maxFinite,
-      color: Colors.white,
+      decoration: BoxDecoration(
+        color: AppColors.marine
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -27,7 +29,7 @@ class NavItem extends StatelessWidget {
               style: TextStyle(
                 color: this.selected ? AppColors.yellow : AppColors.white,
                 fontSize: 11,
-                fontWeight: FontWeight.w600
+                fontWeight: FontWeight.w400
               ),
               child: Text(this.item.label),
             ),

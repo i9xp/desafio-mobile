@@ -20,7 +20,7 @@ class NavBar extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       height: 50,
       decoration: BoxDecoration(
-        color: AppColors.white,
+        color: AppColors.marine,
         boxShadow: [
           BoxShadow(
             color: Colors.black12,
@@ -35,7 +35,7 @@ class NavBar extends StatelessWidget {
           return Expanded(
             flex: 1,
             child: GestureDetector(
-              onTap: () => this.setSelectedIndex(index),
+              onTapDown: (_) => this.setSelectedIndex(index),
               child: NavItem(item, this.selectedIndex == index),
             ),
           );

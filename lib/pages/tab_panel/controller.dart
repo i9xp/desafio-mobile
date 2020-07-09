@@ -8,7 +8,7 @@ import 'package:i9xp_commerce/pages/tab_more/index.dart';
 import 'package:i9xp_commerce/pages/tab_profile/index.dart';
 import 'package:i9xp_commerce/pages/tab_search/index.dart';
 
-class TabsController extends GetxController {
+class TabPanelController extends GetxController {
   List<Widget> pages = <Widget>[
     TabHome(),
     TabSearch(),

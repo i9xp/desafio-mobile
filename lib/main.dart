@@ -16,6 +16,7 @@ class I9XPApp extends StatelessWidget {
         primarySwatch: AppColors.marine,
         fontFamily: 'Montserrat',
       ),
+      debugShowCheckedModeBanner: false,
       defaultTransition: Transition.rightToLeft,
       initialRoute: '/',
       getPages: routes(),
