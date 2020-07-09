@@ -1,31 +1,37 @@
-# Teste Mobile
+# I9XP Ecommerce Mobile
 
-## Instruções
+A Flutter project application that allow users to interact with an e-commerce experience.  🚀
 
- - Faça um fork deste projeto
- - Crie seu projeto a partir deste fork
- - Use mensagens de commits claras, coesas e que deixem claro a linha do tempo e evolução do código. 
- - Ao Finalizar mande um merge request para o repo principal com instruções para rodar e gerar os binários
+## Overview
+---
+## Technologies
+---
+## Features 
+---
+## Testing
+---
+## Building
+---
+## License
 
-## Requerimentos
- 
- - O app deve ser escrito preferencialmente usando Flutter (https://flutter.dev/).
- - Faça uso de boas práticas de desenvolvimento
- - Use conceitos de componentização e reaproveitamento
- - Crie um fluxo de compra mínimo: O aplicativo deve ser capaz de navegar entre as telas (Home, Página de Produto e Carrinho Lateral)
- - Ao tocar em adicionar um produto ao carrinho. o item deve ser adicionado ao carrinho e a tela do carrinho deve serm mostrada com a informação atualizada
+[![License: MIT](https://img.shields.io/badge/license-MIT-purple.svg)](LICENSE)
 
+Copyright (c) 2020 André Ciornavei
 
-## Desejável
- 
- - Possuir algum teste unitário ou e2e
- - Documentação
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-## Design
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
- - Link Adobe XD (https://xd.adobe.com/view/e1881f99-b431-43bc-6e6d-aab53f5b5217-97b9/)
-
-## Bonus
- - Faça chamadas de API usando algum serviço de mock 
- - Persistencia: Ao fechar o aplicativo os produtos devem permaneer no carrinho
- - Fazer uso de algum state manegement (https://flutter.dev/docs/development/data-and-backend/state-mgmt/intro)
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
