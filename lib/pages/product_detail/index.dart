@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:get/get.dart';
 import 'package:i9xp_commerce/commons/action_notification.dart';
+import 'package:i9xp_commerce/commons/i9xp_radio/i9xp_radio.dart';
 import 'package:i9xp_commerce/commons/rate.dart';
+import 'package:i9xp_commerce/commons/sliver_separator.dart';
+import 'package:i9xp_commerce/enums/product_details_section.enum.dart';
+import 'package:i9xp_commerce/pages/product_detail/widgets/product_attributes.dart';
 import 'package:i9xp_commerce/pages/product_detail/widgets/product_images.dart';
 import 'package:i9xp_commerce/utils/app_colors.dart';
 import 'package:i9xp_commerce/utils/formatters.dart';
@@ -11,6 +15,15 @@ import 'controller.dart';
 import 'widgets/product_actions.dart';
 
 class ProductDetail extends StatelessWidget {
+  final Map<String, String> attributes = {
+    "BRAND": "Lily's Ankle Boots",
+    "SKU": "123456789",
+    "CONDITION": "Brand New, With Box",
+    "MATERIAL": "Folx Swed, Velvet",
+    "CATEGORY": "Woman Shoes",
+    "FITTING": "True to Size",
+  };
+
   @override
   Widget build(BuildContext context) {
     return GetBuilder<ProductDetailController>(
@@ -84,7 +97,19 @@ class ProductDetail extends StatelessWidget {
                     ),
                   ],
                 ),
-              )
+              ),
+              SliverSeparator(25),
+              SliverToBoxAdapter(
+                child: Obx(
+                  () => I9XPRadio(
+                    ProductDetailSectionEnum(),
+                    controller.selectedDetailSection.value,
+                    controller.setSelectedDetailtSection,
+                  ),
+                ),
+              ),
+              SliverSeparator(25),
+              ProductAttributes(attributes),
             ],
           ),
         ),

@@ -23,7 +23,7 @@ class ProductImages extends StatelessWidget {
         SizedBox(height: 10),
         CarouselSlider(
           options: CarouselOptions(
-            height: Get.width - 150,
+            height: Get.width - 170,
             viewportFraction: 0.9,
             aspectRatio: 2.0,
             enableInfiniteScroll: false,
@@ -36,8 +36,8 @@ class ProductImages extends StatelessWidget {
               return Builder(
                 builder: (BuildContext context) {
                   return Container(
-                    width: Get.width - 150,
-                    height: Get.width - 150,
+                    width: Get.width - 170,
+                    height: Get.width - 170,
                     decoration: BoxDecoration(
                       image: image != null
                           ? DecorationImage(
