@@ -4,9 +4,11 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:i9xp/app/modules/home/components/app_action_widget.dart';
 import 'package:i9xp/app/modules/home/models/action_type.dart';
 import 'package:i9xp/app/modules/home/models/product_model.dart';
+import 'package:i9xp/app/modules/home/pages/product/components/bottom_button_widget.dart';
 import 'package:i9xp/app/modules/home/pages/product/components/price_score_widget.dart';
 import 'package:i9xp/app/modules/home/pages/product/components/product_info_tabbar.dart';
 import 'package:i9xp/app/modules/home/pages/product/components/product_page_view.dart';
+import 'package:i9xp/app/modules/home/pages/product/models/bottom_button_type.dart';
 import 'package:i9xp/app/modules/home/stores/cart_store.dart';
 import 'package:i9xp/app/shared/constants/assets.dart';
 import 'package:i9xp/app/shared/constants/colors.dart';
@@ -89,16 +91,44 @@ class _ProductPageState extends ModularState<ProductPage, ProductController>
               ],
             ),
             Container(
-              height: 30,
-              width: 300,
+              height: 30.h,
+              width: 300.w,
               child: ProductInfoTabbar(tabController: infoTabbarController),
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () =>
-            cartStore.setProdutosCarrinho(cartStore.produtosCarrinho + 1),
+      bottomNavigationBar: Container(
+        padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 17.0),
+        color: AppColors.PRODUCT_BOTTOM,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                BottomButton(
+                  label: "SHARE THIS",
+                  type: BottomButtonType.SHARE,
+                  labelStyle: AppStyles.PRODUCT_BOTTOM_BUTTON,
+                  onTap: () {},
+                ),
+                BottomButton(
+                  label: "ADD TO CART",
+                  type: BottomButtonType.ADD_TO_CART,
+                  color: AppColors.BAGDE_BACKGROUND,
+                  labelStyle: AppStyles.PRODUCT_BOTTOM_BUTTON.copyWith(
+                    color: AppColors.PRODUCT_SELECTED_TAB_TEXT,
+                  ),
+                  onTap: () {
+                    cartStore
+                        .setProdutosCarrinho(cartStore.produtosCarrinho + 1);
+                  },
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

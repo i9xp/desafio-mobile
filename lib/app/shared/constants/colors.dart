@@ -43,4 +43,7 @@ class AppColors {
 
   // ignore: non_constant_identifier_names
   static final PRODUCT_SELECTED_TAB_TEXT = Color(0xff515C6F);
+
+  // ignore: non_constant_identifier_names
+  static final PRODUCT_BOTTOM = Color(0xff2E3746);
 }
