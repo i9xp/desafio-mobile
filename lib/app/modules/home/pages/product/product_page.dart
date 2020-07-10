@@ -67,36 +67,73 @@ class _ProductPageState extends ModularState<ProductPage, ProductController>
           )
         ],
       ),
-      body: Center(
-        child: Column(
-          children: <Widget>[
-            SizedBox(height: 15.h),
-            SmoothPageIndicator(
-              controller: imageViewController,
-              count: 2,
-              effect: SlideEffect(
-                dotColor: AppColors.INDICATOR_COLOR,
-                activeDotColor: AppColors.SELECTED_INDICATOR_COLOR,
-                dotWidth: 8.0,
-                dotHeight: 8.0,
-              ),
+      body: Column(
+        children: <Widget>[
+          SizedBox(height: 15.h),
+          SmoothPageIndicator(
+            controller: imageViewController,
+            count: 2,
+            effect: SlideEffect(
+              dotColor: AppColors.INDICATOR_COLOR,
+              activeDotColor: AppColors.SELECTED_INDICATOR_COLOR,
+              dotWidth: 8.0,
+              dotHeight: 8.0,
             ),
-            SizedBox(height: 25.h),
-            ProductPageView(
-              imageViewController: imageViewController,
-              height: 301.h,
+          ),
+          SizedBox(height: 20.h),
+          ProductPageView(
+            imageViewController: imageViewController,
+            height: 250.h,
+            children: [
+              Image.asset(AppAssets.SHOES_WITH_SHADOW),
+              Image.asset(AppAssets.WOMEN_SHOES),
+            ],
+          ),
+          Container(
+            height: 30.h,
+            width: 250.w,
+            child: ProductInfoTabbar(tabController: infoTabbarController),
+          ),
+          SizedBox(height: 10),
+          Expanded(
+            child: TabBarView(
+              physics: NeverScrollableScrollPhysics(),
               children: [
-                Image.asset(AppAssets.SHOES_WITH_SHADOW),
-                Image.asset(AppAssets.WOMEN_SHOES),
+                ProductInfoSection(),
+                ProductInfoSection(
+                  infos: [
+                    ProductInfoModel(
+                      "BRAND",
+                      "Lily’s Ankle Boots",
+                    ),
+                    ProductInfoModel(
+                      "SKU",
+                      "0590458902809",
+                    ),
+                    ProductInfoModel(
+                      "CONDITION",
+                      "Brand New, With Box",
+                    ),
+                    ProductInfoModel(
+                      "MATERIAL",
+                      "Faux Sued, Velvet",
+                    ),
+                    ProductInfoModel(
+                      "CATEGORY",
+                      "Women Shoes",
+                    ),
+                    ProductInfoModel(
+                      "FITING",
+                      "True To Size",
+                    ),
+                  ],
+                ),
+                ProductInfoSection(),
               ],
+              controller: infoTabbarController,
             ),
-            Container(
-              height: 30.h,
-              width: 300.w,
-              child: ProductInfoTabbar(tabController: infoTabbarController),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
       bottomNavigationBar: Container(
         padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 17.0),
@@ -132,4 +169,106 @@ class _ProductPageState extends ModularState<ProductPage, ProductController>
       ),
     );
   }
+}
+
+class ProductInfoSection extends StatelessWidget {
+  const ProductInfoSection({
+    Key key,
+    this.infos = const <ProductInfoModel>[],
+  }) : super(key: key);
+
+  final List<ProductInfoModel> infos;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 25.0),
+      child: SingleChildScrollView(
+        child: Column(
+          children: _buildRows(),
+        ),
+      ),
+    );
+  }
+
+  List<Widget> _buildRows() {
+    if (infos.length == 0) return [];
+    var widgets = <Widget>[];
+    for (var i = 0; i < infos.length; i += 2) {
+      final infoRow = InfoRow(
+        firstInfo: infos[i],
+        secondInfo: i + 1 < infos.length ? infos[i + 1] : null,
+      );
+
+      widgets.add(infoRow);
+      if (i + 1 < infos.length) {
+        widgets.add(SizedBox(height: 20.h));
+      }
+    }
+    return widgets;
+  }
+}
+
+class InfoRow extends StatelessWidget {
+  const InfoRow({
+    Key key,
+    @required this.firstInfo,
+    @required this.secondInfo,
+  }) : super(key: key);
+
+  final ProductInfoModel firstInfo;
+  final ProductInfoModel secondInfo;
+
+  bool get hasSecondInfo => secondInfo != null;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Info(
+          title: firstInfo.title,
+          content: firstInfo.content,
+        ),
+        if (hasSecondInfo)
+          Info(
+            title: secondInfo.title,
+            content: secondInfo.content,
+            crossAxisAlignment: CrossAxisAlignment.end,
+          ),
+      ],
+    );
+  }
+}
+
+class Info extends StatelessWidget {
+  const Info({
+    Key key,
+    @required this.title,
+    @required this.content,
+    this.crossAxisAlignment = CrossAxisAlignment.start,
+  }) : super(key: key);
+
+  final String title;
+  final String content;
+  final CrossAxisAlignment crossAxisAlignment;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: crossAxisAlignment,
+      children: [
+        Text(title, style: AppStyles.PRODUCT_INFO_TITLE),
+        SizedBox(height: 5),
+        Text(content, style: AppStyles.PRODUCT_INFO_CONTENT),
+      ],
+    );
+  }
+}
+
+class ProductInfoModel {
+  String title;
+  String content;
+
+  ProductInfoModel(this.title, this.content);
 }

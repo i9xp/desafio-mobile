@@ -46,4 +46,7 @@ class AppColors {
 
   // ignore: non_constant_identifier_names
   static final PRODUCT_BOTTOM = Color(0xff2E3746);
+
+  // ignore: non_constant_identifier_names
+  static final PRODUCT_INFO = Colors.white; //Color(0xff727C8E);
 }

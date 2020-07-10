@@ -79,5 +79,19 @@ class AppStyles {
   );
 
   // ignore: non_constant_identifier_names
+  static final PRODUCT_INFO_TITLE = TextStyle(
+    fontSize: 12.sp,
+    color: AppColors.PRODUCT_INFO,
+    fontWeight: FontWeight.w500,
+  );
+
+  // ignore: non_constant_identifier_names
+  static final PRODUCT_INFO_CONTENT = TextStyle(
+    fontSize: 14.sp,
+    color: AppColors.PRODUCT_INFO,
+    fontWeight: FontWeight.w300,
+  );
+
+  // ignore: non_constant_identifier_names
   static final BADGE_NUMBER_TEN = AppStyles.BADGE_NUMBER.copyWith(fontSize: 9);
 }
