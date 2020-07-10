@@ -1,5 +1,3 @@
-import 'package:i9xp/app/modules/home/models/action_model.dart';
-import 'package:i9xp/app/modules/home/models/action_type.dart';
 import 'package:i9xp/app/modules/home/models/bottom_bar_item_model.dart';
 import 'package:i9xp/app/modules/home/models/bottom_bar_item_type.dart';
 import 'package:i9xp/app/modules/home/models/category_image.dart';
@@ -24,11 +22,6 @@ abstract class _HomeControllerBase with Store {
     CategoryItemModel("Beauty", CategoryImage.BEAUTY),
     CategoryItemModel("Shoes", CategoryImage.SHOES),
     CategoryItemModel("See all", CategoryImage.SEE_ALL),
-  ];
-
-  final appbarActions = <ActionModel>[
-    ActionModel(ActionType.MESSAGES, notifications: 5),
-    ActionModel(ActionType.NOTIFICATIONS, notifications: 10),
   ];
 
   final products = <ProductModel>[

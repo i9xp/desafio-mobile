@@ -34,6 +34,7 @@ class _AppActionState extends State<AppAction> {
     return Container(
       width: 25,
       height: 25,
+      padding: EdgeInsets.symmetric(vertical: 16),
       child: Stack(
         children: [
           Align(

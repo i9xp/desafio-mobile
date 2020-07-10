@@ -1,22 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:i9xp/app/modules/home/components/app_action_widget.dart';
 import 'package:i9xp/app/modules/home/components/app_navigation_bar_widget.dart';
-import 'package:i9xp/app/modules/home/components/appbar_home_title.dart';
 import 'package:i9xp/app/modules/home/components/category_list.dart';
 import 'package:i9xp/app/modules/home/components/category_title.dart';
 import 'package:i9xp/app/modules/home/components/latest_page_view.dart';
 import 'package:i9xp/app/modules/home/components/logo_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:i9xp/app/modules/home/components/product_list.dart';
+import 'package:i9xp/app/modules/home/models/action_type.dart';
 import 'package:i9xp/app/modules/home/models/product_model.dart';
 import 'package:i9xp/app/shared/constants/colors.dart';
 import 'home_controller.dart';
 
 class HomePage extends StatefulWidget {
-  final String title;
-  const HomePage({Key key, this.title = "Home"}) : super(key: key);
-
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -29,8 +27,11 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
   }
 
   void _onProductTap(ProductModel p) {
-    Modular.to.pushNamed("/product", arguments: p);
+    _navigateToProduct(p);
   }
+
+  void _navigateToProduct(ProductModel p) =>
+      Modular.to.pushNamed("/product", arguments: p);
 
   @override
   Widget build(BuildContext context) {
@@ -38,12 +39,17 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
     return Scaffold(
       backgroundColor: AppColors.HOME_BACKGROUND_A,
       appBar: AppBar(
+        centerTitle: false,
         titleSpacing: pagePadding,
         elevation: 0,
-        title: AppbarHomeTitle(
-          leading: Logo(),
-          actions: controller.appbarActions,
-        ),
+        title: Logo(),
+        actions: [
+          AppAction(type: ActionType.MESSAGES, number: 5),
+          Padding(
+            padding: EdgeInsets.only(left: 20, right: pagePadding),
+            child: AppAction(type: ActionType.NOTIFICATIONS, number: 10),
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Padding(
