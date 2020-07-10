@@ -8,6 +8,7 @@ import 'package:i9xp_commerce/models/order_item.model.dart';
 import 'package:i9xp_commerce/models/product.model.dart';
 import 'package:i9xp_commerce/services/api.dart';
 import 'package:i9xp_commerce/utils/api_response.dart';
+import 'package:share/share.dart';
 import 'package:sqflite/sqflite.dart';
 
 class ProductDetailController extends GetxController {
@@ -37,10 +38,10 @@ class ProductDetailController extends GetxController {
   }
 
   ProductDetailController() {
-    fetch();
+    loadProduct();
   }
 
-  fetch() async {
+  loadProduct() async {
     setLoading(true);
     setOffline(false);
     countCartItems();
@@ -92,6 +93,11 @@ class ProductDetailController extends GetxController {
     }
     Get.offAllNamed("/");
     Get.toNamed("/cart");
+  }
+
+  shareProduct() {
+    String message = "Olá, baixe o aplicativo da i9xp-Commerce e confira esse produto incrível que eu encontrei [${this.product.value.name.value}].";
+    Share.share(message, subject: 'Olá, encontrei um produto incrível para você.');
   }
 
   

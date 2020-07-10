@@ -6,7 +6,6 @@ import 'package:i9xp_commerce/pages/product_detail/controller.dart';
 import 'package:i9xp_commerce/utils/app_colors.dart';
 
 class ProductActions extends StatelessWidget {
-  
   final ProductDetailController controller = Get.find();
 
   @override
@@ -19,7 +18,7 @@ class ProductActions extends StatelessWidget {
         children: <Widget>[
           Expanded(
             child: I9XPButton(
-              () => {},
+              controller.shareProduct,
               label: "SHARE THIS",
               icon: Feather.chevron_up,
             ),

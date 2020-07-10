@@ -69,7 +69,7 @@ class ProductDetail extends StatelessWidget {
               isLoading: controller.loading.value,
               isOffline: controller.offline.value,
               offline: DataOffline(
-                onReset: controller.fetch,
+                onReset: controller.loadProduct,
               ),
               content: CustomScrollView(
                 slivers: <Widget>[
