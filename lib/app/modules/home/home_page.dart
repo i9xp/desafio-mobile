@@ -9,14 +9,7 @@ import 'package:i9xp/app/modules/home/components/latest_page_view.dart';
 import 'package:i9xp/app/modules/home/components/logo_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:i9xp/app/modules/home/components/product_list.dart';
-import 'package:i9xp/app/modules/home/models/action_model.dart';
-import 'package:i9xp/app/modules/home/models/action_type.dart';
-import 'package:i9xp/app/modules/home/models/bottom_bar_item_model.dart';
-import 'package:i9xp/app/modules/home/models/bottom_bar_item_type.dart';
-import 'package:i9xp/app/modules/home/models/category_image.dart';
-import 'package:i9xp/app/modules/home/models/category_item_model.dart';
 import 'package:i9xp/app/modules/home/models/product_model.dart';
-import 'package:i9xp/app/shared/constants/assets.dart';
 import 'package:i9xp/app/shared/constants/colors.dart';
 import 'home_controller.dart';
 
@@ -29,32 +22,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends ModularState<HomePage, HomeController> {
-  final categories = [
-    CategoryItemModel("Apparel", CategoryImage.APPAREL),
-    CategoryItemModel("Beauty", CategoryImage.BEAUTY),
-    CategoryItemModel("Shoes", CategoryImage.SHOES),
-    CategoryItemModel("See all", CategoryImage.SEE_ALL),
-  ];
-
-  final appbarActions = <ActionModel>[
-    ActionModel(ActionType.MESSAGES, notifications: 5),
-    ActionModel(ActionType.NOTIFICATIONS, notifications: 10),
-  ];
-
-  final products = <ProductModel>[
-    ProductModel("a", "Ankle Boots", 49.99, AppAssets.WOMEN_SHOES),
-    ProductModel("b", "Backpack", 20.58, AppAssets.BACKPACK),
-    ProductModel("c", "Red Scarf", 11.00, AppAssets.SCARF),
-  ];
-
-  final bottomBarItems = <BottomBarItem>[
-    BottomBarItem("HOME", BottombarItemType.HOME),
-    BottomBarItem("SEARCH", BottombarItemType.SEARCH),
-    BottomBarItem("CART", BottombarItemType.CART),
-    BottomBarItem("PROFILE", BottombarItemType.PROFILE),
-    BottomBarItem("MORE", BottombarItemType.MORE),
-  ];
-
   num get pagePadding => 25.h;
 
   void _initScreenUtil() {
@@ -75,7 +42,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
         elevation: 0,
         title: AppbarHomeTitle(
           leading: Logo(),
-          actions: appbarActions,
+          actions: controller.appbarActions,
         ),
       ),
       body: SingleChildScrollView(
@@ -86,12 +53,12 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
             children: <Widget>[
               CategoryTitle(title: "Categories"),
               SizedBox(height: 14),
-              CategoryList(categories: categories),
+              CategoryList(categories: controller.categories),
               SizedBox(height: 27),
               CategoryTitle(title: "Latest"),
               LatestPageView(),
               ProductList(
-                products: products,
+                products: controller.products,
                 onProductTap: _onProductTap,
               ),
               SizedBox(height: 8),
@@ -103,7 +70,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
         return AppBottomNavigationBar(
           currentIndex: controller.bottomBarCurrentIndex,
           onTap: controller.setBottomBarIndex,
-          items: bottomBarItems,
+          items: controller.bottomBarItems,
         );
       }),
     );
