@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:i9xp_commerce/models/category.model.dart';
 import 'package:i9xp_commerce/models/product.model.dart';
-import 'package:i9xp_commerce/pages/tab_home/widgets/item_category.dart';
 import 'package:i9xp_commerce/pages/tab_home/widgets/item_product.dart';
 import 'package:i9xp_commerce/utils/app_colors.dart';
 import 'package:shimmer/shimmer.dart';

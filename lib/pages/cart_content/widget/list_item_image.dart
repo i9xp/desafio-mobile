@@ -1,5 +1,5 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:i9xp_commerce/commons/product_image.dart';
 import 'package:i9xp_commerce/utils/app_colors.dart';
 
 class CartListItemImage extends StatelessWidget {
@@ -18,7 +18,7 @@ class CartListItemImage extends StatelessWidget {
       ),
       child: Visibility(
         visible: this.image != null,
-        child: CachedNetworkImage(imageUrl: this.image ?? ""),
+        child: ProductImage(this.image),
       ),
     );
   }

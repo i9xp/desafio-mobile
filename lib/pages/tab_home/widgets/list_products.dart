@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:i9xp_commerce/models/product.model.dart';
 import 'package:i9xp_commerce/utils/formatters.dart';
 import '../controller.dart';
 import 'item_product.dart';

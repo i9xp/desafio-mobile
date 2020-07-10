@@ -1,6 +1,4 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
 import 'package:get/get.dart';
 import 'package:i9xp_commerce/commons/product_image.dart';
 import 'package:i9xp_commerce/models/product.model.dart';
