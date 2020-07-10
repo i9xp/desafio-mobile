@@ -9,7 +9,11 @@ class ItemProduct extends StatelessWidget {
   final double width;
   final double height;
   final ProductModel product;
-  ItemProduct(this.width, this.height, this.product);
+  ItemProduct(
+    this.product,
+    this.width,
+    this.height,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +21,8 @@ class ItemProduct extends StatelessWidget {
       height: height,
       width: width,
       child: RawMaterialButton(
-        onPressed: () => Get.toNamed("categories/${this.product.categoryId.value.toString()}/products/${this.product.id.value.toString()}"),
+        onPressed: () => Get.toNamed(
+            "categories/${this.product.categoryId.value.toString()}/products/${this.product.id.value.toString()}"),
         padding: EdgeInsets.all(10),
         fillColor: AppColors.white,
         shape: RoundedRectangleBorder(
@@ -47,7 +52,7 @@ class ItemProduct extends StatelessWidget {
             ),
             SizedBox(height: 5),
             Text(
-              this.product.name.value,
+              this.product.name?.value ?? "",
               overflow: TextOverflow.ellipsis,
               maxLines: 2,
               style: TextStyle(
@@ -59,7 +64,7 @@ class ItemProduct extends StatelessWidget {
             ),
             SizedBox(height: 3),
             Text(
-              Formatters.brl(this.product.price.value).symbolOnLeft,
+              Formatters.brl(this.product.price?.value ?? 0).symbolOnLeft,
               style: TextStyle(
                 fontSize: 10,
                 color: AppColors.black,

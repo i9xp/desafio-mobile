@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:i9xp_commerce/models/product.model.dart';
 import 'package:i9xp_commerce/utils/formatters.dart';
 import '../controller.dart';
 import 'item_product.dart';
+import 'placeholders/item_product_placeholder.dart';
 
 class ListProducts extends StatelessWidget {
-
   final TabHomeController controller = Get.find();
 
   static final int itemsPerPage = 3;
@@ -22,15 +23,31 @@ class ListProducts extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() => SizedBox(
-      height: cardHeight,
-      child: ListView.separated(
-        padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
-        scrollDirection: Axis.horizontal,
-        itemCount: controller.products.length,
-        separatorBuilder: (_, __) => SizedBox(width: separatorMargin),
-        itemBuilder: (_, int index) => ItemProduct(cardWidth, cardHeight, controller.products[index]),
+    return Obx(
+      () => Visibility(
+        visible: controller.loading.value == false,
+        replacement: SizedBox(
+          height: cardHeight,
+          child: ListView.separated(
+            padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+            scrollDirection: Axis.horizontal,
+            itemCount: itemsPerPage,
+            separatorBuilder: (_, __) => SizedBox(width: separatorMargin),
+            itemBuilder: (_, int index) => ItemProductPlaceholder(cardWidth, cardHeight),
+          ),
+        ),
+        child: SizedBox(
+          height: cardHeight,
+          child: ListView.separated(
+            padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+            scrollDirection: Axis.horizontal,
+            itemCount: controller.products.length,
+            separatorBuilder: (_, __) => SizedBox(width: separatorMargin),
+            itemBuilder: (_, int index) =>
+                ItemProduct(controller.products[index], cardWidth, cardHeight),
+          ),
+        ),
       ),
-    ));
+    );
   }
 }

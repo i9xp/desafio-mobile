@@ -8,7 +8,7 @@ class ItemCampaign extends StatelessWidget {
 
   final double width;
   final CampaignModel campaign;
-  ItemCampaign(this.width, this.campaign);
+  ItemCampaign(this.campaign, this.width);
 
   @override
   Widget build(BuildContext context) {
