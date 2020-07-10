@@ -17,7 +17,6 @@ import 'controller.dart';
 import 'widgets/product_actions.dart';
 
 class ProductDetail extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return GetBuilder<ProductDetailController>(
@@ -54,7 +53,13 @@ class ProductDetail extends StatelessWidget {
               ),
             ),
             actions: <Widget>[
-              Obx(() => ActionNotification(Feather.shopping_cart, controller.cartItemsQuantity.value)),
+              Obx(
+                () => ActionNotification(
+                  Feather.shopping_cart,
+                  controller.cartItemsQuantity.value,
+                  action: () => Get.toNamed("/cart"),
+                ),
+              ),
             ],
           ),
         ),
@@ -113,7 +118,8 @@ class ProductDetail extends StatelessWidget {
                     ),
                   ),
                   SliverSeparator(25),
-                  ProductAttributes(controller.product?.value?.buildAttributes()),
+                  ProductAttributes(
+                      controller.product?.value?.buildAttributes()),
                 ],
               ),
             ),

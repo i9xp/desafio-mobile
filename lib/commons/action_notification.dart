@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:i9xp_commerce/utils/app_colors.dart';
 
 class ActionNotification extends StatelessWidget {
+  final Function action;
   final IconData icon;
   final int quantity;
 
-  ActionNotification(this.icon, this.quantity);
+  ActionNotification(this.icon, this.quantity, {this.action});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,10 @@ class ActionNotification extends StatelessWidget {
       child: Stack(
         alignment: Alignment.center,
         children: <Widget>[
-          Icon(icon, size: 21, color: AppColors.white),
+          IconButton(
+            onPressed: this.action,
+            icon: Icon(icon, size: 21, color: AppColors.white),
+          ),
           Positioned(
             left: 4,
             bottom: 8,
@@ -24,9 +28,8 @@ class ActionNotification extends StatelessWidget {
               height: 15,
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                color: AppColors.mustard,
-                borderRadius: BorderRadius.circular(10)
-              ),
+                  color: AppColors.mustard,
+                  borderRadius: BorderRadius.circular(10)),
               child: Text(
                 this.quantity.toString(),
                 style: TextStyle(
