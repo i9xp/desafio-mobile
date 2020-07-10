@@ -8,11 +8,12 @@ import 'package:marketplace/pages/product.dart';
 import 'package:marketplace/utils/theme.dart';
 
 import 'features/category/bloc/category_bloc.dart';
+import 'features/message/bloc/message_bloc.dart';
+import 'features/notification/bloc/notification_bloc.dart';
 
 void main() => runApp(I9XPApp());
 
 class I9XPApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -54,6 +55,16 @@ class _MarketplaceState extends State<MarketplacePage> {
         BlocProvider<CategoryBloc>(
           create: (context) {
             return CategoryBloc()..add(CategoryEventFetch());
+          },
+        ),
+        BlocProvider<MessageBloc>(
+          create: (context) {
+            return MessageBloc()..add(MessageEventFetch());
+          },
+        ),
+        BlocProvider<NotificationBloc>(
+          create: (context) {
+            return NotificationBloc()..add(NotificationEventFetch());
           },
         ),
       ],

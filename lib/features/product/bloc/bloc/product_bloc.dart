@@ -1,7 +1,10 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:marketplace/features/product/models/product.dart';
+import 'package:marketplace/utils/api.dart';
 
 part 'product_event.dart';
 part 'product_state.dart';
@@ -14,6 +17,20 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
   Stream<ProductState> mapEventToState(
     ProductEvent event,
   ) async* {
-    // TODO: implement mapEventToState
+    if (event is ProductEventFetch) {
+      yield ProductStateLoading();
+      String endpoint = "/product";
+
+      final response = await Api.makeGet(endpoint, {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      });
+
+      if (response.statusCode == 200) {
+        Product product = Product.fromJson(json.decode(response.body));
+
+      yield ProductStateLoaded();
+    } else {
+      yield ProductStateFailure();
+    }
   }
 }

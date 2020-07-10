@@ -4,6 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:marketplace/features/category/bloc/category_bloc.dart';
 import 'package:marketplace/features/dashboard/bloc/dashboard_bloc.dart';
+import 'package:marketplace/features/message/bloc/message_bloc.dart';
+import 'package:marketplace/features/notification/bloc/notification_bloc.dart';
+import 'package:marketplace/widgets/app_bar.dart';
 import 'package:marketplace/widgets/card_campain.dart';
 import 'package:marketplace/widgets/card_product_small.dart';
 import 'package:marketplace/widgets/shortcut_category.dart';
@@ -50,43 +53,7 @@ class _HomeState extends State<HomePage> {
             margin: EdgeInsets.only(top: 20),
             child: Column(
               children: <Widget>[
-                Container(
-                  height: 43,
-                  padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-                  alignment: Alignment(-1, 0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Container(
-                        child: Image(
-                          image: AssetImage('assets/images/logo-alpha.png'),
-                        ),
-                      ),
-                      Container(
-                        height: 25,
-                        child: Row(
-                          children: <Widget>[
-                            Container(
-                              child: Image(
-                                image: AssetImage(
-                                    'assets/icons/icon-messages.png'),
-                              ),
-                            ),
-                            SizedBox(
-                              width: 30,
-                            ),
-                            Container(
-                              child: Image(
-                                image: AssetImage(
-                                    'assets/icons/icon-notification.png'),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                AppBarI9XP(),
                 Container(
                   alignment: Alignment(-1, 0),
                   padding: EdgeInsets.symmetric(horizontal: 25),
