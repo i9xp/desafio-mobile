@@ -17,30 +17,44 @@ class ItensWidget extends StatelessWidget {
                 ));
           },
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.only(top: 5.0, left: 5.0, right: 5.0),
             child: Container(
               width: 120,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10.0),
                   shape: BoxShape.rectangle,
                   color: Colors.white),
-              child: Column(
-                children: <Widget>[
-                  Image.asset(
-                    'assets/img/backpack.png',
-                  ),
-                  Text(
-                    'BackPack',
-                    style: TextStyle(color: Color(0xff515C6F), fontSize: 12),
-                  ),
-                  Text(
-                    '\$49.99',
-                    style: TextStyle(
-                        color: Color(0xff515C6F),
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ],
+              child: Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Image.asset(
+                      'assets/img/backpack.png',
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          'BackPack',
+                          style:
+                              TextStyle(color: Color(0xff515C6F), fontSize: 12),
+                        ),
+                      ],
+                    ),
+                    Text(
+                      '\$49.99',
+                      style: TextStyle(
+                          color: Color(0xff515C6F),
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

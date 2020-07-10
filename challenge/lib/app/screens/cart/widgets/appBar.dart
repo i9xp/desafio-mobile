@@ -1,3 +1,4 @@
+import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 
 class AppBarCustomCart extends StatelessWidget {
@@ -13,11 +14,27 @@ class AppBarCustomCart extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Icon(Icons.message, color: Colors.white),
-              Icon(
-                Icons.add_alert,
-                color: Colors.white,
-              )
+              Badge(
+                badgeContent: Text('5'),
+                badgeColor: Colors.yellow,
+                position: BadgePosition.bottomLeft(),
+                child: Icon(
+                  Icons.message,
+                  color: Colors.white,
+                ),
+              ),
+              SizedBox(
+                width: 20,
+              ),
+              Badge(
+                badgeContent: Text('9'),
+                badgeColor: Colors.yellow,
+                position: BadgePosition.bottomLeft(),
+                child: Icon(
+                  Icons.add_alert,
+                  color: Colors.white,
+                ),
+              ),
             ],
           ),
         ),

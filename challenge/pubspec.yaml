@@ -25,6 +25,17 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  fonts:
+    - family: Montserrat
+      fonts:
+        - asset: assets/fonts/NeusaNextStd-Light.otf
+          weight: 300
+        - asset: assets/fonts/NeusaNextStd-Bold.otf
+          weight: 400
+        - asset: assets/fonts/NeusaNextStd-Medium.otf
+          weight: 500
+        - asset: assets/fonts/NeusaNextStd-Regular.otf
+          weight: 700
 
   assets:
     - assets/img/logo.png
@@ -35,3 +46,7 @@ flutter:
     - assets/img/icon_order.png
     - assets/img/icon_arrow.png
     - assets/img/icon_up.png
+    - assets/img/apparel.svg
+    - assets/img/beauty.svg
+    - assets/img/seeall.svg
+    - assets/img/shoes.svg

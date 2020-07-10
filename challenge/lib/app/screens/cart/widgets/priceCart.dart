@@ -15,7 +15,7 @@ class PriceCart extends StatelessWidget {
             children: <Widget>[
               Text(
                 'TOTAL',
-                style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 10, color: Colors.white),
               ),
               Text(
                 '\$81.57',

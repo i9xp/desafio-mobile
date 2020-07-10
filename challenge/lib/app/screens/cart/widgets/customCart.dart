@@ -50,9 +50,9 @@ class CustomCartList extends StatelessWidget {
                             Text(
                               '7, Hot Pink',
                               style: TextStyle(
-                                  fontSize: 15,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold),
+                                fontSize: 15,
+                                color: Colors.white,
+                              ),
                             ),
                             SizedBox(
                               height: 15,

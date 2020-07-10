@@ -7,6 +7,7 @@ class LatestWidget extends StatelessWidget {
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
         Container(
           margin: EdgeInsets.only(left: 20),
@@ -17,18 +18,8 @@ class LatestWidget extends StatelessWidget {
           ),
         ),
         Expanded(
-          flex: 6,
-          child: ListView.builder(
-            itemCount: 3,
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (context, index) {
-              return Container(
-                width: _width,
-                child: Image.asset(
-                  'assets/img/banner.png',
-                ),
-              );
-            },
+          child: Image.asset(
+            'assets/img/banner.png',
           ),
         ),
       ],

@@ -1,8 +1,5 @@
-import 'package:challenge/app/screens/home/widgets/appBar.dart';
-import 'package:challenge/app/screens/home/widgets/bottomNavigation.dart';
-import 'package:challenge/app/screens/home/widgets/categories.dart';
-import 'package:challenge/app/screens/home/widgets/itens.dart';
-import 'package:challenge/app/screens/home/widgets/latest.dart';
+import 'package:challenge/app/screens/cart/cart.dart';
+import 'package:challenge/app/screens/home/widgets/contentHome.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -11,66 +8,79 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  int _selectedPage = 0;
+  final _pageOptions = [
+    ContentHome(),
+    Container(
+      color: Colors.red,
+    ),
+    CartScreen(),
+    Container(
+      color: Colors.yellow,
+    ),
+    Container(
+      color: Colors.amber,
+    )
+  ];
+
   @override
   Widget build(BuildContext context) {
-    PageController _pagecontroller;
-    int _currentPageIndex;
-
-    initState() {
-      _currentPageIndex = 0;
-      super.initState();
+    Widget bottomNavigation() {
+      return BottomNavigationBar(
+        showSelectedLabels: true,
+        showUnselectedLabels: true,
+        backgroundColor: Color(0xff12912),
+        onTap: (int index) {
+          setState(() {
+            _selectedPage = index;
+            print(_selectedPage);
+          });
+        },
+        currentIndex: _selectedPage,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            title: Text(
+              'Home',
+              style: TextStyle(fontSize: 11),
+            ),
+            backgroundColor: Color(0xff2E3746),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search),
+            title: Text(
+              'Search',
+              style: TextStyle(fontSize: 11),
+            ),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_cart),
+            title: Text(
+              'Cart',
+              style: TextStyle(fontSize: 11),
+            ),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person_outline),
+            title: Text(
+              'Profile',
+              style: TextStyle(fontSize: 11),
+            ),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.list),
+            title: Text(
+              'More',
+              style: TextStyle(fontSize: 11),
+            ),
+          ),
+        ],
+      );
     }
-
-    dispose() {
-      _pagecontroller = PageController();
-      super.dispose();
-    }
-
-    var _width = MediaQuery.of(context).size.width;
-    var _height = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-            gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [Color(0xff2B3340), Color(0xff515C6F)])),
-        width: _width,
-        height: _height,
-        child: Stack(
-          children: <Widget>[
-            Positioned(
-              left: 0,
-              top: 10,
-              right: 0,
-              child: AppBarCustom(),
-            ),
-            Positioned(
-              top: 60,
-              height: _height * 0.20,
-              left: 0,
-              right: 0,
-              child: CategoriesWidget(),
-            ),
-            Positioned(
-              top: 220,
-              height: _height * 0.35,
-              left: 0,
-              right: 0,
-              child: LatestWidget(),
-            ),
-            Positioned(
-              height: _height * .22,
-              left: 20,
-              right: 0,
-              bottom: 2 + MediaQuery.of(context).padding.bottom,
-              child: ItensWidget(),
-            ),
-          ],
-        ),
-      ),
-      bottomNavigationBar: bottomNavigationHome(),
+      body: _pageOptions[_selectedPage],
+      bottomNavigationBar: bottomNavigation(),
     );
   }
 }

@@ -15,7 +15,7 @@ class CartScreen extends StatelessWidget {
             child: CustomCartList(),
           ),
           Positioned(
-            bottom: 60,
+            bottom: 0,
             left: 31,
             child: PriceCart(),
           )

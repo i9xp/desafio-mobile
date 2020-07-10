@@ -15,6 +15,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(fontFamily: 'Montserrat'),
       home: SafeArea(child: HomeScreen()),
     );
   }
