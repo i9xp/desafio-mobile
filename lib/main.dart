@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:marketplace/features/cart/bloc/cart_bloc.dart';
 import 'package:marketplace/pages/cart.dart';
 import 'package:marketplace/pages/empty.dart';
 import 'package:marketplace/pages/home.dart';
@@ -67,6 +68,9 @@ class _MarketplaceState extends State<MarketplacePage> {
             return NotificationBloc()..add(NotificationEventFetch());
           },
         ),
+        BlocProvider<CartBloc>(create: (context) {
+          return CartBloc()..add(CartEventLoad());
+        }),
       ],
       child: BlocBuilder<CategoryBloc, CategoryState>(
         // ignore: missing_return

@@ -3,22 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:marketplace/features/cart/bloc/cart_bloc.dart';
-import 'package:marketplace/features/dashboard/bloc/dashboard_bloc.dart';
+import 'package:marketplace/features/cart/models/item.dart';
 import 'package:marketplace/features/product/bloc/bloc/product_bloc.dart';
+import 'package:marketplace/pages/cart.dart';
 import 'package:marketplace/widgets/button_i9xp.dart';
 import 'package:marketplace/widgets/detail_product.dart';
 
-class ProductPage extends StatefulWidget {
+class ProductPage extends StatelessWidget {
   int productId;
   String product;
 
   ProductPage({@required this.productId, @required this.product});
 
-  @override
-  State<StatefulWidget> createState() => _ProductState();
-}
-
-class _ProductState extends State<ProductPage> {
   int _current = 0;
   @override
   Widget build(BuildContext context) {
@@ -49,7 +45,7 @@ class _ProductState extends State<ProductPage> {
                     height: 40,
                     alignment: Alignment.bottomCenter,
                     child: Text(
-                      widget.product,
+                      product,
                       style:
                           TextStyle(fontWeight: FontWeight.w700, fontSize: 16),
                     ),
@@ -70,7 +66,7 @@ class _ProductState extends State<ProductPage> {
               create: (context) => ProductBloc()
                 ..add(
                   ProductEventFetch(
-                    productId: widget.productId,
+                    productId: productId,
                   ),
                 ),
               child: BlocBuilder<ProductBloc, ProductState>(
@@ -182,9 +178,7 @@ class _ProductState extends State<ProductPage> {
                             enlargeCenterPage: true,
                             // aspectRatio: 2.0,
                             onPageChanged: (index, reason) {
-                              setState(() {
-                                _current = index;
-                              });
+                              _current = index;
                             }),
                       ),
                     ],
@@ -196,7 +190,7 @@ class _ProductState extends State<ProductPage> {
                     padding: new EdgeInsets.all(8.0),
                   );
 
-                  Widget bottomBanner = Container(
+                  Widget bottomButtons = Container(
                     padding: EdgeInsets.all(15.0),
                     color: Color(0xFF2E3746),
                     height: 78.0,
@@ -224,7 +218,21 @@ class _ProductState extends State<ProductPage> {
                             onTap: () {
                               BlocProvider.of<CartBloc>(context)
                                 ..add((CartEventAddItem(
-                                    productId: widget.productId)));
+                                    cart: [],
+                                    newItem: Item(
+                                        productId: productId,
+                                        quantity: 1,
+                                        price: stateProduct.product.price,
+                                        name: stateProduct.product.product,
+                                        note: stateProduct.product.category,
+                                        previewURL:
+                                            stateProduct.product.images[0]))));
+
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => CartPage()),
+                              );
                             },
                           ),
                         ],
@@ -240,9 +248,10 @@ class _ProductState extends State<ProductPage> {
                       priceRating,
                       productGallery,
                       DetailProduct(product: stateProduct.product),
-                      bottomBanner,
+                      bottomButtons,
                     ],
                   );
+
                   return Container(
                       width: MediaQuery.of(context).size.width,
                       height: MediaQuery.of(context).size.height - 60,
