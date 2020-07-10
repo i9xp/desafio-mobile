@@ -17,13 +17,15 @@ class ProductStateLoading extends ProductState {
 }
 
 class ProductStateLoaded extends ProductState {
-  ProductStateLoaded();
+  Product product;
+
+  ProductStateLoaded({this.product});
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => [product];
 
   @override
-  String toString() => 'ProductStateLoaded {  }';
+  String toString() => 'ProductStateLoaded { product: $product }';
 }
 
 class ProductStateFailure extends ProductState {

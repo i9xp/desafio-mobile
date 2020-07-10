@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:marketplace/pages/product.dart';
 
 class CardProductSmall extends StatelessWidget {
   int productId;
@@ -18,7 +19,16 @@ class CardProductSmall extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => ProductPage(
+                    productId: productId,
+                    product: productName,
+                  )),
+        );
+      },
       child: Container(
         height: 135,
         decoration: new BoxDecoration(

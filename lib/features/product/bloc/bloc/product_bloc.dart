@@ -26,11 +26,19 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
       });
 
       if (response.statusCode == 200) {
-        Product product = Product.fromJson(json.decode(response.body));
+        Product product;
 
-      yield ProductStateLoaded();
-    } else {
-      yield ProductStateFailure();
+        final data = json.decode(response.body) as List;
+
+        data.forEach((pro) {
+          if (pro['productId'] == event.productId)
+            product = Product.fromJson(pro);
+        });
+
+        yield ProductStateLoaded(product: product);
+      } else {
+        yield ProductStateFailure();
+      }
     }
   }
 }
