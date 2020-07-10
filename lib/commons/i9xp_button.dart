@@ -50,13 +50,14 @@ class I9XPButton extends StatelessWidget {
           Container(
             width: 26,
             height: 26,
+            padding: EdgeInsets.all(5),
             decoration: BoxDecoration(
               color: iconBackgroundColor ?? AppColors.yellow,
               borderRadius: BorderRadius.circular(26),
             ),
             child: Icon(
               this.icon ?? Feather.home,
-              size: 21,
+              size: 16,
               color: iconColor ?? AppColors.white,
             ),
           )
