@@ -27,6 +27,9 @@ class ProductDetailController extends GetxController {
   RxInt selectedImage = RxInt(0);
   setSelectedImage(int value) => this.selectedImage.value = value;
   
+  RxInt cartItemsQuantity = RxInt(0);
+  setCartItemsQuantity(int value) => cartItemsQuantity.value = value;
+
   Rx<ProductModel> product = Rx<ProductModel>();
 
   bool get showContent {
@@ -40,6 +43,7 @@ class ProductDetailController extends GetxController {
   fetch() async {
     setLoading(true);
     setOffline(false);
+    countCartItems();
     ApiResponse response = await Api.get("/categories/$categoryId/products/$productId");
     try {
       if (response.getStatusMessage().code == 200) {
@@ -58,6 +62,14 @@ class ProductDetailController extends GetxController {
       );
     } finally {
       setLoading(false);
+    }
+  }
+
+  countCartItems() async {
+    Database db = await DBProvider.db.database;
+    List<Map<String,dynamic>> response = await db.rawQuery("SELECT COUNT(*) AS total FROM order_item");
+    if(response.length > 0 && response[0].containsKey("total")){
+      setCartItemsQuantity(int.parse(response[0]["total"].toString()));
     }
   }
 

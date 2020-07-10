@@ -54,7 +54,7 @@ class ProductDetail extends StatelessWidget {
               ),
             ),
             actions: <Widget>[
-              ActionNotification(Feather.shopping_cart, 5),
+              Obx(() => ActionNotification(Feather.shopping_cart, controller.cartItemsQuantity.value)),
             ],
           ),
         ),
