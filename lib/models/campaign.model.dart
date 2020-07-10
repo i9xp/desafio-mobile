@@ -2,6 +2,12 @@ import 'package:get/state_manager.dart';
 import 'package:i9xp_commerce/core/model/index.dart';
 
 class CampaignModel extends Model<CampaignModel> {
+
+  @override
+  String table() {
+    return "campaigns";
+  }
+
   CampaignModel({
     int id,
     String cta,
@@ -15,9 +21,6 @@ class CampaignModel extends Model<CampaignModel> {
     this.setTitleColorHex(titleColorHex);
     this.setImageUrl(imageUrl);
   }
-
-  RxInt id = RxInt(null);
-  setId(int value) => this.id.value = value;
 
   RxString cta = RxString(null);
   setCta(String value) => this.cta.value = value;
@@ -52,4 +55,5 @@ class CampaignModel extends Model<CampaignModel> {
       'image_url': this.imageUrl.value,
     };
   }
+
 }

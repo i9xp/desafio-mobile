@@ -2,6 +2,12 @@ import 'package:get/state_manager.dart';
 import 'package:i9xp_commerce/core/model/index.dart';
 
 class ProductModel extends Model<ProductModel> {
+  
+  @override
+  String table() {
+    return "products";
+  }
+
   ProductModel({
     int id,
     int brandId,
@@ -19,9 +25,6 @@ class ProductModel extends Model<ProductModel> {
     this.setImageUrl(imageUrl);
     this.setSku(sku);
   }
-
-  RxInt id = RxInt(null);
-  setId(int value) => this.id.value = value;
 
   RxInt brandId = RxInt(null);
   setBrandId(int value) => this.brandId.value = value;
@@ -66,4 +69,5 @@ class ProductModel extends Model<ProductModel> {
       'sku': this.sku.value,
     };
   }
+
 }
