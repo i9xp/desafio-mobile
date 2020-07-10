@@ -27,7 +27,7 @@ class ProductImage extends StatelessWidget {
         alignment: Alignment.center,
         child: Icon(
           Feather.image,
-          size: 16,
+          size: 24,
           color: AppColors.yellow,
         ),
       ),

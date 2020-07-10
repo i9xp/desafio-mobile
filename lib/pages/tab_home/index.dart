@@ -4,7 +4,6 @@ import 'package:i9xp_commerce/commons/stage/index.dart';
 import 'package:i9xp_commerce/commons/stage/widgets/data_offline.dart';
 import 'package:i9xp_commerce/pages/tab_home/widgets/list_campaigns.dart';
 import 'package:i9xp_commerce/pages/tab_home/widgets/list_products.dart';
-import 'package:i9xp_commerce/utils/app_colors.dart';
 
 import 'controller.dart';
 import 'widgets/list_categories.dart';

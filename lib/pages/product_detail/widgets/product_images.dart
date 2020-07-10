@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:i9xp_commerce/commons/product_image.dart';
 import 'package:i9xp_commerce/commons/slide_indicator.dart';
 
 import '../controller.dart';
@@ -38,16 +39,7 @@ class ProductImages extends StatelessWidget {
                   return Container(
                     width: Get.width - 170,
                     height: Get.width - 170,
-                    decoration: BoxDecoration(
-                      image: image != null
-                          ? DecorationImage(
-                              image: CachedNetworkImageProvider(
-                                image,
-                              ),
-                              fit: BoxFit.contain,
-                            )
-                          : null,
-                    ),
+                    child: ProductImage(image)
                   );
                 },
               );
