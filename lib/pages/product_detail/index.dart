@@ -81,7 +81,7 @@ class ProductDetail extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: <Widget>[
                             Text(
-                              Formatters.brl(49.99).symbolOnLeft,
+                              Formatters.brl(controller.product.value?.price?.value ?? 0).symbolOnLeft,
                               style: TextStyle(
                                 fontSize: 15,
                                 height: 1.4,
