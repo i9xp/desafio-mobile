@@ -22,6 +22,7 @@ class AppColors {
 
   // ignore: non_constant_identifier_names
   static final BAGDE_BACKGROUND = Color(0xffF9C705);
+
   // ignore: non_constant_identifier_names
   static final ON_BADGE = Colors.white;
 
@@ -33,4 +34,13 @@ class AppColors {
 
   // ignore: non_constant_identifier_names
   static final SELECTED_INDICATOR_COLOR = Colors.white;
+
+  // ignore: non_constant_identifier_names
+  static final PRODUCT_SELECTED_TAB = Color(0xffFFC600);
+
+  // ignore: non_constant_identifier_names
+  static final PRODUCT_TAB_TEXT = Colors.white;
+
+  // ignore: non_constant_identifier_names
+  static final PRODUCT_SELECTED_TAB_TEXT = Color(0xff515C6F);
 }

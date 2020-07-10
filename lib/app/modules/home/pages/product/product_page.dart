@@ -5,6 +5,7 @@ import 'package:i9xp/app/modules/home/components/app_action_widget.dart';
 import 'package:i9xp/app/modules/home/models/action_type.dart';
 import 'package:i9xp/app/modules/home/models/product_model.dart';
 import 'package:i9xp/app/modules/home/pages/product/components/price_score_widget.dart';
+import 'package:i9xp/app/modules/home/pages/product/components/product_info_tabbar.dart';
 import 'package:i9xp/app/modules/home/pages/product/components/product_page_view.dart';
 import 'package:i9xp/app/modules/home/stores/cart_store.dart';
 import 'package:i9xp/app/shared/constants/assets.dart';
@@ -26,10 +27,22 @@ class ProductPage extends StatefulWidget {
   _ProductPageState createState() => _ProductPageState();
 }
 
-class _ProductPageState extends ModularState<ProductPage, ProductController> {
+class _ProductPageState extends ModularState<ProductPage, ProductController>
+    with SingleTickerProviderStateMixin {
   //use 'controller' variable to access controller
   final cartStore = Modular.get<CartStore>();
   final imageViewController = PageController(viewportFraction: 0.8);
+  TabController infoTabbarController;
+
+  @override
+  void initState() {
+    super.initState();
+    infoTabbarController = TabController(
+      length: 3,
+      initialIndex: 1,
+      vsync: this,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -74,6 +87,11 @@ class _ProductPageState extends ModularState<ProductPage, ProductController> {
                 Image.asset(AppAssets.SHOES_WITH_SHADOW),
                 Image.asset(AppAssets.WOMEN_SHOES),
               ],
+            ),
+            Container(
+              height: 30,
+              width: 300,
+              child: ProductInfoTabbar(tabController: infoTabbarController),
             ),
           ],
         ),

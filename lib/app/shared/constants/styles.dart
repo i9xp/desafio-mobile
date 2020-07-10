@@ -58,5 +58,19 @@ class AppStyles {
   );
 
   // ignore: non_constant_identifier_names
+  static final PRODUCT_TAB_STYLE = TextStyle(
+    fontSize: 15.sp,
+    color: AppColors.PRODUCT_TAB_TEXT,
+    fontWeight: FontWeight.w300,
+  );
+
+  // ignore: non_constant_identifier_names
+  static final PRODUCT_SELECTED_TAB_STYLE = TextStyle(
+    fontSize: 15.sp,
+    color: AppColors.PRODUCT_SELECTED_TAB_TEXT,
+    fontWeight: FontWeight.w300,
+  );
+
+  // ignore: non_constant_identifier_names
   static final BADGE_NUMBER_TEN = AppStyles.BADGE_NUMBER.copyWith(fontSize: 9);
 }
