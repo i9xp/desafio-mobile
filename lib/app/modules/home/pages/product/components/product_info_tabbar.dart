@@ -32,33 +32,35 @@ class _ProductInfoTabbarState extends State<ProductInfoTabbar> {
         hoverColor: Colors.transparent,
       ),
       child: TabBar(
-          controller: widget.tabController,
-          unselectedLabelColor: AppColors.PRODUCT_TAB_TEXT,
-          indicatorSize: TabBarIndicatorSize.label,
-          indicator: BoxDecoration(
-            borderRadius: BorderRadius.circular(50),
-            color: AppColors.PRODUCT_SELECTED_TAB,
+        labelPadding: EdgeInsets.zero,
+        controller: widget.tabController,
+        unselectedLabelColor: AppColors.PRODUCT_TAB_TEXT,
+        indicatorSize: TabBarIndicatorSize.label,
+        indicator: BoxDecoration(
+          borderRadius: BorderRadius.circular(50),
+          color: AppColors.PRODUCT_SELECTED_TAB,
+        ),
+        tabs: [
+          Tab(
+            child: InfoTab(
+              isSelected: widget.tabController.index == 0,
+              label: "Product",
+            ),
           ),
-          tabs: [
-            Tab(
-              child: InfoTab(
-                isSelected: widget.tabController.index == 0,
-                label: "Product",
-              ),
+          Tab(
+            child: InfoTab(
+              isSelected: widget.tabController.index == 1,
+              label: "Details",
             ),
-            Tab(
-              child: InfoTab(
-                isSelected: widget.tabController.index == 1,
-                label: "Details",
-              ),
+          ),
+          Tab(
+            child: InfoTab(
+              isSelected: widget.tabController.index == 2,
+              label: "Reviews",
             ),
-            Tab(
-              child: InfoTab(
-                isSelected: widget.tabController.index == 2,
-                label: "Reviews",
-              ),
-            ),
-          ]),
+          ),
+        ],
+      ),
     );
   }
 }
