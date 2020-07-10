@@ -65,6 +65,7 @@ _It will install a debug mode of application in your phone, in this moment, pay 
 
 Well, in this moment you should have see the app running in your phone or emulator and can enjoy it, but if you want to build the app (to publish or have the best performance of flutter in your phone), i recommend you to follow [this link][flutter_build] that guides you step-by-step, from generation your keystore until create your app bundle.
 
+__* if for some reason you are unable to install the app on your phone, I am making available the download of the app built on the following link: [click here to download][download].__
 
 ---
 
@@ -106,3 +107,4 @@ SOFTWARE.
 [mockapi]: https://www.mockapi.io/
 [getx]: https://pub.dev/packages/get/
 [sqlite]: https://pub.dev/packages/sqflite/
+[download]: https://github.com/andreciornavei/images/blob/master/i9xp_commerce/app.apk
