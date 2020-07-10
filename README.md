@@ -46,7 +46,7 @@ _As a trick to test over WiFi connection, when you install Android Studio (Neede
 
 _With a phone plugged in USB (for the first time) and in the same wifi connection of computer, type in terminal:_
 ```bash
-$ adb tcpid 5555
+$ adb tcpip 5555
 ```
 
 _After that your phone will be enabled to connect to computer, so to connect just type:_
@@ -63,7 +63,7 @@ $ flutter run
 
 _It will install a debug mode of application in your phone, in this moment, pay attention for Android because it show a little window to allow the installation and it hides after 10 seconds, so watch your phone._
 
-Well, in this moment you should have see the app running in your phone or emulator and can enjoy it, but if you want to build the app (to publish or have the best performance of flutter in your phone), i recommend you to follow [this link][flutter_build] that guides you step-by-step, from generatin your keystore until create your appbundle.
+Well, in this moment you should have see the app running in your phone or emulator and can enjoy it, but if you want to build the app (to publish or have the best performance of flutter in your phone), i recommend you to follow [this link][flutter_build] that guides you step-by-step, from generation your keystore until create your app bundle.
 
 
 ---
