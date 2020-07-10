@@ -51,5 +51,12 @@ class AppStyles {
   );
 
   // ignore: non_constant_identifier_names
+  static final PRODUCT_SCORE = TextStyle(
+    fontSize: 12.sp,
+    color: AppColors.ON_BADGE,
+    fontWeight: FontWeight.bold,
+  );
+
+  // ignore: non_constant_identifier_names
   static final BADGE_NUMBER_TEN = AppStyles.BADGE_NUMBER.copyWith(fontSize: 9);
 }

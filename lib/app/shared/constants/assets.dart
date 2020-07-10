@@ -49,4 +49,16 @@ class AppAssets {
 
   // ignore: non_constant_identifier_names
   static final WOMEN_SHOES = "assets/img/home/women_shoes.png";
+
+  // ignore: non_constant_identifier_names
+  static final ICON_RIGHT = "assets/img/product/icon_right.png";
+
+  // ignore: non_constant_identifier_names
+  static final ICON_UP = "assets/img/product/icon_up.png";
+
+  // ignore: non_constant_identifier_names
+  static final SHOES_WITH_SHADOW = "assets/img/product/shoes.png";
+
+  // ignore: non_constant_identifier_names
+  static final STAR = "assets/img/product/star.png";
 }
