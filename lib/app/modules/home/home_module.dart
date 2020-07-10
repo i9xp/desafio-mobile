@@ -1,3 +1,4 @@
+import 'stores/cart_store.dart';
 import 'package:i9xp/app/modules/home/pages/product/product_page.dart';
 
 import 'pages/product/product_controller.dart';
@@ -8,6 +9,7 @@ import 'home_page.dart';
 class HomeModule extends ChildModule {
   @override
   List<Bind> get binds => [
+        Bind((i) => CartStore()),
         Bind((i) => ProductController()),
         Bind((i) => HomeController()),
       ];
