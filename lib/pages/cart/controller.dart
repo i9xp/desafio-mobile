@@ -69,7 +69,8 @@ class CartController extends GetxController {
     try {
       Database db = await DBProvider.db.database;
       await db.delete("order_item");
-      Get.offAndToNamed("/order_placed");
+      Get.offAllNamed("/");
+      Get.toNamed("/order_placed");
     } catch (error) {
       Get.snackbar(
         "An error happen",
