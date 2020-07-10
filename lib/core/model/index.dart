@@ -38,7 +38,7 @@ abstract class Model<T extends Model<T>>{
       where: where.join(" AND "),
       whereArgs: whereArgs,
     );
-    return parser(record.first);
+    return record.isEmpty ? null : parser(record.first);
   }
 
   Future<T> _upsert(dynamic db) async {

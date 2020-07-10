@@ -2,10 +2,13 @@ import 'package:carousel_slider/carousel_controller.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get/state_manager.dart';
+import 'package:i9xp_commerce/database/index.dart';
 import 'package:i9xp_commerce/enums/product_details_section.enum.dart';
+import 'package:i9xp_commerce/models/order_item.model.dart';
 import 'package:i9xp_commerce/models/product.model.dart';
 import 'package:i9xp_commerce/services/api.dart';
 import 'package:i9xp_commerce/utils/api_response.dart';
+import 'package:sqflite/sqflite.dart';
 
 class ProductDetailController extends GetxController {
   final String categoryId = Get.parameters['category_id'];
@@ -19,13 +22,16 @@ class ProductDetailController extends GetxController {
   setOffline(bool value) => offline.value = value;
 
   RxString selectedDetailSection = RxString(ProductDetailSectionEnum.DETAILS);
-  setSelectedDetailtSection(String value) =>
-      selectedDetailSection.value = value;
+  setSelectedDetailtSection(String value) => selectedDetailSection.value = value;
 
   RxInt selectedImage = RxInt(0);
   setSelectedImage(int value) => this.selectedImage.value = value;
-
+  
   Rx<ProductModel> product = Rx<ProductModel>();
+
+  bool get showContent {
+    return loading.value == false && offline.value == false && product.value != null;
+  }
 
   ProductDetailController() {
     fetch();
@@ -55,8 +61,26 @@ class ProductDetailController extends GetxController {
     }
   }
 
-  bool get showContent {
-    return loading.value == false && offline.value == false && product.value != null;
+  addToCart() async {
+    Database db = await DBProvider.db.database;
+    OrderItemModel orderItem = OrderItemModel(
+      productId: this.product.value.id.value,
+      quantity: 1,
+      price: this.product.value.price.value,
+      name: this.product.value.name.value,
+      sku: this.product.value.skuDescription.value,
+      imageUrl: this.product.value.imageUrl.value,
+    );
+    OrderItemModel existentOrderItem = await orderItem.findDb(db, args: { "product_id": this.product.value.id.value});
+    if(existentOrderItem == null){
+      await orderItem.createDb(db);
+    }else{
+      existentOrderItem.setQuantity(existentOrderItem.quantity.value + 1);
+      await orderItem.updateDb(db);
+    }
+    Get.offAllNamed("/");
   }
+
+  
 
 }

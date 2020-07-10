@@ -4,7 +4,7 @@ class CreateOrderItem extends Migration{
   
   @override
   int version() {
-    return 1;
+    return 2;
   }
   
   @override
@@ -21,7 +21,9 @@ class CreateOrderItem extends Migration{
       "price REAL,"    
       "name VARCHAR(60) NOT NULL," 
       "sku VARCHAR(60) NOT NULL," 
-      "image_url VARCHAR(120) NOT NULL"       
+      "image_url VARCHAR(120) NOT NULL,"       
+      "created_at DATETIME NOT NULL,"
+      "updated_at DATETIME NOT NULL"
     ")";
   } 
 

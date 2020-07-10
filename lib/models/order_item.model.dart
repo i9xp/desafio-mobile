@@ -13,6 +13,8 @@ class OrderItemModel extends Model<OrderItemModel> {
     String name,
     String sku,
     String imageUrl,
+    DateTime createdAt,
+    DateTime updatedAt,
   }) {
     this.setId(id);
     this.setProductId(productId);
@@ -21,6 +23,8 @@ class OrderItemModel extends Model<OrderItemModel> {
     this.setName(name);
     this.setSku(sku);
     this.setImageUrl(imageUrl);
+    this.setCreatedAt(createdAt);
+    this.setUpdatedAt(updatedAt);
   }
 
   RxInt productId = RxInt(null);
@@ -40,6 +44,12 @@ class OrderItemModel extends Model<OrderItemModel> {
 
   RxString imageUrl = RxString(null);
   setImageUrl(String value) => imageUrl.value = value;
+  
+  Rx<DateTime> createdAt = Rx<DateTime>(null);
+  setCreatedAt(DateTime createdAt) => this.createdAt.value = createdAt;
+
+  Rx<DateTime> updatedAt = Rx<DateTime>(null);
+  setUpdatedAt(DateTime updatedAt) => this.updatedAt.value = updatedAt;
 
     @override
   OrderItemModel parser(Map<String, dynamic> body) {
@@ -52,6 +62,8 @@ class OrderItemModel extends Model<OrderItemModel> {
       name: body.containsKey("name") ? body['name'] : null,
       sku: body.containsKey("sku") ? body['sku'] : null,
       imageUrl: body.containsKey("image_url") ? body['image_url'] : null,
+      createdAt: body.containsKey("created_at") ? DateTime.parse(body["created_at"] as String) : null,
+      updatedAt: body.containsKey("updated_at") ? DateTime.parse(body["updated_at"] as String) : null,
     );
   }
 
@@ -65,6 +77,8 @@ class OrderItemModel extends Model<OrderItemModel> {
       'name': name.value ?? null,
       'sku': sku.value ?? null,
       'image_url': imageUrl.value ?? null,
+      "created_at": createdAt.value ?? null,
+      "updated_at": updatedAt.value ?? null,
     };
   }
 
