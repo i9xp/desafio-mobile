@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 class LatestWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var _width = MediaQuery.of(context).size.width;
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,

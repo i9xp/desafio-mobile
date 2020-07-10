@@ -20,20 +20,18 @@ class _HomeScreenState extends State<HomeScreen> {
     ),
     Container(
       color: Colors.amber,
-    )
+    ),
   ];
 
   @override
   Widget build(BuildContext context) {
     Widget bottomNavigation() {
       return BottomNavigationBar(
-        showSelectedLabels: true,
         showUnselectedLabels: true,
         backgroundColor: Color(0xff12912),
         onTap: (int index) {
           setState(() {
             _selectedPage = index;
-            print(_selectedPage);
           });
         },
         currentIndex: _selectedPage,

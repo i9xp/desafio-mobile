@@ -10,7 +10,7 @@ class CartScreen extends StatelessWidget {
       backgroundColor: Color(0xff515C6F),
       body: Stack(
         children: <Widget>[
-          Positioned(top: 25, right: 20, child: AppBarCustomCart()),
+          Positioned(top: 15, right: 20, child: AppBarCustomCart()),
           Positioned(
             child: CustomCartList(),
           ),

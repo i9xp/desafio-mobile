@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
 
 class CustomCartList extends StatelessWidget {
+  final List<String> image = [
+    'assets/img/ankle.png',
+    'assets/img/backpack.png',
+    'assets/img/redscorf.png',
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Container(
-          margin: EdgeInsets.only(left: 30, top: 60),
+          margin: EdgeInsets.only(left: 20, top: 50),
           child: Text(
             'Cart',
             style: TextStyle(
@@ -23,7 +29,6 @@ class CustomCartList extends StatelessWidget {
                 return Container(
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.max,
                     children: <Widget>[
                       Container(
                         margin: EdgeInsets.all(10.0),
@@ -31,7 +36,7 @@ class CustomCartList extends StatelessWidget {
                             color: Colors.white,
                             shape: BoxShape.circle,
                             image: DecorationImage(
-                                image: AssetImage('assets/img/backpack.png'))),
+                                image: AssetImage(image[index]))),
                         width: 100,
                         height: 100,
                       ),
