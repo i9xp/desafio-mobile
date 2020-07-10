@@ -36,7 +36,7 @@ class AppBarCustom extends StatelessWidget {
                   Icons.add_alert,
                   color: Colors.white,
                 ),
-              ),
+              )
             ],
           )
         ],

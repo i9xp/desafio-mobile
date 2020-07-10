@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class CategoriesWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var _width = MediaQuery.of(context).size.width;
     final List<String> title = ['Apparel', 'Beauty', 'Shoes', 'See All'];
-    final List<String> svgs = [
-      'assets/img/apparel.svg',
-      'assets/img/beauty.svg',
-      'assets/img/seeall.svg',
-      'assets/img/shoes.svg'
+    final List<String> image = [
+      'assets/img/apparel.png',
+      'assets/img/beauty.png',
+      'assets/img/shoes.png',
+      'assets/img/seeall.png',
     ];
-
     return Container(
       width: _width,
       child: Column(
@@ -45,7 +43,7 @@ class CategoriesWidget extends StatelessWidget {
                             margin: EdgeInsets.all(10.0),
                             width: 85,
                             height: 85,
-                            child: SvgPicture.asset(svgs[1]),
+                            child: Image.asset(image[index]),
                             decoration: BoxDecoration(
                               color: Colors.white,
                               shape: BoxShape.circle,

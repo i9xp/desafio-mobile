@@ -20,11 +20,17 @@ class InfoProductWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text(title1),
+              Text(
+                title1,
+                style: TextStyle(color: Colors.white),
+              ),
               SizedBox(
                 height: 5,
               ),
-              Text(subtitle1)
+              Text(
+                subtitle1,
+                style: TextStyle(color: Colors.white),
+              )
             ],
           ),
         ),
@@ -33,9 +39,15 @@ class InfoProductWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text(title2),
+              Text(
+                title2,
+                style: TextStyle(color: Colors.white),
+              ),
               SizedBox(height: 5),
-              Text(subtitle2)
+              Text(
+                subtitle2,
+                style: TextStyle(color: Colors.white),
+              )
             ],
           ),
         ),

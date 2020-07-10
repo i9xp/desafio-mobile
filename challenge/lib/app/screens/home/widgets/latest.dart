@@ -18,9 +18,23 @@ class LatestWidget extends StatelessWidget {
           ),
         ),
         Expanded(
-          child: Image.asset(
-            'assets/img/banner.png',
-          ),
+          flex: 6,
+          child: ListView.builder(
+              physics: BouncingScrollPhysics(),
+              scrollDirection: Axis.horizontal,
+              itemCount: 2,
+              itemBuilder: (context, index) {
+                return GestureDetector(
+                  onTap: () {},
+                  child: Container(
+                      margin: EdgeInsets.only(left: 25),
+                      child: Image.asset(
+                        'assets/img/banner.png',
+                        width: 300,
+                        height: 200,
+                      )),
+                );
+              }),
         ),
       ],
     );

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
-Widget buttonRounded(String title, Color colorTitle, Color color, String icon) {
+Widget buttonRounded(String title, Color colorTitle, Color color, String icon,
+    [Function onTap]) {
   return GestureDetector(
+    onTap: onTap,
     child: Container(
       margin: EdgeInsets.all(15.0),
       width: 165,

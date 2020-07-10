@@ -46,7 +46,7 @@ flutter:
     - assets/img/icon_order.png
     - assets/img/icon_arrow.png
     - assets/img/icon_up.png
-    - assets/img/apparel.svg
-    - assets/img/beauty.svg
-    - assets/img/seeall.svg
-    - assets/img/shoes.svg
+    - assets/img/seeall.png
+    - assets/img/shoes.png
+    - assets/img/apparel.png
+    - assets/img/beauty.png

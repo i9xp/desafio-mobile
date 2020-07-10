@@ -12,6 +12,7 @@ class ProductScreen extends StatefulWidget {
 class _ProductScreenState extends State<ProductScreen> {
   @override
   Widget build(BuildContext context) {
+    BuildContext context;
     return SafeArea(
       child: Scaffold(
         backgroundColor: Color(0xff515C6F),

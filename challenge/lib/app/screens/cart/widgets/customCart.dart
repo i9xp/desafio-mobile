@@ -28,9 +28,10 @@ class CustomCartList extends StatelessWidget {
                       Container(
                         margin: EdgeInsets.all(10.0),
                         decoration: BoxDecoration(
-                          color: Colors.white,
-                          shape: BoxShape.circle,
-                        ),
+                            color: Colors.white,
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                                image: AssetImage('assets/img/backpack.png'))),
                         width: 100,
                         height: 100,
                       ),

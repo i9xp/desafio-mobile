@@ -1,3 +1,4 @@
+import 'package:badges/badges.dart';
 import 'package:challenge/app/screens/cart/cart.dart';
 import 'package:flutter/material.dart';
 
@@ -22,22 +23,26 @@ class AppBarCustomProduct extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               Text(
-                'Título',
+                'Foux Sued Ankle Boots',
+                style:
+                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
               ),
-              Text('Título two'),
+              Text(
+                '\$ 49.99',
+                style:
+                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              ),
             ],
           ),
-          IconButton(
-            icon: Icon(Icons.shopping_cart),
-            color: Colors.white,
-            onPressed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => CartScreen(),
-                  ));
-            },
-          ),
+          Badge(
+            badgeContent: Text('7'),
+            badgeColor: Colors.yellow,
+            position: BadgePosition.bottomLeft(),
+            child: Icon(
+              Icons.shopping_cart,
+              color: Colors.white,
+            ),
+          )
         ],
       ),
     );

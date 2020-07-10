@@ -10,13 +10,13 @@ class ContentHome extends StatelessWidget {
     var _width = MediaQuery.of(context).size.width;
     var _height = MediaQuery.of(context).size.height;
     return Container(
+      height: _height,
+      width: _width,
       decoration: BoxDecoration(
           gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               colors: [Color(0xff2B3340), Color(0xff515C6F)])),
-      width: _width,
-      height: _height,
       child: Stack(
         children: <Widget>[
           Positioned(

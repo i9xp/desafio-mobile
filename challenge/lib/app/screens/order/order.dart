@@ -1,9 +1,17 @@
+import 'package:challenge/app/screens/home/home.dart';
+
 import 'package:challenge/app/shared/widgets/buttonRoundedCustom.dart';
 import 'package:flutter/material.dart';
 
 class OrderScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    void onTapped() {
+      Navigator.pop(context);
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => HomeScreen()));
+    }
+
     return Scaffold(
       backgroundColor: Color(0xff515C6F),
       body: Container(
@@ -41,7 +49,7 @@ class OrderScreen extends StatelessWidget {
               height: 20,
             ),
             buttonRounded('MY ORDERS', Color(0xff515C6F), Color(0xffF9C705),
-                'assets/img/icon_arrow.png')
+                'assets/img/icon_arrow.png', onTapped)
           ],
         ),
       ),
