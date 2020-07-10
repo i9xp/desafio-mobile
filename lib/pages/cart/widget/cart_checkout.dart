@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:get/get.dart';
 import 'package:i9xp_commerce/commons/i9xp_button.dart';
+import 'package:i9xp_commerce/pages/cart/controller.dart';
 import 'package:i9xp_commerce/utils/app_colors.dart';
 
 import 'cart_checkout_total.dart';
 
 class CartCheckout extends StatelessWidget {
-
+  final CartController controller = Get.find();
   final double total;
   CartCheckout(this.total);
 
@@ -31,7 +32,7 @@ class CartCheckout extends StatelessWidget {
           SizedBox(width: 50),
           Expanded(
             child: I9XPButton(
-              () => Get.offAndToNamed("/order_placed"),
+              controller.placeOrder,
               label: "CHECKOUT",
               icon: Feather.chevron_right,
               iconColor: AppColors.yellow,
