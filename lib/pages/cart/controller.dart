@@ -16,6 +16,10 @@ class CartController extends GetxController{
     return this.items.value.fold<double>(0, (previousValue, item) => previousValue + item.subtotal);
   }
 
+  bool get showCheckout {
+    return this.loading.value == false && this.items.value.length > 0;
+  }
+
   CartController(){
     listItems();
   }
