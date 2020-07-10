@@ -81,6 +81,12 @@ flutter:
     - assets/img/home/shoes.png
     - assets/img/home/women_shoes.png
 
+    - assets/img/product/cart.png
+    - assets/img/product/icon_right.png
+    - assets/img/product/icon_up.png
+    - assets/img/product/shoes.png
+    - assets/img/product/star.png
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
