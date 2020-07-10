@@ -69,7 +69,7 @@ __* if for some reason you are unable to install the app on your phone, I am mak
 
 ---
 
-## Congradulations, You're done._
+## Congradulations, You're done.
 
 I hope this documentation has been made clear and help you to build the application and see it in your hands.
 
