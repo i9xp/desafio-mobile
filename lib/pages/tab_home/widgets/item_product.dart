@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_icons/flutter_icons.dart';
 import 'package:get/get.dart';
+import 'package:i9xp_commerce/commons/product_image.dart';
 import 'package:i9xp_commerce/models/product.model.dart';
 import 'package:i9xp_commerce/utils/app_colors.dart';
 import 'package:i9xp_commerce/utils/formatters.dart';
@@ -40,15 +42,7 @@ class ItemProduct extends StatelessWidget {
             Container(
               width: width - 20,
               height: width - 20,
-              decoration: BoxDecoration(
-                image: this.product.imageUrl.value != null
-                    ? DecorationImage(
-                        image: CachedNetworkImageProvider(
-                            this.product.imageUrl.value),
-                        fit: BoxFit.contain,
-                      )
-                    : null,
-              ),
+              child: ProductImage(this.product.imageUrl.value),
             ),
             SizedBox(height: 5),
             Text(
