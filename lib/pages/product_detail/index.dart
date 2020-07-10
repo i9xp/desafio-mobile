@@ -17,14 +17,6 @@ import 'controller.dart';
 import 'widgets/product_actions.dart';
 
 class ProductDetail extends StatelessWidget {
-  final Map<String, String> attributes = {
-    "BRAND": "Lily's Ankle Boots",
-    "SKU": "123456789",
-    "CONDITION": "Brand New, With Box",
-    "MATERIAL": "Folx Swed, Velvet",
-    "CATEGORY": "Woman Shoes",
-    "FITTING": "True to Size",
-  };
 
   @override
   Widget build(BuildContext context) {
@@ -121,7 +113,7 @@ class ProductDetail extends StatelessWidget {
                     ),
                   ),
                   SliverSeparator(25),
-                  ProductAttributes(attributes),
+                  ProductAttributes(controller.product?.value?.buildAttributes()),
                 ],
               ),
             ),

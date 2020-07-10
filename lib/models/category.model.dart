@@ -28,11 +28,12 @@ class CategoryModel extends Model<CategoryModel> {
 
   @override
   CategoryModel parser(Map<String, dynamic> body) {
+    if(body == null) return null;
     return CategoryModel(
-      id: int.parse(body['id'].toString()),
-      name: body['name'],
-      imageUrl: body['image_url'],
-      createdAt: DateTime.parse(body["created_at"] as String),
+      id: body.containsKey("id") ? int.parse(body['id'].toString()) : null,
+      name: body.containsKey("name") ? body['name'] : null,
+      imageUrl: body.containsKey("image_url") ? body['image_url'] : null,
+      createdAt: body.containsKey("created_at") ? DateTime.parse((body["created_at"] ?? "") as String) : null,
     );
   }
 

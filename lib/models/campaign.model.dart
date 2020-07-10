@@ -34,23 +34,24 @@ class CampaignModel extends Model<CampaignModel> {
 
   @override
   CampaignModel parser(Map<String, dynamic> body) {
+    if(body == null) return null;
     return CampaignModel(
-      id: int.parse(body['id'].toString()),
-      cta: body['cta'],
-      title: body['title'],
-      titleColorHex: body['title_color_hex'],
-      imageUrl: body['image_url'],
+      id: body.containsKey("id") ? int.parse(body['id'].toString()) : null,
+      cta: body.containsKey("cta") ? body['cta' ] : null,
+      title: body.containsKey("title") ? body['title'] : null,
+      titleColorHex: body.containsKey("title_color_hex") ? body['title_color_hex'] : null,
+      imageUrl: body.containsKey("image_url") ? body['image_url'] : null,
     );
   }
 
   @override
   Map<String, dynamic> serializer() {
     return <String, dynamic>{
-      'id': this.id.value,
-      'cta': this.cta.value,
-      'title': this.title.value,
-      'title_color_hex': this.titleColorHex.value,
-      'image_url': this.imageUrl.value,
+      'id': this.id.value ?? null,
+      'cta': this.cta.value ?? null,
+      'title': this.title.value ?? null,
+      'title_color_hex': this.titleColorHex.value ?? null,
+      'image_url': this.imageUrl.value ?? null,
     };
   }
 

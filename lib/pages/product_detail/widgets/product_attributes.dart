@@ -47,7 +47,7 @@ class ProductAttributes extends StatelessWidget {
             ),
           );
         },
-        childCount: attributes.length,
+        childCount: attributes?.length ?? 0,
       ),
     );
   }

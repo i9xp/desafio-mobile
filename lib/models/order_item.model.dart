@@ -23,32 +23,6 @@ class OrderItemModel extends Model<OrderItemModel> {
     this.setImageUrl(imageUrl);
   }
 
-  @override
-  OrderItemModel parser(Map<String, dynamic> body) {
-    return OrderItemModel(
-      id: int.parse(body['id'].toString()),
-      productId: int.parse(body['product_id'].toString()),
-      quantity: int.parse(body['quantity'].toString()),
-      price: double.parse(body['price'].toString()),
-      name: body['name'],
-      sku: body['sku'],
-      imageUrl: body['image_url'],
-    );
-  }
-
-  @override
-  Map<String, dynamic> serializer() {
-    return <String, dynamic>{
-      'id': id.value,
-      'product_id': productId.value,
-      'quantity': quantity.value,
-      'price': price.value,
-      'name': name.value,
-      'sku': sku.value,
-      'image_url': imageUrl.value,
-    };
-  }
-
   RxInt productId = RxInt(null);
   setProductId(int value) => productId.value = value;
 
@@ -66,4 +40,32 @@ class OrderItemModel extends Model<OrderItemModel> {
 
   RxString imageUrl = RxString(null);
   setImageUrl(String value) => imageUrl.value = value;
+
+    @override
+  OrderItemModel parser(Map<String, dynamic> body) {
+    if(body == null) return null;
+    return OrderItemModel(
+      id: body.containsKey("id") ? int.parse(body['id'].toString()) : null,
+      productId: body.containsKey("product_id") ? int.parse(body['product_id'].toString()) : null,
+      quantity: body.containsKey("quantity") ? int.parse(body['quantity'].toString()) : null,
+      price: body.containsKey("price") ? double.parse(body['price'].toString()) : null,
+      name: body.containsKey("name") ? body['name'] : null,
+      sku: body.containsKey("sku") ? body['sku'] : null,
+      imageUrl: body.containsKey("image_url") ? body['image_url'] : null,
+    );
+  }
+
+  @override
+  Map<String, dynamic> serializer() {
+    return <String, dynamic>{
+      'id': id.value ?? null,
+      'product_id': productId.value ?? null,
+      'quantity': quantity.value ?? null,
+      'price': price.value ?? null,
+      'name': name.value ?? null,
+      'sku': sku.value ?? null,
+      'image_url': imageUrl.value ?? null,
+    };
+  }
+
 }
