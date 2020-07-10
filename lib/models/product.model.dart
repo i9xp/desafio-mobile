@@ -11,6 +11,7 @@ class ProductModel extends Model<ProductModel> {
     int categoryId,
     String name,
     double price,
+    double rate,
     String imageUrl,
     String sku,
     String skuDescription,
@@ -24,6 +25,7 @@ class ProductModel extends Model<ProductModel> {
     this.setCategoryId(categoryId);
     this.setName(name);
     this.setPrice(price);
+    this.setRate(rate);
     this.setImageUrl(imageUrl);
     this.setSku(sku);
     this.setSkuDescription(skuDescription);
@@ -42,6 +44,9 @@ class ProductModel extends Model<ProductModel> {
 
   RxDouble price = RxDouble(null);
   setPrice(double value) => this.price.value = value;
+
+  RxDouble rate = RxDouble(null);
+  setRate(double value) => this.rate.value = value;
 
   RxString imageUrl = RxString(null);
   setImageUrl(String value) => this.imageUrl.value = value;
@@ -75,6 +80,7 @@ class ProductModel extends Model<ProductModel> {
       categoryId: int.parse(body['category_id'].toString()),
       name: body['name'],
       price: double.parse(body['price'].toString()),
+      rate: double.parse(body['rate'].toString()),
       imageUrl: body['image_url'],
       sku: body['sku'].toString(),
       skuDescription: body['sku_description'].toString(),
@@ -93,6 +99,7 @@ class ProductModel extends Model<ProductModel> {
       'category_id': this.categoryId.value ?? null,
       'name': this.name.value ?? null,
       'price': this.price.value ?? null,
+      'rate': this.rate.value ?? null,
       'image_url': this.imageUrl.value ?? null,
       'sku': this.sku.value ?? null,
       'sku_description': this.skuDescription.value ?? null,

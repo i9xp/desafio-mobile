@@ -90,7 +90,7 @@ class ProductDetail extends StatelessWidget {
                               ),
                             ),
                             SizedBox(width: 15),
-                            Rate(4.9)
+                            Rate(controller.product.value?.rate?.value??0)
                           ],
                         ),
                         SizedBox(height: 20),
