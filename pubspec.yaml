@@ -29,6 +29,7 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  smooth_page_indicator: ^0.1.5
   flutter_screenutil: ^2.2.0
   google_fonts: ^1.1.0
   dio: ^3.0.9
