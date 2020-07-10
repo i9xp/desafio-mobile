@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:get/get.dart';
 import 'package:i9xp_commerce/models/order_item.model.dart';
-import 'package:i9xp_commerce/pages/cart/controller.dart';
-import 'package:i9xp_commerce/pages/cart/widget/list_item_button.dart';
-import 'package:i9xp_commerce/pages/cart/widget/list_item_quantity.dart';
 import 'package:i9xp_commerce/utils/app_colors.dart';
 import 'package:i9xp_commerce/utils/formatters.dart';
+
+import '../controller.dart';
+import 'list_item_button.dart';
+import 'list_item_quantity.dart';
 
 class CartListItemInfo extends StatelessWidget {
   final CartController controller = Get.find();

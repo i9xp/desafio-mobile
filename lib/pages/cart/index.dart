@@ -1,49 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_icons/flutter_icons.dart';
 import 'package:get/get.dart';
-import 'package:i9xp_commerce/commons/stage/index.dart';
-import 'package:i9xp_commerce/commons/stage/widgets/data_empty.dart';
-import 'package:i9xp_commerce/commons/title_section.dart';
-import 'package:i9xp_commerce/pages/cart/widget/cart_checkout.dart';
-import 'package:i9xp_commerce/pages/cart/widget/list.dart';
+import 'package:i9xp_commerce/commons/action_notification.dart';
+import 'package:i9xp_commerce/pages/cart_content/index.dart';
 import 'package:i9xp_commerce/utils/app_colors.dart';
-
-import 'controller.dart';
 
 class Cart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<CartController>(
-      init: CartController(),
-      builder: (controller) => Scaffold(
-        backgroundColor: AppColors.marineLight,
-        body: Obx(
-          () => Stage(
-            isLoading: controller.loading.value,
-            isEmpty: controller.items.value.length == 0,
-            empty: DataEmpty(
-              description:
-                  "Go to Home page and add a new product to your cart.",
+    return Scaffold(
+      backgroundColor: AppColors.marineLight,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(45.0),
+        child: AppBar(
+          elevation: 0,
+          automaticallyImplyLeading: false,
+          leading: IconButton(
+            icon: Icon(
+              Feather.chevron_left,
+              size: 21,
+              color: AppColors.yellow,
             ),
-            content: CustomScrollView(
-              slivers: <Widget>[
-                SliverPadding(
-                  padding: EdgeInsets.symmetric(vertical: 25),
-                  sliver: SliverToBoxAdapter(
-                    child: TitleSection("Cart"),
-                  ),
-                ),
-                Obx(() => CartList(controller.items.value)),
-              ],
-            ),
+            onPressed: () => Get.back(),
           ),
-        ),
-        bottomNavigationBar: Obx(
-          () => Visibility(
-            visible: controller.showCheckout,
-            child: CartCheckout(controller.total),
-          ),
+          backgroundColor: AppColors.marineLight,
+          actions: <Widget>[
+            ActionNotification(Feather.message_circle, 5),
+            ActionNotification(Feather.bell, 10),
+          ],
         ),
       ),
+      body: CartContent(),
     );
   }
 }

@@ -91,6 +91,7 @@ class ProductDetailController extends GetxController {
       await existentOrderItem.updateDb(db);
     }
     Get.offAllNamed("/");
+    Get.toNamed("/cart");
   }
 
   
