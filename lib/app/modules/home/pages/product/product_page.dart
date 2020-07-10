@@ -5,10 +5,15 @@ import 'package:i9xp/app/modules/home/components/app_action_widget.dart';
 import 'package:i9xp/app/modules/home/models/action_type.dart';
 import 'package:i9xp/app/modules/home/models/product_model.dart';
 import 'package:i9xp/app/modules/home/pages/product/components/price_score_widget.dart';
+import 'package:i9xp/app/modules/home/pages/product/components/product_page_view.dart';
 import 'package:i9xp/app/modules/home/stores/cart_store.dart';
+import 'package:i9xp/app/shared/constants/assets.dart';
 import 'package:i9xp/app/shared/constants/colors.dart';
 import 'package:i9xp/app/shared/constants/styles.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'product_controller.dart';
+
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProductPage extends StatefulWidget {
   final ProductModel productModel;
@@ -24,6 +29,7 @@ class ProductPage extends StatefulWidget {
 class _ProductPageState extends ModularState<ProductPage, ProductController> {
   //use 'controller' variable to access controller
   final cartStore = Modular.get<CartStore>();
+  final imageViewController = PageController(viewportFraction: 0.8);
 
   @override
   Widget build(BuildContext context) {
@@ -46,8 +52,31 @@ class _ProductPageState extends ModularState<ProductPage, ProductController> {
           )
         ],
       ),
-      body: Column(
-        children: <Widget>[],
+      body: Center(
+        child: Column(
+          children: <Widget>[
+            SizedBox(height: 15.h),
+            SmoothPageIndicator(
+              controller: imageViewController,
+              count: 2,
+              effect: SlideEffect(
+                dotColor: AppColors.INDICATOR_COLOR,
+                activeDotColor: AppColors.SELECTED_INDICATOR_COLOR,
+                dotWidth: 8.0,
+                dotHeight: 8.0,
+              ),
+            ),
+            SizedBox(height: 25.h),
+            ProductPageView(
+              imageViewController: imageViewController,
+              height: 301.h,
+              children: [
+                Image.asset(AppAssets.SHOES_WITH_SHADOW),
+                Image.asset(AppAssets.WOMEN_SHOES),
+              ],
+            ),
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () =>

@@ -27,4 +27,10 @@ class AppColors {
 
   // ignore: non_constant_identifier_names
   static final PRODUCT_PAGE_BACKGROUND = Color(0xff515C6F);
+
+  // ignore: non_constant_identifier_names
+  static final INDICATOR_COLOR = Color(0xff727C8E);
+
+  // ignore: non_constant_identifier_names
+  static final SELECTED_INDICATOR_COLOR = Colors.white;
 }
