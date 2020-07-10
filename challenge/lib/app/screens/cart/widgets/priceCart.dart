@@ -1,4 +1,4 @@
-import 'package:challenge/app/shared/buttonRoundedCustom.dart';
+import 'package:challenge/app/shared/widgets/buttonRoundedCustom.dart';
 import 'package:flutter/material.dart';
 
 class PriceCart extends StatelessWidget {
