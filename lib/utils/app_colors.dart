@@ -43,7 +43,7 @@ class AppColors {
         // a..f
         val += (hexDigit - 87) * (1 << (4 * (len - 1 - i)));
       } else {
-        throw new FormatException("An error occurred when converting a color");
+        val = 0xFFFFFFFF;
       }
     }
     return val;

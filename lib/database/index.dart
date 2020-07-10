@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:i9xp_commerce/core/database/migrations.dart';
 import 'package:sqflite/sqflite.dart';
 import '../env.dart';
+import 'migrations/001_create_order_item.dart';
 
 class DBProvider {
   DBProvider._();

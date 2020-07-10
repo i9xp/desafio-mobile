@@ -48,8 +48,11 @@ class ItemProduct extends StatelessWidget {
             SizedBox(height: 5),
             Text(
               this.product.name.value,
+              overflow: TextOverflow.ellipsis,
+              maxLines: 2,
               style: TextStyle(
                 fontSize: 12,
+                height: 1,
                 color: AppColors.marineDark,
                 fontWeight: FontWeight.w300,
               ),
