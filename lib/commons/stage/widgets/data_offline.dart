@@ -5,14 +5,12 @@ import 'package:i9xp_commerce/utils/app_colors.dart';
 
 class DataOffline extends StatelessWidget {
   final Function onReset;
-  final String illustration;
   final String title;
   final String message;
 
   DataOffline({
     this.onReset,
-    this.illustration,
-    this.title = "Without connection with internet",
+    this.title = "Without connection",
     this.message = "Please, check your internet connection and try again.",
   });
 
@@ -26,23 +24,25 @@ class DataOffline extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Visibility(
-              visible: this.illustration != null,
-              child: Padding(
-                padding: EdgeInsets.only(bottom: 25),
-                child: this.illustration != null
-                    ? Image.asset(
-                        this.illustration,
-                        height: 128,
-                      )
-                    : SizedBox.shrink(),
+            Container(
+              width: 100,
+              height: 100,
+              decoration: BoxDecoration(
+                color: AppColors.white,
+                borderRadius: BorderRadius.circular(100),
+              ),
+              child: Icon(
+                Feather.wifi_off,
+                size: 62,
+                color: AppColors.yellow,
               ),
             ),
+            SizedBox(height: 37),
             Text(
               this.title,
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 16,
+                fontSize: 30,
                 color: AppColors.white,
                 fontWeight: FontWeight.w500,
               ),
@@ -52,7 +52,8 @@ class DataOffline extends StatelessWidget {
               this.message,
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 14,
+                fontSize: 15,
+                height: 1.4,
                 color: AppColors.white,
                 fontWeight: FontWeight.w400,
               ),
@@ -60,11 +61,17 @@ class DataOffline extends StatelessWidget {
             Visibility(
               visible: this.onReset != null,
               child: Padding(
-                padding: EdgeInsets.only(top: 15),
-                child: I9XPButton(
-                  this.onReset,
-                  label: "TRY AGAIN",
-                  icon: Feather.refresh_ccw,
+                padding: EdgeInsets.only(top: 50),
+                child: SizedBox(
+                  width: 160,
+                  child: I9XPButton(
+                    this.onReset,
+                    label: "TRY AGAIN",
+                    icon: Feather.chevron_right,
+                    iconColor: AppColors.yellow,
+                    iconBackgroundColor: AppColors.white,
+                    buttonColor: AppColors.yellow,
+                  ),
                 ),
               ),
             ),

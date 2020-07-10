@@ -12,6 +12,7 @@ class TabPanel extends StatelessWidget {
     return GetBuilder<TabPanelController>(
       init: TabPanelController(),
       builder: (controller) => Scaffold(
+        backgroundColor: AppColors.marine,
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(45.0),
           child: AppBar(
@@ -24,10 +25,7 @@ class TabPanel extends StatelessWidget {
           ),
         ),
         body: Obx(
-          () => Container(
-            color: AppColors.white,
-            child: controller.selectedPage,
-          ),
+          () => controller.selectedPage,
         ),
         bottomNavigationBar: Obx(
           () => NavBar(
