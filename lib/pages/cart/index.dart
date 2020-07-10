@@ -22,10 +22,10 @@ class Cart extends StatelessWidget {
                 child: TitleSection("Cart"),
               ),
             ),
-            CartList(),
+            Obx(() => CartList(controller.items.value)),
           ],
         ),
-        bottomNavigationBar: CartCheckout(),
+        bottomNavigationBar: Obx(() => CartCheckout(controller.total)),
       ),
     );
   }

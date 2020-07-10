@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:get/get.dart';
+import 'package:i9xp_commerce/models/order_item.model.dart';
+import 'package:i9xp_commerce/pages/cart/controller.dart';
 import 'package:i9xp_commerce/pages/cart/widget/list_item_button.dart';
 import 'package:i9xp_commerce/pages/cart/widget/list_item_quantity.dart';
 import 'package:i9xp_commerce/utils/app_colors.dart';
 import 'package:i9xp_commerce/utils/formatters.dart';
 
 class CartListItemInfo extends StatelessWidget {
-  final double subtotal;
-  CartListItemInfo(this.subtotal);
+  final CartController controller = Get.find();
+
+  final OrderItemModel orderItem;
+  CartListItemInfo(this.orderItem);
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +32,7 @@ class CartListItemInfo extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              "Faux Sued Ankle Boots",
+              this.orderItem.name.value,
               style: TextStyle(
                 fontSize: 15,
                 color: AppColors.white,
@@ -35,7 +40,7 @@ class CartListItemInfo extends StatelessWidget {
               ),
             ),
             Text(
-              "7, Hot Pink",
+              this.orderItem.sku.value,
               style: TextStyle(
                 fontSize: 15,
                 color: AppColors.white,
@@ -43,22 +48,41 @@ class CartListItemInfo extends StatelessWidget {
               ),
             ),
             SizedBox(height: 10),
-            Text(
-              Formatters.brl(this.subtotal).symbolOnLeft,
-              style: TextStyle(
-                fontSize: 15,
-                color: AppColors.yellow,
-                fontWeight: FontWeight.w500,
+            Obx(
+              () => Text(
+                Formatters.brl(this.orderItem.subtotal).symbolOnLeft,
+                style: TextStyle(
+                  fontSize: 15,
+                  color: AppColors.yellow,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
             ),
             SizedBox(height: 5),
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                CartListItemButton(Feather.minus, () => {}),
-                CartListItemQuantity(1),
-                CartListItemButton(Feather.plus, () => {})
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    CartListItemButton(
+                      Feather.minus,
+                      () => controller.decrementQuantity(this.orderItem),
+                    ),
+                    Obx(() =>
+                        CartListItemQuantity(this.orderItem.quantity.value)),
+                    CartListItemButton(
+                      Feather.plus,
+                      () => controller.incrementQuantity(this.orderItem),
+                    ),
+                  ],
+                ),
+                CartListItemButton(
+                  Feather.trash_2,
+                  () => controller.removeItem(this.orderItem),
+                ),
               ],
             )
           ],

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'package:get/get.dart';
 import 'package:i9xp_commerce/commons/i9xp_button.dart';
-import 'package:i9xp_commerce/pages/cart/widget/cart_checkout_subtotal.dart';
 import 'package:i9xp_commerce/utils/app_colors.dart';
 
-import '../controller.dart';
+import 'cart_checkout_total.dart';
 
 class CartCheckout extends StatelessWidget {
-  final CartController controller = Get.find();
+
+  final double total;
+  CartCheckout(this.total);
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class CartCheckout extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          CartCheckoutSubtotal(),
+          CartCheckoutTotal(total),
           SizedBox(width: 50),
           Expanded(
             child: I9XPButton(

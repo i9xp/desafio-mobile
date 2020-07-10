@@ -51,7 +51,11 @@ class OrderItemModel extends Model<OrderItemModel> {
   Rx<DateTime> updatedAt = Rx<DateTime>(null);
   setUpdatedAt(DateTime updatedAt) => this.updatedAt.value = updatedAt;
 
-    @override
+  double get subtotal {
+    return this.price.value * this.quantity.value;
+  }
+
+  @override
   OrderItemModel parser(Map<String, dynamic> body) {
     if(body == null) return null;
     return OrderItemModel(

@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:i9xp_commerce/utils/app_colors.dart';
 import 'package:i9xp_commerce/utils/formatters.dart';
 
-class CartCheckoutSubtotal extends StatelessWidget {
+class CartCheckoutTotal extends StatelessWidget {
+
+  final double total;
+  CartCheckoutTotal(this.total);
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -18,7 +22,7 @@ class CartCheckoutSubtotal extends StatelessWidget {
           ),
         ),
         Text(
-          Formatters.brl(81.57).symbolOnLeft,
+          Formatters.brl(this.total).symbolOnLeft,
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,

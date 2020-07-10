@@ -76,7 +76,7 @@ class ProductDetailController extends GetxController {
       await orderItem.createDb(db);
     }else{
       existentOrderItem.setQuantity(existentOrderItem.quantity.value + 1);
-      await orderItem.updateDb(db);
+      await existentOrderItem.updateDb(db);
     }
     Get.offAllNamed("/");
   }
