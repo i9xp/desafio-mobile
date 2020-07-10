@@ -4,9 +4,7 @@ import 'package:i9xp_commerce/core/model/index.dart';
 class ProductModel extends Model<ProductModel> {
   
   @override
-  String table() {
-    return "products";
-  }
+  String table() =>  "products";
 
   ProductModel({
     int id,

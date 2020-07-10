@@ -1,14 +1,16 @@
 import 'package:get/get.dart';
 import 'package:i9xp_commerce/core/model/index.dart';
 
-class CategoryModel extends Model<CategoryModel>{
-
+class CategoryModel extends Model<CategoryModel> {
   @override
-  String table() {
-    return "categories";
-  }
+  String table() => "categories";
 
-  CategoryModel({int id, String name, String imageUrl, DateTime createdAt}){
+  CategoryModel({
+    int id,
+    String name,
+    String imageUrl,
+    DateTime createdAt,
+  }) {
     this.setId(id);
     this.setName(name);
     this.setImageUrl(imageUrl);
@@ -43,5 +45,4 @@ class CategoryModel extends Model<CategoryModel>{
       "createtd_at": this.createdAt.value,
     };
   }
-
 }

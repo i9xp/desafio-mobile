@@ -4,10 +4,8 @@ import 'package:i9xp_commerce/core/model/index.dart';
 class CampaignModel extends Model<CampaignModel> {
 
   @override
-  String table() {
-    return "campaigns";
-  }
-
+  String table() => "campaigns";
+  
   CampaignModel({
     int id,
     String cta,
