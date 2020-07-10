@@ -42,9 +42,9 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
   ];
 
   final products = <ProductModel>[
-    ProductModel("Ankle Boots", 49.99, AppAssets.WOMEN_SHOES),
-    ProductModel("Backpack", 20.58, AppAssets.BACKPACK),
-    ProductModel("Red Scarf", 11.00, AppAssets.SCARF),
+    ProductModel("a", "Ankle Boots", 49.99, AppAssets.WOMEN_SHOES),
+    ProductModel("b", "Backpack", 20.58, AppAssets.BACKPACK),
+    ProductModel("c", "Red Scarf", 11.00, AppAssets.SCARF),
   ];
 
   final bottomBarItems = <BottomBarItem>[
@@ -59,6 +59,10 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
 
   void _initScreenUtil() {
     ScreenUtil.init(width: 375, height: 667, allowFontScaling: false);
+  }
+
+  void _onProductTap(ProductModel p) {
+    Modular.to.pushNamed("/product", arguments: p);
   }
 
   @override
@@ -86,7 +90,10 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
               SizedBox(height: 27),
               CategoryTitle(title: "Latest"),
               LatestPageView(),
-              ProductList(products: products),
+              ProductList(
+                products: products,
+                onProductTap: _onProductTap,
+              ),
               SizedBox(height: 8),
             ],
           ),

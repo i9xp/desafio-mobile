@@ -1,3 +1,5 @@
+import 'package:i9xp/app/modules/home/pages/product/product_page.dart';
+
 import 'pages/product/product_controller.dart';
 import 'home_controller.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -13,6 +15,10 @@ class HomeModule extends ChildModule {
   @override
   List<Router> get routers => [
         Router(Modular.initialRoute, child: (_, args) => HomePage()),
+        Router(
+          "/product",
+          child: (_, args) => ProductPage(productModel: args.data),
+        ),
       ];
 
   static Inject get to => Inject<HomeModule>.of();
