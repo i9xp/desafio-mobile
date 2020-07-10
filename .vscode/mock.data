@@ -1,0 +1,164 @@
+Utilizado o link
+https://mockapi.io/projects/5f03f61f4c6a2b00164905de
+
+/category:
+
+[
+  {
+    "categoryId": 1,
+    "name": "Apparel",
+    "image": "https://raw.githubusercontent.com/eissami/desafio-mobile/master/assets/images/category01.png"
+  },
+  {
+    "categoryId": 2,
+    "name": "Beauty",
+    "image": "https://raw.githubusercontent.com/eissami/desafio-mobile/master/assets/images/category02.png"
+  },
+  {
+    "categoryId": 3,
+    "name": "Shoes",
+    "image": "https://raw.githubusercontent.com/eissami/desafio-mobile/master/assets/images/category03.png"
+  }
+]
+
+/product
+
+[
+  {
+    "productId": 1,
+    "product": "Ankle Boots",
+    "categoryId": 3,
+    "category": "Women Shoes",
+    "description": "Ooaineao OInsoid coin OIANS. AOIeaaisnf oIA noise aoindaoisn aoindas oiansdoa. O pasodj. iajdoia ja oiajs i",
+    "price": 49.99,
+    "brand": "Lily's Ankle Boots",
+    "sku": "0590458902809",
+    "condition": "Brand New, With Box",
+    "material": "Faux Sued, Velvet",
+    "Fitting": "True to Size",
+    "images": [
+      "https://raw.githubusercontent.com/eissami/desafio-mobile/master/assets/images/product01-large.png",
+      "https://raw.githubusercontent.com/eissami/desafio-mobile/master/assets/images/product01.png",
+      "https://raw.githubusercontent.com/eissami/desafio-mobile/master/assets/images/product01.png"
+    ],
+    "ratingGeneral": 4.9,
+    "reviews": [
+      {
+        "rating": 5,
+        "opinion": "The best product ever!"
+      },
+      {
+        "rating": 4.7,
+        "opinion": "That's Ok."
+      },
+      {
+        "rating": 4.8,
+        "opinion": "Great!"
+      }
+    ]
+  },
+  {
+    "productId": 2,
+    "product": "Backpack",
+    "categoryId": 1,
+    "category": "Apparel",
+    "description": "Ooaineao OInsoid coin OIANS. AOIeaaisnf oIA noise aoindaoisn aoindas oiansdoa. O pasodj. iajdoia ja oiajs i",
+    "price": 20.58,
+    "brand": "Primicia Bags",
+    "sku": "1391023891023",
+    "condition": "Brand New, With Box",
+    "material": "Poliester",
+    "Fitting": "Unique size",
+    "images": [
+      "https://raw.githubusercontent.com/eissami/desafio-mobile/master/assets/images/product02.png",
+      "https://raw.githubusercontent.com/eissami/desafio-mobile/master/assets/images/product02.png"
+    ],
+    "ratingGeneral": 4,
+    "reviews": [
+      {
+        "rating": 5,
+        "opinion": "The best product ever!"
+      },
+      {
+        "rating": 4.7,
+        "opinion": "That's Ok."
+      },
+      {
+        "rating": 4.8,
+        "opinion": "Great!"
+      }
+    ]
+  },
+  {
+    "productId": 3,
+    "product": "Red Cotton Scarf",
+    "categoryId": 1,
+    "category": "Apparel",
+    "description": "Ooaineao OInsoid coin OIANS. AOIeaaisnf oIA noise aoindaoisn aoindas oiansdoa. O pasodj. iajdoia ja oiajs i",
+    "price": 11,
+    "brand": "Bella Scarfs",
+    "sku": "2309463542322",
+    "condition": "Brand New, With Box",
+    "material": "Cotton Red",
+    "Fitting": "Unique size",
+    "images": [
+      "https://raw.githubusercontent.com/eissami/desafio-mobile/master/assets/images/product03.png",
+      "https://raw.githubusercontent.com/eissami/desafio-mobile/master/assets/images/product03.png"
+    ],
+    "ratingGeneral": 4.5,
+    "reviews": [
+      {
+        "rating": 5,
+        "opinion": "The best product ever!"
+      },
+      {
+        "rating": 4.7,
+        "opinion": "That's Ok."
+      },
+      {
+        "rating": 4.8,
+        "opinion": "Great!"
+      }
+    ]
+  }
+]
+
+
+/dashboard
+
+{
+  "campains": [
+    {
+      "campainId": 1,
+      "imageURL": "https://raw.githubusercontent.com/eissami/desafio-mobile/master/assets/images/campain01.png",
+      "destination": ""
+    },
+    {
+      "campainId": 1,
+      "imageURL": "https://raw.githubusercontent.com/eissami/desafio-mobile/master/assets/images/campain02.png",
+      "destination": ""
+    }
+  ],
+  "highlightsProducts": [
+    {
+      "productId": 1,
+      "name": "Ankle Boots",
+      "price": 49.99,
+      "previewURL": "https://raw.githubusercontent.com/eissami/desafio-mobile/master/assets/images/product01.png"
+    },
+    {
+      "productId": 2,
+      "name": "Backpack",
+      "price": 20.58,
+      "previewURL": "https://raw.githubusercontent.com/eissami/desafio-mobile/master/assets/images/product02.png"
+    },
+    {
+      "productId": 3,
+      "name": "Red Scarf",
+      "price": 11,
+      "previewURL": "https://raw.githubusercontent.com/eissami/desafio-mobile/master/assets/images/product03.png"
+    }
+  ]
+}
+
+/order
