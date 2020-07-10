@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:i9xp/app/modules/home/models/bottom_bar_item_model.dart';
 import 'package:i9xp/app/modules/home/models/bottom_bar_item_type.dart';
-import 'package:i9xp/app/shared/constants/assets.dart';
 import 'package:i9xp/app/shared/constants/styles.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
