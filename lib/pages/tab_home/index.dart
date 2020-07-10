@@ -6,7 +6,7 @@ import 'package:i9xp_commerce/utils/app_colors.dart';
 
 import 'controller.dart';
 import 'widgets/list_categories.dart';
-import 'widgets/title_section.dart';
+import '../../commons/title_section.dart';
 
 class TabHome extends StatelessWidget {
   @override
