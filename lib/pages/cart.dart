@@ -5,6 +5,7 @@ import 'package:marketplace/features/cart/bloc/cart_bloc.dart';
 import 'package:marketplace/pages/order.dart';
 import 'package:marketplace/widgets/app_bar.dart';
 import 'package:marketplace/widgets/button_i9xp.dart';
+import 'package:marketplace/widgets/item_cart.dart';
 
 class CartPage extends StatefulWidget {
   final scaffoldKey;
@@ -42,12 +43,50 @@ class _CartState extends State<CartPage> {
                   Container(
                     alignment: Alignment(-1, 0),
                     padding: EdgeInsets.symmetric(horizontal: 25),
+                    margin: EdgeInsets.only(bottom: 15),
                     child: Text(
                       'Cart',
                       style: Theme.of(context).textTheme.title,
                     ),
                   ),
-                  Expanded(child: Container()),
+                  Expanded(
+                      child: Column(
+                    children: <Widget>[
+                      ItemCart(
+                        illustration: Image(
+                          width: MediaQuery.of(context).size.width * 0.3,
+                          image: AssetImage('assets/images/item1.png'),
+                        ),
+                        title: 'Faux Sued Ankle Boots',
+                        subtitle: '7, Hot Pink',
+                        price: 49.99,
+                        quantity: 1,
+                      ),
+                      SizedBox(height: 15),
+                      ItemCart(
+                        illustration: Image(
+                          width: MediaQuery.of(context).size.width * 0.3,
+                          image: AssetImage('assets/images/item2.png'),
+                        ),
+                        title: 'Bottle Green Backpack',
+                        subtitle: 'Medium Green',
+                        price: 20.58,
+                        quantity: 1,
+                      ),
+                      SizedBox(height: 15),
+                      ItemCart(
+                        illustration: Image(
+                          width: MediaQuery.of(context).size.width * 0.3,
+                          image: AssetImage('assets/images/item3.png'),
+                        ),
+                        title: 'Red Cotton Scarf',
+                        subtitle: '2ft, Dark Red',
+                        price: 11.0,
+                        quantity: 1,
+                        lastItem: true,
+                      ),
+                    ],
+                  )),
                   Container(
                     width: MediaQuery.of(context).size.width - 40,
                     child: Divider(

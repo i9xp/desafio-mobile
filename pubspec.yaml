@@ -28,6 +28,7 @@ flutter:
     - assets/images/logo-alpha.png
     - assets/icons/icon-notification.png
     - assets/icons/icon-messages.png
+    - assets/icons/icon-check.png
     - assets/images/button-next.png
     - assets/icons/icon-home.svg
     - assets/icons/icon-search.svg
@@ -35,6 +36,9 @@ flutter:
     - assets/icons/icon-profile.svg
     - assets/icons/icon-more.svg
     - assets/icons/icon-messages.svg
+    - assets/images/item1.png
+    - assets/images/item2.png
+    - assets/images/item3.png
 
   fonts:
     - family: NeusaNextStd
