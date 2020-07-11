@@ -21,7 +21,7 @@ class Price extends StatelessWidget implements PreferredSize {
         Text("\$$price", style: AppStyles.CATEGORY_ITEM),
         SizedBox(width: 5),
         Container(
-          padding: EdgeInsets.symmetric(vertical: 2, horizontal: 4),
+          padding: EdgeInsets.symmetric(vertical: 4, horizontal: 6),
           decoration: BoxDecoration(
             color: AppColors.BAGDE_BACKGROUND,
             borderRadius: BorderRadius.circular(14),
