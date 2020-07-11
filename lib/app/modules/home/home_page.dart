@@ -55,35 +55,80 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
         ],
       ),
       body: Observer(builder: (_) {
-        return controller.bottomBarCurrentIndex != 2
-            ? SingleChildScrollView(
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: pagePadding),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      CategoryTitle(title: "Categories"),
-                      SizedBox(height: 14),
-                      CategoryList(categories: controller.categories),
-                      SizedBox(height: 27),
-                      CategoryTitle(title: "Latest"),
-                      LatestPageView(),
-                      ProductList(
-                        products: controller.products,
-                        onProductTap: _onProductTap,
-                      ),
-                      SizedBox(height: 8),
-                    ],
+        if (controller.bottomBarCurrentIndex == 0) {
+          return SingleChildScrollView(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: pagePadding),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  CategoryTitle(title: "Categories"),
+                  SizedBox(height: 14),
+                  CategoryList(categories: controller.categories),
+                  SizedBox(height: 27),
+                  CategoryTitle(title: "Latest"),
+                  LatestPageView(),
+                  ProductList(
+                    products: controller.products,
+                    onProductTap: _onProductTap,
                   ),
-                ),
-              )
-            : CartPage();
+                  SizedBox(height: 8),
+                ],
+              ),
+            ),
+          );
+        } else if (controller.bottomBarCurrentIndex == 2) {
+          return CartPage();
+        } else {
+          return Center(child: Text("TODO"));
+        }
       }),
       bottomNavigationBar: Observer(builder: (_) {
         return AppBottomNavigationBar(
           currentIndex: controller.bottomBarCurrentIndex,
           onTap: controller.setBottomBarIndex,
-          items: controller.bottomBarItems,
+          items: [
+            BottomNavigationBarItem(
+              title: Text("HOME"),
+              icon: Icon(Icons.home),
+              // icon: Padding(
+              //   padding: const EdgeInsets.only(bottom: 5.0),
+              //   child: Image.asset(AppAssets.HOME),
+              // ),
+            ),
+            BottomNavigationBarItem(
+              title: Text("SEARCH"),
+              icon: Icon(Icons.search),
+              // icon: Padding(
+              //   padding: const EdgeInsets.only(bottom: 5.0),
+              //   child: Image.asset(AppAssets.SEARCH),
+              // ),
+            ),
+            BottomNavigationBarItem(
+              title: Text("CART"),
+              icon: Icon(Icons.shopping_cart),
+              // icon: Padding(
+              //   padding: const EdgeInsets.only(bottom: 5.0),
+              //   child: Image.asset(AppAssets.CART),
+              // ),
+            ),
+            BottomNavigationBarItem(
+              title: Text("PROFILE"),
+              icon: Icon(Icons.person),
+              // icon: Padding(
+              //   padding: const EdgeInsets.only(bottom: 5.0),
+              //   child: Image.asset(AppAssets.PROFILE),
+              // ),
+            ),
+            BottomNavigationBarItem(
+              title: Text("MORE"),
+              icon: Icon(Icons.reorder),
+              // icon: Padding(
+              //   padding: const EdgeInsets.only(bottom: 5.0),
+              //   child: Image.asset(AppAssets.MORE),
+              // ),
+            ),
+          ],
         );
       }),
     );

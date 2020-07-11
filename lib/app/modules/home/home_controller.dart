@@ -1,5 +1,3 @@
-import 'package:i9xp/app/modules/home/models/bottom_bar_item_model.dart';
-import 'package:i9xp/app/modules/home/models/bottom_bar_item_type.dart';
 import 'package:i9xp/app/modules/home/models/category_image.dart';
 import 'package:i9xp/app/modules/home/models/category_item_model.dart';
 import 'package:i9xp/app/modules/home/models/product_model.dart';
@@ -25,16 +23,8 @@ abstract class _HomeControllerBase with Store {
   ];
 
   final products = <ProductModel>[
-    ProductModel("a", "Ankle Boots", 49.99, AppAssets.WOMEN_SHOES),
-    ProductModel("b", "Backpack", 20.58, AppAssets.BACKPACK),
-    ProductModel("c", "Red Scarf", 11.00, AppAssets.SCARF),
-  ];
-
-  final bottomBarItems = <BottomBarItem>[
-    BottomBarItem("HOME", BottombarItemType.HOME),
-    BottomBarItem("SEARCH", BottombarItemType.SEARCH),
-    BottomBarItem("CART", BottombarItemType.CART),
-    BottomBarItem("PROFILE", BottombarItemType.PROFILE),
-    BottomBarItem("MORE", BottombarItemType.MORE),
+    ProductModel("ankle_boots", "Ankle Boots", 49.99, AppAssets.WOMEN_SHOES),
+    ProductModel("backpack", "Backpack", 20.58, AppAssets.BACKPACK),
+    ProductModel("red_scarf", "Red Scarf", 11.00, AppAssets.SCARF),
   ];
 }
