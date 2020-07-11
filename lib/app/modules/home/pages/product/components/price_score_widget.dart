@@ -4,8 +4,8 @@ import 'package:i9xp/app/shared/constants/colors.dart';
 import 'package:i9xp/app/shared/constants/styles.dart';
 
 class Price extends StatelessWidget implements PreferredSize {
-  final double price;
-  final double score;
+  final String price;
+  final String score;
 
   const Price({
     Key key,
@@ -30,7 +30,7 @@ class Price extends StatelessWidget implements PreferredSize {
             children: [
               Image.asset(AppAssets.STAR),
               SizedBox(width: 2),
-              Text("$score", style: AppStyles.PRODUCT_SCORE)
+              Text(score, style: AppStyles.PRODUCT_SCORE)
             ],
           ),
         )

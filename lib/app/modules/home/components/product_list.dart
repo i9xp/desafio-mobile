@@ -18,9 +18,12 @@ class ProductList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: products.map(_productToWidget).toList(),
+    return Container(
+      height: 135.h,
+      child: ListView(
+        scrollDirection: Axis.horizontal,
+        children: products.map(_productToWidget).toList(),
+      ),
     );
   }
 
@@ -52,7 +55,8 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 101.w,
+      margin: EdgeInsets.symmetric(horizontal: 5),
+      width: 100.w,
       height: 135.h,
       child: Material(
         color: AppColors.CARD_BACKGROUND,

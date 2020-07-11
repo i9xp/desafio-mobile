@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -13,7 +14,6 @@ import 'package:i9xp/app/modules/home/pages/product/components/product_section.d
 import 'package:i9xp/app/modules/home/pages/product/components/review_section.dart';
 import 'package:i9xp/app/modules/home/pages/product/models/bottom_button_type.dart';
 import 'package:i9xp/app/modules/home/stores/cart_store.dart';
-import 'package:i9xp/app/shared/constants/assets.dart';
 import 'package:i9xp/app/shared/constants/colors.dart';
 import 'package:i9xp/app/shared/constants/styles.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -54,11 +54,16 @@ class _ProductPageState extends ModularState<ProductPage, ProductController>
     return Scaffold(
       backgroundColor: AppColors.PRODUCT_PAGE_BACKGROUND,
       appBar: AppBar(
-        bottom: Price(price: 49.99, score: 4.9),
+        bottom: Price(
+          price: widget.productModel.price,
+          score: widget.productModel.score,
+        ),
         elevation: 0,
         backgroundColor: Colors.transparent,
-        title: Text(widget.productModel.completeName,
-            style: AppStyles.CATEGORY_ITEM),
+        title: Text(
+          widget.productModel.completeName,
+          style: AppStyles.CATEGORY_ITEM,
+        ),
         actions: [
           Container(
             margin: EdgeInsets.only(right: 10),
@@ -76,7 +81,7 @@ class _ProductPageState extends ModularState<ProductPage, ProductController>
           SizedBox(height: 15.h),
           SmoothPageIndicator(
             controller: imageViewController,
-            count: 2,
+            count: widget.productModel.images.length,
             effect: SlideEffect(
               dotColor: AppColors.INDICATOR_COLOR,
               activeDotColor: AppColors.SELECTED_INDICATOR_COLOR,
@@ -87,11 +92,10 @@ class _ProductPageState extends ModularState<ProductPage, ProductController>
           SizedBox(height: 20.h),
           ProductPageView(
             imageViewController: imageViewController,
-            height: 250.h,
-            children: [
-              Image.asset(AppAssets.SHOES_WITH_SHADOW),
-              Image.asset(AppAssets.WOMEN_SHOES),
-            ],
+            height: 225.h,
+            children: widget.productModel.images
+                .map((image) => CachedNetworkImage(imageUrl: image))
+                .toList(),
           ),
           Container(
             height: 30.h,
@@ -103,14 +107,14 @@ class _ProductPageState extends ModularState<ProductPage, ProductController>
             child: TabBarView(
               physics: NeverScrollableScrollPhysics(),
               children: [
-                ProductSection(),
+                ProductSection(description: widget.productModel.description),
                 DetailsSection(
-                  brand: "Lily’s Ankle Boots",
-                  sku: "0590458902809",
-                  condition: "Brand New, With Box",
-                  material: "Faux Sued, Velvet",
-                  category: "Women Shoes",
-                  fiting: "True To Size",
+                  brand: widget.productModel.brand,
+                  sku: widget.productModel.sku,
+                  condition: widget.productModel.condition,
+                  material: widget.productModel.material,
+                  category: widget.productModel.category,
+                  fiting: widget.productModel.fiting,
                 ),
                 ReviewSection(),
               ],
