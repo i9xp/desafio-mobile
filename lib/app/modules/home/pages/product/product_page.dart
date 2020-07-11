@@ -5,9 +5,12 @@ import 'package:i9xp/app/modules/home/components/app_action_widget.dart';
 import 'package:i9xp/app/modules/home/models/action_type.dart';
 import 'package:i9xp/app/modules/home/models/product_model.dart';
 import 'package:i9xp/app/modules/home/pages/product/components/bottom_button_widget.dart';
+import 'package:i9xp/app/modules/home/pages/product/components/detail_section.dart';
 import 'package:i9xp/app/modules/home/pages/product/components/price_score_widget.dart';
 import 'package:i9xp/app/modules/home/pages/product/components/product_info_tabbar.dart';
 import 'package:i9xp/app/modules/home/pages/product/components/product_page_view.dart';
+import 'package:i9xp/app/modules/home/pages/product/components/product_section.dart';
+import 'package:i9xp/app/modules/home/pages/product/components/review_section.dart';
 import 'package:i9xp/app/modules/home/pages/product/models/bottom_button_type.dart';
 import 'package:i9xp/app/modules/home/stores/cart_store.dart';
 import 'package:i9xp/app/shared/constants/assets.dart';
@@ -99,36 +102,16 @@ class _ProductPageState extends ModularState<ProductPage, ProductController>
             child: TabBarView(
               physics: NeverScrollableScrollPhysics(),
               children: [
-                ProductInfoSection(),
-                ProductInfoSection(
-                  infos: [
-                    ProductInfoModel(
-                      "BRAND",
-                      "Lily’s Ankle Boots",
-                    ),
-                    ProductInfoModel(
-                      "SKU",
-                      "0590458902809",
-                    ),
-                    ProductInfoModel(
-                      "CONDITION",
-                      "Brand New, With Box",
-                    ),
-                    ProductInfoModel(
-                      "MATERIAL",
-                      "Faux Sued, Velvet",
-                    ),
-                    ProductInfoModel(
-                      "CATEGORY",
-                      "Women Shoes",
-                    ),
-                    ProductInfoModel(
-                      "FITING",
-                      "True To Size",
-                    ),
-                  ],
+                ProductSection(),
+                DetailsSection(
+                  brand: "Lily’s Ankle Boots",
+                  sku: "0590458902809",
+                  condition: "Brand New, With Box",
+                  material: "Faux Sued, Velvet",
+                  category: "Women Shoes",
+                  fiting: "True To Size",
                 ),
-                ProductInfoSection(),
+                ReviewSection(),
               ],
               controller: infoTabbarController,
             ),
@@ -169,106 +152,4 @@ class _ProductPageState extends ModularState<ProductPage, ProductController>
       ),
     );
   }
-}
-
-class ProductInfoSection extends StatelessWidget {
-  const ProductInfoSection({
-    Key key,
-    this.infos = const <ProductInfoModel>[],
-  }) : super(key: key);
-
-  final List<ProductInfoModel> infos;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 25.0),
-      child: SingleChildScrollView(
-        child: Column(
-          children: _buildRows(),
-        ),
-      ),
-    );
-  }
-
-  List<Widget> _buildRows() {
-    if (infos.length == 0) return [];
-    var widgets = <Widget>[];
-    for (var i = 0; i < infos.length; i += 2) {
-      final infoRow = InfoRow(
-        firstInfo: infos[i],
-        secondInfo: i + 1 < infos.length ? infos[i + 1] : null,
-      );
-
-      widgets.add(infoRow);
-      if (i + 1 < infos.length) {
-        widgets.add(SizedBox(height: 20.h));
-      }
-    }
-    return widgets;
-  }
-}
-
-class InfoRow extends StatelessWidget {
-  const InfoRow({
-    Key key,
-    @required this.firstInfo,
-    @required this.secondInfo,
-  }) : super(key: key);
-
-  final ProductInfoModel firstInfo;
-  final ProductInfoModel secondInfo;
-
-  bool get hasSecondInfo => secondInfo != null;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Info(
-          title: firstInfo.title,
-          content: firstInfo.content,
-        ),
-        if (hasSecondInfo)
-          Info(
-            title: secondInfo.title,
-            content: secondInfo.content,
-            crossAxisAlignment: CrossAxisAlignment.end,
-          ),
-      ],
-    );
-  }
-}
-
-class Info extends StatelessWidget {
-  const Info({
-    Key key,
-    @required this.title,
-    @required this.content,
-    this.crossAxisAlignment = CrossAxisAlignment.start,
-  }) : super(key: key);
-
-  final String title;
-  final String content;
-  final CrossAxisAlignment crossAxisAlignment;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: crossAxisAlignment,
-      children: [
-        Text(title, style: AppStyles.PRODUCT_INFO_TITLE),
-        SizedBox(height: 5),
-        Text(content, style: AppStyles.PRODUCT_INFO_CONTENT),
-      ],
-    );
-  }
-}
-
-class ProductInfoModel {
-  String title;
-  String content;
-
-  ProductInfoModel(this.title, this.content);
 }
