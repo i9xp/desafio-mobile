@@ -68,10 +68,15 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                   SizedBox(height: 27),
                   CategoryTitle(title: "Latest"),
                   LatestPageView(),
-                  ProductList(
-                    products: controller.products,
-                    onProductTap: _onProductTap,
-                  ),
+                  Observer(builder: (_) {
+                    if (controller.products == null) {
+                      return CircularProgressIndicator();
+                    }
+                    return ProductList(
+                      products: controller.products,
+                      onProductTap: _onProductTap,
+                    );
+                  }),
                   SizedBox(height: 8),
                 ],
               ),

@@ -24,8 +24,8 @@ class ProductList extends StatelessWidget {
   }
 
   Widget _productToWidget(ProductModel p) => ProductCard(
-        image: p.image,
-        title: p.title,
+        image: p.images[0],
+        title: p.name,
         price: p.price,
         onTap: () => onProductTap(p),
       );
@@ -34,7 +34,7 @@ class ProductList extends StatelessWidget {
 class ProductCard extends StatelessWidget {
   final String image;
   final String title;
-  final double price;
+  final String price;
   final Function onTap;
 
   const ProductCard({
@@ -45,33 +45,48 @@ class ProductCard extends StatelessWidget {
     this.onTap,
   }) : super(key: key);
 
-  String get priceToString => "\$${price.toStringAsFixed(2)}";
+  // String get priceToString => "\$${price.toStringAsFixed(2)}";
   double get borderRadius => 10;
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: AppColors.CARD_BACKGROUND,
-      borderRadius: BorderRadius.circular(borderRadius),
-      child: InkWell(
+    return Container(
+      width: 101.w,
+      height: 135.h,
+      child: Material(
+        color: AppColors.CARD_BACKGROUND,
         borderRadius: BorderRadius.circular(borderRadius),
-        onTap: this.onTap,
-        child: Container(
-          padding: EdgeInsets.all(borderRadius),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                width: 77.w,
-                height: 77.w,
-                child: Image.asset(image),
+        child: InkWell(
+          borderRadius: BorderRadius.circular(borderRadius),
+          onTap: this.onTap,
+          child: Center(
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 8),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        width: 80.w,
+                        height: 80.w,
+                        child: Image.network(image),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 3),
+                  Text(
+                    title,
+                    style: AppStyles.PRODUCT_TITLE,
+                    // overflow: TextOverflow.ellipsis,
+                  ),
+                  SizedBox(height: 3),
+                  Text("\$$price", style: AppStyles.PRODUCT_PRICE),
+                ],
               ),
-              SizedBox(height: 3),
-              Text(title, style: AppStyles.PRODUCT_TITLE),
-              SizedBox(height: 3),
-              Text(priceToString, style: AppStyles.PRODUCT_PRICE)
-            ],
+            ),
           ),
         ),
       ),

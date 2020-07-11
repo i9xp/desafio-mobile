@@ -26,6 +26,21 @@ mixin _$HomeController on _HomeControllerBase, Store {
     });
   }
 
+  final _$productsAtom = Atom(name: '_HomeControllerBase.products');
+
+  @override
+  ObservableList<ProductModel> get products {
+    _$productsAtom.reportRead();
+    return super.products;
+  }
+
+  @override
+  set products(ObservableList<ProductModel> value) {
+    _$productsAtom.reportWrite(value, super.products, () {
+      super.products = value;
+    });
+  }
+
   final _$_HomeControllerBaseActionController =
       ActionController(name: '_HomeControllerBase');
 
@@ -41,9 +56,21 @@ mixin _$HomeController on _HomeControllerBase, Store {
   }
 
   @override
+  dynamic setProducts(List<ProductModel> p) {
+    final _$actionInfo = _$_HomeControllerBaseActionController.startAction(
+        name: '_HomeControllerBase.setProducts');
+    try {
+      return super.setProducts(p);
+    } finally {
+      _$_HomeControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
-bottomBarCurrentIndex: ${bottomBarCurrentIndex}
+bottomBarCurrentIndex: ${bottomBarCurrentIndex},
+products: ${products}
     ''';
   }
 }

@@ -3,8 +3,8 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:i9xp/app/modules/home/components/app_action_widget.dart';
 import 'package:i9xp/app/modules/home/models/action_type.dart';
-import 'package:i9xp/app/modules/home/models/product_model.dart';
 import 'package:i9xp/app/modules/home/components/bottom_button_widget.dart';
+import 'package:i9xp/app/modules/home/models/product_model.dart';
 import 'package:i9xp/app/modules/home/pages/product/components/detail_section.dart';
 import 'package:i9xp/app/modules/home/pages/product/components/price_score_widget.dart';
 import 'package:i9xp/app/modules/home/pages/product/components/product_info_tabbar.dart';
@@ -57,7 +57,8 @@ class _ProductPageState extends ModularState<ProductPage, ProductController>
         bottom: Price(price: 49.99, score: 4.9),
         elevation: 0,
         backgroundColor: Colors.transparent,
-        title: Text(widget.productModel.title, style: AppStyles.CATEGORY_ITEM),
+        title: Text(widget.productModel.completeName,
+            style: AppStyles.CATEGORY_ITEM),
         actions: [
           Container(
             margin: EdgeInsets.only(right: 10),
