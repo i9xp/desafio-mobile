@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:i9xp/app/modules/home/models/product_model.dart';
 import 'package:i9xp/app/shared/constants/colors.dart';
@@ -72,7 +73,12 @@ class ProductCard extends StatelessWidget {
                       Container(
                         width: 80.w,
                         height: 80.w,
-                        child: Image.network(image),
+                        child: Image(
+                          image: CachedNetworkImageProvider(
+                            image,
+                            scale: 1.0,
+                          ),
+                        ),
                       ),
                     ],
                   ),
