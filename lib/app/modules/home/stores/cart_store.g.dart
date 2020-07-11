@@ -15,17 +15,31 @@ mixin _$CartStore on _CartStoreBase, Store {
   int get length => (_$lengthComputed ??=
           Computed<int>(() => super.length, name: '_CartStoreBase.length'))
       .value;
+  Computed<bool> _$hasProductsComputed;
+
+  @override
+  bool get hasProducts =>
+      (_$hasProductsComputed ??= Computed<bool>(() => super.hasProducts,
+              name: '_CartStoreBase.hasProducts'))
+          .value;
+  Computed<double> _$totalAmountComputed;
+
+  @override
+  double get totalAmount =>
+      (_$totalAmountComputed ??= Computed<double>(() => super.totalAmount,
+              name: '_CartStoreBase.totalAmount'))
+          .value;
 
   final _$cartAtom = Atom(name: '_CartStoreBase.cart');
 
   @override
-  ObservableList<ProductModel> get cart {
+  ObservableList<CartItemModel> get cart {
     _$cartAtom.reportRead();
     return super.cart;
   }
 
   @override
-  set cart(ObservableList<ProductModel> value) {
+  set cart(ObservableList<CartItemModel> value) {
     _$cartAtom.reportWrite(value, super.cart, () {
       super.cart = value;
     });
@@ -46,10 +60,34 @@ mixin _$CartStore on _CartStoreBase, Store {
   }
 
   @override
+  dynamic clear() {
+    final _$actionInfo = _$_CartStoreBaseActionController.startAction(
+        name: '_CartStoreBase.clear');
+    try {
+      return super.clear();
+    } finally {
+      _$_CartStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic removeProduct(String id) {
+    final _$actionInfo = _$_CartStoreBaseActionController.startAction(
+        name: '_CartStoreBase.removeProduct');
+    try {
+      return super.removeProduct(id);
+    } finally {
+      _$_CartStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 cart: ${cart},
-length: ${length}
+length: ${length},
+hasProducts: ${hasProducts},
+totalAmount: ${totalAmount}
     ''';
   }
 }
