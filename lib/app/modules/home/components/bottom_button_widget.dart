@@ -28,6 +28,7 @@ class _BottomButtonState extends State<BottomButton> {
   final assets = {
     BottomButtonType.SHARE: AppAssets.ICON_UP,
     BottomButtonType.ADD_TO_CART: AppAssets.ICON_RIGHT,
+    BottomButtonType.CHECKOUT: AppAssets.ICON_RIGHT,
   };
 
   String get asset => assets[widget.type];

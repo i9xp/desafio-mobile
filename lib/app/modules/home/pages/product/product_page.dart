@@ -4,7 +4,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:i9xp/app/modules/home/components/app_action_widget.dart';
 import 'package:i9xp/app/modules/home/models/action_type.dart';
 import 'package:i9xp/app/modules/home/models/product_model.dart';
-import 'package:i9xp/app/modules/home/pages/product/components/bottom_button_widget.dart';
+import 'package:i9xp/app/modules/home/components/bottom_button_widget.dart';
 import 'package:i9xp/app/modules/home/pages/product/components/detail_section.dart';
 import 'package:i9xp/app/modules/home/pages/product/components/price_score_widget.dart';
 import 'package:i9xp/app/modules/home/pages/product/components/product_info_tabbar.dart';

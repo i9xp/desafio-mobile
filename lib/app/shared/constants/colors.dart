@@ -49,4 +49,10 @@ class AppColors {
 
   // ignore: non_constant_identifier_names
   static final PRODUCT_INFO = Colors.white; //Color(0xff727C8E);
+
+  // ignore: non_constant_identifier_names
+  static final LIGHT_GREY = Color(0xff747d8c);
+
+  // ignore: non_constant_identifier_names
+  static final WHITE = Colors.white;
 }

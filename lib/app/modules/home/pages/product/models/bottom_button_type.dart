@@ -1,1 +1,1 @@
-enum BottomButtonType { SHARE, ADD_TO_CART }
+enum BottomButtonType { SHARE, ADD_TO_CART, CHECKOUT }

@@ -11,6 +11,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:i9xp/app/modules/home/components/product_list.dart';
 import 'package:i9xp/app/modules/home/models/action_type.dart';
 import 'package:i9xp/app/modules/home/models/product_model.dart';
+import 'package:i9xp/app/modules/home/pages/cart/cart_page.dart';
 import 'package:i9xp/app/shared/constants/colors.dart';
 import 'home_controller.dart';
 
@@ -42,7 +43,9 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
         centerTitle: false,
         titleSpacing: pagePadding,
         elevation: 0,
-        title: Logo(),
+        title: Observer(builder: (_) {
+          return controller.bottomBarCurrentIndex != 2 ? Logo() : Container();
+        }),
         actions: [
           AppAction(type: ActionType.MESSAGES, number: 5),
           Padding(
@@ -51,27 +54,31 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: pagePadding),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              CategoryTitle(title: "Categories"),
-              SizedBox(height: 14),
-              CategoryList(categories: controller.categories),
-              SizedBox(height: 27),
-              CategoryTitle(title: "Latest"),
-              LatestPageView(),
-              ProductList(
-                products: controller.products,
-                onProductTap: _onProductTap,
-              ),
-              SizedBox(height: 8),
-            ],
-          ),
-        ),
-      ),
+      body: Observer(builder: (_) {
+        return controller.bottomBarCurrentIndex != 2
+            ? SingleChildScrollView(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: pagePadding),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      CategoryTitle(title: "Categories"),
+                      SizedBox(height: 14),
+                      CategoryList(categories: controller.categories),
+                      SizedBox(height: 27),
+                      CategoryTitle(title: "Latest"),
+                      LatestPageView(),
+                      ProductList(
+                        products: controller.products,
+                        onProductTap: _onProductTap,
+                      ),
+                      SizedBox(height: 8),
+                    ],
+                  ),
+                ),
+              )
+            : CartPage();
+      }),
       bottomNavigationBar: Observer(builder: (_) {
         return AppBottomNavigationBar(
           currentIndex: controller.bottomBarCurrentIndex,

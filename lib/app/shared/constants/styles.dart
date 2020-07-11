@@ -94,4 +94,53 @@ class AppStyles {
 
   // ignore: non_constant_identifier_names
   static final BADGE_NUMBER_TEN = AppStyles.BADGE_NUMBER.copyWith(fontSize: 9);
+
+  // ignore: non_constant_identifier_names
+  static final CART_ITEM_TITLE = TextStyle(
+    fontSize: 15.sp,
+    color: AppColors.WHITE,
+    fontWeight: FontWeight.w500,
+  );
+
+  // ignore: non_constant_identifier_names
+  static final CART_ITEM_SUBTITLE = TextStyle(
+    fontSize: 15.sp,
+    color: AppColors.WHITE,
+    fontWeight: FontWeight.w300,
+  );
+
+  // ignore: non_constant_identifier_names
+  static final CART_ITEM_PRICE = TextStyle(
+    fontSize: 15.sp,
+    color: AppColors.BAGDE_BACKGROUND,
+    fontWeight: FontWeight.w500,
+  );
+
+  // ignore: non_constant_identifier_names
+  static final CART_ITEM_AMOUNT = TextStyle(
+    fontSize: 15.sp,
+    color: AppColors.WHITE,
+    fontWeight: FontWeight.w500,
+  );
+
+  // ignore: non_constant_identifier_names
+  static final CART_CHECKOUT_TOTAL = TextStyle(
+    fontSize: 10.sp,
+    color: AppColors.LIGHT_GREY,
+    fontWeight: FontWeight.w500,
+  );
+
+  // ignore: non_constant_identifier_names
+  static final CART_CHECKOUT_AMOUNT = TextStyle(
+    fontSize: 20.sp,
+    color: AppColors.WHITE,
+    fontWeight: FontWeight.bold,
+  );
+
+  // ignore: non_constant_identifier_names
+  static final CART_CHECKOUT_SHIPPING = TextStyle(
+    fontSize: 12.sp,
+    color: AppColors.WHITE,
+    fontWeight: FontWeight.w300,
+  );
 }
