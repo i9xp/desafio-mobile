@@ -9,18 +9,25 @@ part of 'cart_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$CartStore on _CartStoreBase, Store {
-  final _$produtosCarrinhoAtom = Atom(name: '_CartStoreBase.produtosCarrinho');
+  Computed<int> _$lengthComputed;
 
   @override
-  int get produtosCarrinho {
-    _$produtosCarrinhoAtom.reportRead();
-    return super.produtosCarrinho;
+  int get length => (_$lengthComputed ??=
+          Computed<int>(() => super.length, name: '_CartStoreBase.length'))
+      .value;
+
+  final _$cartAtom = Atom(name: '_CartStoreBase.cart');
+
+  @override
+  ObservableList<ProductModel> get cart {
+    _$cartAtom.reportRead();
+    return super.cart;
   }
 
   @override
-  set produtosCarrinho(int value) {
-    _$produtosCarrinhoAtom.reportWrite(value, super.produtosCarrinho, () {
-      super.produtosCarrinho = value;
+  set cart(ObservableList<ProductModel> value) {
+    _$cartAtom.reportWrite(value, super.cart, () {
+      super.cart = value;
     });
   }
 
@@ -28,11 +35,11 @@ mixin _$CartStore on _CartStoreBase, Store {
       ActionController(name: '_CartStoreBase');
 
   @override
-  void setProdutosCarrinho(int p) {
+  dynamic addProduct(ProductModel p) {
     final _$actionInfo = _$_CartStoreBaseActionController.startAction(
-        name: '_CartStoreBase.setProdutosCarrinho');
+        name: '_CartStoreBase.addProduct');
     try {
-      return super.setProdutosCarrinho(p);
+      return super.addProduct(p);
     } finally {
       _$_CartStoreBaseActionController.endAction(_$actionInfo);
     }
@@ -41,7 +48,8 @@ mixin _$CartStore on _CartStoreBase, Store {
   @override
   String toString() {
     return '''
-produtosCarrinho: ${produtosCarrinho}
+cart: ${cart},
+length: ${length}
     ''';
   }
 }

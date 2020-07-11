@@ -39,6 +39,11 @@ class _ProductPageState extends ModularState<ProductPage, ProductController>
   final imageViewController = PageController(viewportFraction: 0.8);
   TabController infoTabbarController;
 
+  _addToCart() {
+    cartStore.addProduct(widget.productModel);
+    Modular.to.pop(true);
+  }
+
   @override
   void initState() {
     super.initState();
@@ -54,6 +59,7 @@ class _ProductPageState extends ModularState<ProductPage, ProductController>
     return Scaffold(
       backgroundColor: AppColors.PRODUCT_PAGE_BACKGROUND,
       appBar: AppBar(
+        centerTitle: true,
         bottom: Price(
           price: widget.productModel.price,
           score: widget.productModel.score,
@@ -70,7 +76,7 @@ class _ProductPageState extends ModularState<ProductPage, ProductController>
             child: Observer(builder: (_) {
               return AppAction(
                 type: ActionType.CART,
-                number: cartStore.produtosCarrinho,
+                number: cartStore.length,
               );
             }),
           )
@@ -145,10 +151,7 @@ class _ProductPageState extends ModularState<ProductPage, ProductController>
                   labelStyle: AppStyles.PRODUCT_BOTTOM_BUTTON.copyWith(
                     color: AppColors.PRODUCT_SELECTED_TAB_TEXT,
                   ),
-                  onTap: () {
-                    cartStore
-                        .setProdutosCarrinho(cartStore.produtosCarrinho + 1);
-                  },
+                  onTap: _addToCart,
                 ),
               ],
             ),

@@ -27,11 +27,16 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
     ScreenUtil.init(width: 375, height: 667, allowFontScaling: false);
   }
 
-  void _onProductTap(ProductModel p) {
-    _navigateToProduct(p);
+  Future<void> _onProductTap(ProductModel p) async {
+    final showCart = (await _navigateToProduct(p)) ?? false;
+    if (showCart) _moveTabToCart();
   }
 
-  void _navigateToProduct(ProductModel p) =>
+  _moveTabToCart() {
+    controller.setBottomBarIndex(2);
+  }
+
+  Future _navigateToProduct(ProductModel p) =>
       Modular.to.pushNamed("/product", arguments: p);
 
   @override
