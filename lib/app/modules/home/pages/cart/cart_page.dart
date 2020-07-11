@@ -19,50 +19,59 @@ class _CartPageState extends ModularState<CartPage, CartController> {
   num get pagePadding => 25.h;
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: pagePadding),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            CategoryTitle(title: "Cart"),
-            SizedBox(height: 30.h),
-            CartItem(
-              title: "Faux Sued Ankle Boots",
-              price: 49.99,
-              subtitle: "7, Hot Pink",
-              image: "assets/img/home/scarf.png",
+    return Container(
+      height: double.infinity,
+      child: Stack(
+        children: [
+          SingleChildScrollView(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: pagePadding),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  CategoryTitle(title: "Cart"),
+                  SizedBox(height: 30.h),
+                  CartItem(
+                    title: "Faux Sued Ankle Boots",
+                    price: 49.99,
+                    subtitle: "7, Hot Pink",
+                    image: "assets/img/home/scarf.png",
+                  ),
+                  CartItemDivider(),
+                  CartItem(
+                    title: "Faux Sued Ankle Boots",
+                    price: 49.99,
+                    subtitle: "7, Hot Pink",
+                    image: "assets/img/home/scarf.png",
+                  ),
+                  CartItemDivider(),
+                  CartItem(
+                    title: "Faux Sued Ankle Boots",
+                    price: 49.99,
+                    subtitle: "7, Hot Pink",
+                    image: "assets/img/home/scarf.png",
+                  ),
+                  CartItemDivider(),
+                  CartItem(
+                    title: "Faux Sued Ankle Boots",
+                    price: 49.99,
+                    subtitle: "7, Hot Pink",
+                    image: "assets/img/home/scarf.png",
+                  ),
+                  SizedBox(height: 100),
+                ],
+              ),
             ),
-            CartItemDivider(),
-            CartItem(
-              title: "Faux Sued Ankle Boots",
-              price: 49.99,
-              subtitle: "7, Hot Pink",
-              image: "assets/img/home/scarf.png",
-            ),
-            CartItemDivider(),
-            CartItem(
-              title: "Faux Sued Ankle Boots",
-              price: 49.99,
-              subtitle: "7, Hot Pink",
-              image: "assets/img/home/scarf.png",
-            ),
-            CartItemDivider(),
-            CartItem(
-              title: "Faux Sued Ankle Boots",
-              price: 49.99,
-              subtitle: "7, Hot Pink",
-              image: "assets/img/home/scarf.png",
-            ),
-            SizedBox(height: 36.h),
-            CheckoutSection(
+          ),
+          Positioned(
+            bottom: 0,
+            child: CheckoutSection(
               amount: 81.57,
               shipping: "Free Domestic Shipping",
               onCheckout: () {},
             ),
-            SizedBox(height: 10.h),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

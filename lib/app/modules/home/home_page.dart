@@ -32,9 +32,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
     if (showCart) _moveTabToCart();
   }
 
-  _moveTabToCart() {
-    controller.setBottomBarIndex(2);
-  }
+  _moveTabToCart() => controller.setBottomBarIndex(2);
 
   Future _navigateToProduct(ProductModel p) =>
       Modular.to.pushNamed("/product", arguments: p);
