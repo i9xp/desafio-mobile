@@ -27,6 +27,7 @@ class HiveService extends Disposable {
 
   List<CartItemHive> getCart() {
     final list = Hive.box("data").get("cart") as List;
+    if (list == null) return null;
     return list.map((e) => e as CartItemHive).toList();
   }
 
