@@ -100,7 +100,10 @@ class _ProductPageState extends ModularState<ProductPage, ProductController>
             imageViewController: imageViewController,
             height: 225.h,
             children: widget.productModel.images
-                .map((image) => CachedNetworkImage(imageUrl: image))
+                .map((image) => Hero(
+                      tag: image,
+                      child: CachedNetworkImage(imageUrl: image),
+                    ))
                 .toList(),
           ),
           Container(

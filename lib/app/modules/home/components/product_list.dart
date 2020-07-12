@@ -77,10 +77,13 @@ class ProductCard extends StatelessWidget {
                       Container(
                         width: 80.w,
                         height: 80.w,
-                        child: Image(
-                          image: CachedNetworkImageProvider(
-                            image,
-                            scale: 1.0,
+                        child: Hero(
+                          tag: image,
+                          child: Image(
+                            image: CachedNetworkImageProvider(
+                              image,
+                              scale: 1.0,
+                            ),
                           ),
                         ),
                       ),
