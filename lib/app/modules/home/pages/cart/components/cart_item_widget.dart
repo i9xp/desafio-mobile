@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:i9xp/app/shared/constants/colors.dart';
 import 'package:i9xp/app/shared/constants/styles.dart';
@@ -15,11 +16,11 @@ class CartItem extends StatelessWidget {
     this.onRemove,
   }) : super(key: key);
 
-  final String image; // "assets/img/home/scarf.png";
-  final String title; // "Faux Sued Ankle Boots";
-  final String subtitle; // "7, Hot Pink";
-  final double price; // 49.99;
-  final int amount; // 1;
+  final String image;
+  final String title;
+  final String subtitle;
+  final String price;
+  final int amount;
   final Function onAdd;
   final Function onRemove;
 
@@ -36,7 +37,16 @@ class CartItem extends StatelessWidget {
               color: Colors.white,
               shape: BoxShape.circle,
             ),
-            child: Center(child: Image.asset(image)),
+            child: Center(
+              child: Hero(
+                tag: image,
+                child: CachedNetworkImage(
+                  imageUrl: image,
+                  width: 85,
+                  height: 85,
+                ),
+              ),
+            ),
           ),
           SizedBox(width: 20.w),
           Column(
