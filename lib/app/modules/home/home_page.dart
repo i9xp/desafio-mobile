@@ -21,7 +21,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends ModularState<HomePage, HomeController> {
-  num get pagePadding => 25.h;
+  double get pagePadding => 15;
 
   void _initScreenUtil() {
     ScreenUtil.init(width: 375, height: 667, allowFontScaling: false);
