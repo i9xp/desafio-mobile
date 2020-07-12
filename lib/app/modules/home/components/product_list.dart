@@ -5,25 +5,29 @@ import 'package:i9xp/app/shared/constants/colors.dart';
 import 'package:i9xp/app/shared/constants/styles.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shimmer/shimmer.dart';
 
 class ProductList extends StatelessWidget {
   final List<ProductModel> products;
   final Function(ProductModel) onProductTap;
+  final bool isLoading;
 
   const ProductList({
     Key key,
     this.products = const <ProductModel>[],
     this.onProductTap,
+    this.isLoading = false,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      // height: 135.h,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        // scrollDirection: Axis.horizontal,
-        children: products.map(_productToWidget).toList(),
+        // children: _loadingWidgets(),
+        children: isLoading
+            ? _loadingWidgets()
+            : products.map(_productToWidget).toList(),
       ),
     );
   }
@@ -34,6 +38,81 @@ class ProductList extends StatelessWidget {
         price: p.price,
         onTap: () => onProductTap(p),
       );
+
+  List<Widget> _loadingWidgets() {
+    return [
+      LoadingCard(),
+      LoadingCard(),
+      LoadingCard(),
+    ];
+  }
+}
+
+class LoadingCard extends StatelessWidget {
+  double get borderRadius => 10;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 5),
+      width: 100.w,
+      height: 135.h,
+      decoration: BoxDecoration(
+        color: AppColors.CARD_BACKGROUND,
+        borderRadius: BorderRadius.circular(borderRadius),
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Opacity(
+                opacity: 0.25,
+                child: Shimmer.fromColors(
+                  baseColor: Colors.white,
+                  highlightColor: Colors.grey,
+                  child: Container(
+                    color: Colors.white,
+                    width: 80.w,
+                    height: 80.w,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          SizedBox(height: 3),
+          Opacity(
+            opacity: 0.25,
+            child: Shimmer.fromColors(
+              baseColor: Colors.white,
+              highlightColor: Colors.grey,
+              child: Container(
+                color: Colors.white,
+                height: 10,
+                width: 60.w,
+              ),
+            ),
+          ),
+          SizedBox(height: 3),
+          Opacity(
+            opacity: 0.25,
+            child: Shimmer.fromColors(
+              baseColor: Colors.white,
+              highlightColor: Colors.grey,
+              child: Container(
+                color: Colors.white,
+                height: 10,
+                width: 20.w,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }
 
 class ProductCard extends StatelessWidget {
@@ -41,12 +120,14 @@ class ProductCard extends StatelessWidget {
   final String title;
   final String price;
   final Function onTap;
+  final bool isLoading;
 
   const ProductCard({
     Key key,
     @required this.image,
     @required this.title,
     @required this.price,
+    this.isLoading = false,
     this.onTap,
   }) : super(key: key);
 
@@ -97,7 +178,10 @@ class ProductCard extends StatelessWidget {
                     style: AppStyles.PRODUCT_TITLE,
                   ),
                   SizedBox(height: 3),
-                  Text("\$$price", style: AppStyles.PRODUCT_PRICE),
+                  Text(
+                    "\$$price",
+                    style: AppStyles.PRODUCT_PRICE,
+                  ),
                 ],
               ),
             ),

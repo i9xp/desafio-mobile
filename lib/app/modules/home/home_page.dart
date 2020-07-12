@@ -81,12 +81,10 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: pagePadding),
                   child: Observer(builder: (_) {
-                    if (controller.products == null) {
-                      return CircularProgressIndicator();
-                    }
                     return ProductList(
                       products: controller.products,
                       onProductTap: _onProductTap,
+                      isLoading: controller.products == null,
                     );
                   }),
                 ),
