@@ -1,11 +1,13 @@
 import 'package:flutter_modular/flutter_modular_test.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:i9xp/app/app_module.dart';
 import 'package:i9xp/app/modules/home/models/product_model.dart';
 
 import 'package:i9xp/app/modules/home/stores/cart_store.dart';
 import 'package:i9xp/app/modules/home/home_module.dart';
 
 void main() {
+  initModule(AppModule());
   initModule(HomeModule());
   CartStore cart;
   ProductModel a;
