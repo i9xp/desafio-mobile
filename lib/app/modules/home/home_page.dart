@@ -52,7 +52,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
         actions: [
           AppAction(type: ActionType.MESSAGES, number: 5),
           Padding(
-            padding: EdgeInsets.only(left: 20, right: pagePadding),
+            padding: EdgeInsets.symmetric(horizontal: pagePadding),
             child: AppAction(type: ActionType.NOTIFICATIONS, number: 10),
           ),
         ],
@@ -60,18 +60,27 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
       body: Observer(builder: (_) {
         if (controller.bottomBarCurrentIndex == 0) {
           return SingleChildScrollView(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: pagePadding),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  CategoryTitle(title: "Categories"),
-                  SizedBox(height: 14.h),
-                  CategoryList(categories: controller.categories),
-                  SizedBox(height: 27.h),
-                  CategoryTitle(title: "Latest"),
-                  LatestPageView(),
-                  Observer(builder: (_) {
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: pagePadding),
+                  child: CategoryTitle(title: "Categories"),
+                ),
+                SizedBox(height: 14.h),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: pagePadding),
+                  child: CategoryList(categories: controller.categories),
+                ),
+                SizedBox(height: 27.h),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: pagePadding),
+                  child: CategoryTitle(title: "Latest"),
+                ),
+                LatestPageView(),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: pagePadding),
+                  child: Observer(builder: (_) {
                     if (controller.products == null) {
                       return CircularProgressIndicator();
                     }
@@ -80,9 +89,9 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                       onProductTap: _onProductTap,
                     );
                   }),
-                  SizedBox(height: 8),
-                ],
-              ),
+                ),
+                SizedBox(height: 8),
+              ],
             ),
           );
         } else if (controller.bottomBarCurrentIndex == 2) {
