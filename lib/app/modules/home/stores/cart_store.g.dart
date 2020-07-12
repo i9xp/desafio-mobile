@@ -49,6 +49,17 @@ mixin _$CartStore on _CartStoreBase, Store {
       ActionController(name: '_CartStoreBase');
 
   @override
+  dynamic setCart(List<CartItemModel> cart) {
+    final _$actionInfo = _$_CartStoreBaseActionController.startAction(
+        name: '_CartStoreBase.setCart');
+    try {
+      return super.setCart(cart);
+    } finally {
+      _$_CartStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   dynamic addProduct(ProductModel p) {
     final _$actionInfo = _$_CartStoreBaseActionController.startAction(
         name: '_CartStoreBase.addProduct');
