@@ -5,9 +5,7 @@
 # Motivação
 O funcionamento desta aplicação é baseado em ecommerce com foco no funcionamento do fluxo de compras. Usei este projeto como um desafio para testar minhas habilidades como desenvolvedor e aprimorar o conhecimento em Flutter. Particularmente, estou bastante contente com o resultado, espero que gostem também.
 
-<img src="https://github.com/joaovirgili/desafio-mobile/blob/master/files/gif_1.gif?raw=true" width="150"/>
-<img src="https://github.com/joaovirgili/desafio-mobile/blob/master/files/gif_2.gif?raw=true" width="150"/>
-<img src="https://github.com/joaovirgili/desafio-mobile/blob/master/files/gif_3.gif?raw=true" width="150"/>
+<img src="https://github.com/joaovirgili/desafio-mobile/blob/master/files/gif_1.gif?raw=true" width="150"/>         <img src="https://github.com/joaovirgili/desafio-mobile/blob/master/files/gif_2.gif?raw=true" width="150"/>         <img src="https://github.com/joaovirgili/desafio-mobile/blob/master/files/gif_3.gif?raw=true" width="150"/>
 
 # :rocket: Como rodar o app?
 
@@ -21,7 +19,7 @@ O funcionamento desta aplicação é baseado em ecommerce com foco no funcioname
 
 5. Pronto. Para rodar em modo debug, execute o comando `flutter run` ou em modo release `flutter run --release`. Para gerar o apk, execute `flutter build apk`.
 
-# :phone: APK
+# :calling: APK
 
 Se por alguma razão não conseguiu executar o app, o apk `i9xp.apk` para a instalação do mesmo se encontra na pasta `files` na raiz do projeto.
 
