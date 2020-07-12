@@ -28,7 +28,7 @@ class Price extends StatelessWidget implements PreferredSize {
           ),
           child: Row(
             children: [
-              Image.asset(AppAssets.STAR),
+              Image.asset(AppAssets.STAR, width: 10),
               SizedBox(width: 2),
               Text(score, style: AppStyles.PRODUCT_SCORE)
             ],
