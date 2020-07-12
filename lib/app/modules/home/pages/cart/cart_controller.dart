@@ -6,10 +6,7 @@ class CartController = _CartControllerBase with _$CartController;
 
 abstract class _CartControllerBase with Store {
   @observable
-  int value = 0;
+  String totalAmount;
 
-  @action
-  void increment() {
-    value++;
-  }
+  setTotalAmount(String t) => totalAmount = t;
 }

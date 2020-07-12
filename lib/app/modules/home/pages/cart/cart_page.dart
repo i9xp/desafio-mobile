@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:i9xp/app/modules/home/components/category_title.dart';
+import 'package:i9xp/app/modules/home/models/product_model.dart';
 import 'package:i9xp/app/modules/home/pages/cart/components/cart_item_divider.dart';
 import 'package:i9xp/app/modules/home/pages/cart/components/cart_item_widget.dart';
 import 'package:i9xp/app/modules/home/pages/cart/components/checkout_section.dart';
@@ -21,9 +23,9 @@ class _CartPageState extends ModularState<CartPage, CartController> {
 
   num get pagePadding => 25.h;
 
-  _onAddProduct() {}
+  _onAddProduct(ProductModel p) => cartStore.addProduct(p);
 
-  _onRemoveProduct() {}
+  _onRemoveProduct(String id) => cartStore.removeProduct(id);
 
   @override
   Widget build(BuildContext context) {
@@ -48,11 +50,13 @@ class _CartPageState extends ModularState<CartPage, CartController> {
                 ),
                 Positioned(
                   bottom: 0,
-                  child: CheckoutSection(
-                    amount: cartStore.totalAmount,
-                    shipping: "Free Domestic Shipping",
-                    onCheckout: () {},
-                  ),
+                  child: Observer(builder: (_) {
+                    return CheckoutSection(
+                      amount: cartStore.totalAmount,
+                      shipping: "Free Domestic Shipping",
+                      onCheckout: () {},
+                    );
+                  }),
                 ),
               ],
             ),
@@ -66,15 +70,17 @@ class _CartPageState extends ModularState<CartPage, CartController> {
     return cartStore.cart.fold(<Widget>[], (previousValue, element) {
       return [
         ...previousValue,
-        CartItem(
-          title: element.product.completeName,
-          image: element.product.images[0],
-          price: element.product.price,
-          amount: element.amount,
-          subtitle: element.product.category,
-          onAdd: () => _onAddProduct(),
-          onRemove: () => _onRemoveProduct(),
-        ),
+        Observer(builder: (_) {
+          return CartItem(
+            title: element.product.completeName,
+            image: element.product.images[0],
+            price: element.product.price,
+            amount: element.amount,
+            subtitle: element.product.category,
+            onAdd: () => _onAddProduct(element.product),
+            onRemove: () => _onRemoveProduct(element.product.id),
+          );
+        }),
         CartItemDivider(),
       ];
     });

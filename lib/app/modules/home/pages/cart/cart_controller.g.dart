@@ -9,39 +9,25 @@ part of 'cart_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$CartController on _CartControllerBase, Store {
-  final _$valueAtom = Atom(name: '_CartControllerBase.value');
+  final _$totalAmountAtom = Atom(name: '_CartControllerBase.totalAmount');
 
   @override
-  int get value {
-    _$valueAtom.reportRead();
-    return super.value;
+  String get totalAmount {
+    _$totalAmountAtom.reportRead();
+    return super.totalAmount;
   }
 
   @override
-  set value(int value) {
-    _$valueAtom.reportWrite(value, super.value, () {
-      super.value = value;
+  set totalAmount(String value) {
+    _$totalAmountAtom.reportWrite(value, super.totalAmount, () {
+      super.totalAmount = value;
     });
-  }
-
-  final _$_CartControllerBaseActionController =
-      ActionController(name: '_CartControllerBase');
-
-  @override
-  void increment() {
-    final _$actionInfo = _$_CartControllerBaseActionController.startAction(
-        name: '_CartControllerBase.increment');
-    try {
-      return super.increment();
-    } finally {
-      _$_CartControllerBaseActionController.endAction(_$actionInfo);
-    }
   }
 
   @override
   String toString() {
     return '''
-value: ${value}
+totalAmount: ${totalAmount}
     ''';
   }
 }
