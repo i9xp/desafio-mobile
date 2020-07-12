@@ -5,9 +5,7 @@
 # Motivação
 O funcionamento desta aplicação é baseado em ecommerce com foco no funcionamento do fluxo de compras. Usei este projeto como um desafio para testar minhas habilidades como desenvolvedor e aprimorar o conhecimento em Flutter. Particularmente, estou bastante contente com o resultado, espero que gostem também.
 
-<img src="https://github.com/joaovirgili/desafio-mobile/blob/master/files/gif_1.gif?raw=true" width="150"/>
-<img src="https://github.com/joaovirgili/desafio-mobile/blob/master/files/gif_2.gif?raw=true" width="150"/>
-<img src="https://github.com/joaovirgili/desafio-mobile/blob/master/files/gif_3.gif?raw=true" width="150"/>
+<img src="https://github.com/joaovirgili/desafio-mobile/blob/master/files/gif_1.gif?raw=true" width="150"/>         <img src="https://github.com/joaovirgili/desafio-mobile/blob/master/files/gif_2.gif?raw=true" width="150"/>         <img src="https://github.com/joaovirgili/desafio-mobile/blob/master/files/gif_3.gif?raw=true" width="150"/>
 
 # :rocket: Como rodar o app?
 
