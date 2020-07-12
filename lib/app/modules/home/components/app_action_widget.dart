@@ -25,6 +25,7 @@ class _AppActionState extends State<AppAction> {
     ActionType.CART: AppAssets.CART,
     ActionType.MESSAGES: AppAssets.MESSAGES,
     ActionType.NOTIFICATIONS: AppAssets.NOTIFICATIONS,
+    ActionType.CLOSE: AppAssets.CLOSE,
   };
 
   String get asset => assets[widget.type];
