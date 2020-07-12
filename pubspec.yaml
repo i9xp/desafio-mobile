@@ -92,8 +92,10 @@ flutter:
     - assets/img/product/cart.png
     - assets/img/product/icon_right.png
     - assets/img/product/icon_up.png
-    # - assets/img/product/shoes.png
     - assets/img/product/star.png
+
+    - assets/img/checkout/checkout_done.png
+    - assets/img/checkout/close.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
