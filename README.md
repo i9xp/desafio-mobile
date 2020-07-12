@@ -26,8 +26,6 @@ O funcionamento desta aplicação é baseado em ecommerce com foco no funcioname
 Se por alguma razão não conseguiu executar o app, o apk `i9xp.apk` para a instalação do mesmo se encontra na pasta `files` na raiz do projeto.
 
 
-<br>
-
 # :computer: Implementação
 
 ## Tecnologias utilizadas
