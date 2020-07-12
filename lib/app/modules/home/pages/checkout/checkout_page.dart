@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:i9xp/app/modules/home/components/app_action_widget.dart';
+import 'package:i9xp/app/modules/home/components/bottom_button_widget.dart';
 import 'package:i9xp/app/modules/home/models/action_type.dart';
+import 'package:i9xp/app/modules/home/pages/product/models/bottom_button_type.dart';
+import 'package:i9xp/app/shared/constants/assets.dart';
 import 'package:i9xp/app/shared/constants/colors.dart';
 import 'checkout_controller.dart';
+
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CheckoutPage extends StatefulWidget {
   final String title;
@@ -37,8 +42,25 @@ class _CheckoutPageState
           ),
         ],
       ),
-      body: Column(
-        children: <Widget>[],
+      body: Center(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 60.w),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Image.asset(AppAssets.CHECKOUT_DONE, width: 100.h),
+              SizedBox(height: 37.h),
+              Text("Order Placed!"),
+              SizedBox(height: 14.h),
+              Text(
+                "Your order was placed successfully. \nFor more details, check All My Orders page under Profile tab",
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(height: 50.h),
+              BottomButton(type: BottomButtonType.CHECKOUT, label: "MY ORDERS"),
+            ],
+          ),
+        ),
       ),
     );
   }
