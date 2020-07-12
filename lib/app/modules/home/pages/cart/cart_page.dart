@@ -27,8 +27,9 @@ class _CartPageState extends ModularState<CartPage, CartController> {
 
   _onRemoveProduct(String id) => cartStore.removeProduct(id);
 
-  _onCheckout() {
+  _onCheckout() async {
     Modular.to.pushNamed("/checkout");
+    await Future.delayed(Duration(milliseconds: 500));
     cartStore.clear();
   }
 

@@ -62,7 +62,10 @@ abstract class _CartStoreBase with Store {
   int contains(String id) => cart.indexWhere((p) => p.product.id == id);
 
   @action
-  clear() => cart = <CartItemModel>[].asObservable();
+  clear() {
+    cart = <CartItemModel>[].asObservable();
+    _saveCart();
+  }
 
   @action
   removeProduct(String id) {
