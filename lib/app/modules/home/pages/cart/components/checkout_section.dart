@@ -22,7 +22,7 @@ class CheckoutSection extends StatelessWidget {
     return Container(
       width: ScreenUtil.screenWidth,
       padding: EdgeInsets.symmetric(horizontal: 25, vertical: 15),
-      color: AppColors.HOME_BACKGROUND_A,
+      color: AppColors.PRODUCT_PAGE_BACKGROUND,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,

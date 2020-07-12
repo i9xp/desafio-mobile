@@ -40,112 +40,121 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
   @override
   Widget build(BuildContext context) {
     _initScreenUtil();
-    return Scaffold(
-      backgroundColor: AppColors.HOME_BACKGROUND_A,
-      appBar: AppBar(
-        centerTitle: false,
-        titleSpacing: pagePadding,
-        elevation: 0,
-        title: Observer(builder: (_) {
-          return controller.bottomBarCurrentIndex != 2 ? Logo() : Container();
-        }),
-        actions: [
-          AppAction(type: ActionType.MESSAGES, number: 5),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: pagePadding),
-            child: AppAction(type: ActionType.NOTIFICATIONS, number: 10),
+    return Observer(
+      builder: (_) {
+        return Scaffold(
+          backgroundColor: controller.bottomBarCurrentIndex == 2
+              ? AppColors.PRODUCT_PAGE_BACKGROUND
+              : AppColors.HOME_BACKGROUND_A,
+          appBar: AppBar(
+            centerTitle: false,
+            titleSpacing: pagePadding,
+            elevation: 0,
+            backgroundColor: Colors.transparent,
+            title: Observer(builder: (_) {
+              return controller.bottomBarCurrentIndex != 2
+                  ? Logo()
+                  : Container();
+            }),
+            actions: [
+              AppAction(type: ActionType.MESSAGES, number: 5),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: pagePadding),
+                child: AppAction(type: ActionType.NOTIFICATIONS, number: 10),
+              ),
+            ],
           ),
-        ],
-      ),
-      body: Observer(builder: (_) {
-        if (controller.bottomBarCurrentIndex == 0) {
-          return SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: pagePadding),
-                  child: CategoryTitle(title: "Categories"),
+          body: Observer(builder: (_) {
+            if (controller.bottomBarCurrentIndex == 0) {
+              return SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: pagePadding),
+                      child: CategoryTitle(title: "Categories"),
+                    ),
+                    SizedBox(height: 14.h),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: pagePadding),
+                      child: CategoryList(categories: controller.categories),
+                    ),
+                    SizedBox(height: 27.h),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: pagePadding),
+                      child: CategoryTitle(title: "Latest"),
+                    ),
+                    LatestPageView(),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: pagePadding),
+                      child: Observer(builder: (_) {
+                        return ProductList(
+                          products: controller.products,
+                          onProductTap: _onProductTap,
+                          isLoading: controller.products == null,
+                        );
+                      }),
+                    ),
+                    SizedBox(height: 8),
+                  ],
                 ),
-                SizedBox(height: 14.h),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: pagePadding),
-                  child: CategoryList(categories: controller.categories),
+              );
+            } else if (controller.bottomBarCurrentIndex == 2) {
+              return CartPage();
+            } else {
+              return Center(child: Text("TODO"));
+            }
+          }),
+          bottomNavigationBar: Observer(builder: (_) {
+            return AppBottomNavigationBar(
+              currentIndex: controller.bottomBarCurrentIndex,
+              onTap: controller.setBottomBarIndex,
+              items: [
+                BottomNavigationBarItem(
+                  title: Text("HOME"),
+                  icon: Icon(Icons.home),
+                  // icon: Padding(
+                  //   padding: const EdgeInsets.only(bottom: 5.0),
+                  //   child: Image.asset(AppAssets.HOME),
+                  // ),
                 ),
-                SizedBox(height: 27.h),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: pagePadding),
-                  child: CategoryTitle(title: "Latest"),
+                BottomNavigationBarItem(
+                  title: Text("SEARCH"),
+                  icon: Icon(Icons.search),
+                  // icon: Padding(
+                  //   padding: const EdgeInsets.only(bottom: 5.0),
+                  //   child: Image.asset(AppAssets.SEARCH),
+                  // ),
                 ),
-                LatestPageView(),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: pagePadding),
-                  child: Observer(builder: (_) {
-                    return ProductList(
-                      products: controller.products,
-                      onProductTap: _onProductTap,
-                      isLoading: controller.products == null,
-                    );
-                  }),
+                BottomNavigationBarItem(
+                  title: Text("CART"),
+                  icon: Icon(Icons.shopping_cart),
+                  // icon: Padding(
+                  //   padding: const EdgeInsets.only(bottom: 5.0),
+                  //   child: Image.asset(AppAssets.CART),
+                  // ),
                 ),
-                SizedBox(height: 8),
+                BottomNavigationBarItem(
+                  title: Text("PROFILE"),
+                  icon: Icon(Icons.person),
+                  // icon: Padding(
+                  //   padding: const EdgeInsets.only(bottom: 5.0),
+                  //   child: Image.asset(AppAssets.PROFILE),
+                  // ),
+                ),
+                BottomNavigationBarItem(
+                  title: Text("MORE"),
+                  icon: Icon(Icons.reorder),
+                  // icon: Padding(
+                  //   padding: const EdgeInsets.only(bottom: 5.0),
+                  //   child: Image.asset(AppAssets.MORE),
+                  // ),
+                ),
               ],
-            ),
-          );
-        } else if (controller.bottomBarCurrentIndex == 2) {
-          return CartPage();
-        } else {
-          return Center(child: Text("TODO"));
-        }
-      }),
-      bottomNavigationBar: Observer(builder: (_) {
-        return AppBottomNavigationBar(
-          currentIndex: controller.bottomBarCurrentIndex,
-          onTap: controller.setBottomBarIndex,
-          items: [
-            BottomNavigationBarItem(
-              title: Text("HOME"),
-              icon: Icon(Icons.home),
-              // icon: Padding(
-              //   padding: const EdgeInsets.only(bottom: 5.0),
-              //   child: Image.asset(AppAssets.HOME),
-              // ),
-            ),
-            BottomNavigationBarItem(
-              title: Text("SEARCH"),
-              icon: Icon(Icons.search),
-              // icon: Padding(
-              //   padding: const EdgeInsets.only(bottom: 5.0),
-              //   child: Image.asset(AppAssets.SEARCH),
-              // ),
-            ),
-            BottomNavigationBarItem(
-              title: Text("CART"),
-              icon: Icon(Icons.shopping_cart),
-              // icon: Padding(
-              //   padding: const EdgeInsets.only(bottom: 5.0),
-              //   child: Image.asset(AppAssets.CART),
-              // ),
-            ),
-            BottomNavigationBarItem(
-              title: Text("PROFILE"),
-              icon: Icon(Icons.person),
-              // icon: Padding(
-              //   padding: const EdgeInsets.only(bottom: 5.0),
-              //   child: Image.asset(AppAssets.PROFILE),
-              // ),
-            ),
-            BottomNavigationBarItem(
-              title: Text("MORE"),
-              icon: Icon(Icons.reorder),
-              // icon: Padding(
-              //   padding: const EdgeInsets.only(bottom: 5.0),
-              //   child: Image.asset(AppAssets.MORE),
-              // ),
-            ),
-          ],
+            );
+          }),
         );
-      }),
+      },
     );
   }
 }
