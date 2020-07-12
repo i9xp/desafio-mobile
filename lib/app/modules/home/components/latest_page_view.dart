@@ -10,7 +10,7 @@ class LatestPageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 184.h,
+      height: 200,
       child: PageView(
         controller: PageController(
           viewportFraction: 0.9,
@@ -39,9 +39,9 @@ class LatestImage extends StatelessWidget {
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 20, horizontal: 5),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(25),
+          borderRadius: BorderRadius.circular(10),
           image: DecorationImage(
-            fit: BoxFit.fill,
+            fit: BoxFit.fitWidth,
             image: AssetImage(image),
           ),
         ),
