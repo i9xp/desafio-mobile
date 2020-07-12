@@ -27,6 +27,11 @@ class _CartPageState extends ModularState<CartPage, CartController> {
 
   _onRemoveProduct(String id) => cartStore.removeProduct(id);
 
+  _onCheckout() {
+    Modular.to.pushNamed("/checkout");
+    cartStore.clear();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Observer(
@@ -56,9 +61,7 @@ class _CartPageState extends ModularState<CartPage, CartController> {
                         return CheckoutSection(
                           amount: cartStore.totalAmount,
                           shipping: "Free Domestic Shipping",
-                          onCheckout: () {
-                            Modular.to.pushNamed("/checkout");
-                          },
+                          onCheckout: _onCheckout,
                         );
                       }),
                     ),
