@@ -44,6 +44,8 @@ class _ProductPageState extends ModularState<ProductPage, ProductController>
     Modular.to.pop(true);
   }
 
+  _goToCart() => Modular.to.pop(true);
+
   @override
   void initState() {
     super.initState();
@@ -77,6 +79,7 @@ class _ProductPageState extends ModularState<ProductPage, ProductController>
               return AppAction(
                 type: ActionType.CART,
                 number: cartStore.length,
+                onTap: _goToCart,
               );
             }),
           )
