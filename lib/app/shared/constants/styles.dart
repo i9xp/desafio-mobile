@@ -143,4 +143,25 @@ class AppStyles {
     color: AppColors.WHITE,
     fontWeight: FontWeight.w300,
   );
+
+  // ignore: non_constant_identifier_names
+  static final CHECKOUT_TITLE = TextStyle(
+    fontSize: 30.sp,
+    color: AppColors.WHITE,
+    fontWeight: FontWeight.w300,
+  );
+
+  // ignore: non_constant_identifier_names
+  static final CHECKOUT_CONTENT = TextStyle(
+    fontSize: 15.sp,
+    color: AppColors.WHITE,
+    fontWeight: FontWeight.normal,
+  );
+
+  // ignore: non_constant_identifier_names
+  static final CHECKOUT_BOTTOM_BUTTON = TextStyle(
+    fontSize: 12.sp,
+    color: AppColors.PRODUCT_PAGE_BACKGROUND,
+    fontWeight: FontWeight.bold,
+  );
 }
