@@ -61,4 +61,10 @@ class AppAssets {
 
   // ignore: non_constant_identifier_names
   static final STAR = "assets/img/product/star.png";
+
+  // ignore: non_constant_identifier_names
+  static final CLOSE = "assets/img/checkout/close.png";
+
+  // ignore: non_constant_identifier_names
+  static final CHECKOUT_DONE = "assets/img/checkout/checkout_done.png";
 }

@@ -56,7 +56,9 @@ class _CartPageState extends ModularState<CartPage, CartController> {
                         return CheckoutSection(
                           amount: cartStore.totalAmount,
                           shipping: "Free Domestic Shipping",
-                          onCheckout: () {},
+                          onCheckout: () {
+                            Modular.to.pushNamed("/checkout");
+                          },
                         );
                       }),
                     ),

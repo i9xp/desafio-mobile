@@ -1,3 +1,6 @@
+import 'package:i9xp/app/modules/home/pages/checkout/checkout_page.dart';
+
+import 'pages/checkout/checkout_controller.dart';
 import 'services/hive_service.dart';
 import 'services/products_service.dart';
 import 'pages/cart/cart_controller.dart';
@@ -12,6 +15,7 @@ import 'home_page.dart';
 class HomeModule extends ChildModule {
   @override
   List<Bind> get binds => [
+        Bind((i) => CheckoutController()),
         Bind((i) => ProductsService()),
         Bind((i) => CartController()),
         Bind((i) => CartStore(i.get<HiveService>())),
@@ -25,6 +29,10 @@ class HomeModule extends ChildModule {
         Router(
           "/product",
           child: (_, args) => ProductPage(productModel: args.data),
+        ),
+        Router(
+          "/checkout",
+          child: (_, args) => CheckoutPage(),
         ),
       ];
 
