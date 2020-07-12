@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:i9xp/app/shared/constants/assets.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LatestPageView extends StatelessWidget {
   const LatestPageView({
