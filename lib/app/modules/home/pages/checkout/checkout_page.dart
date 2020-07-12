@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:i9xp/app/modules/home/components/app_action_widget.dart';
+import 'package:i9xp/app/modules/home/models/action_type.dart';
 import 'package:i9xp/app/shared/constants/colors.dart';
 import 'checkout_controller.dart';
 
@@ -20,7 +22,20 @@ class _CheckoutPageState
     return Scaffold(
       backgroundColor: AppColors.PRODUCT_PAGE_BACKGROUND,
       appBar: AppBar(
-        title: Text(widget.title),
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        automaticallyImplyLeading: false,
+        actions: <Widget>[
+          Padding(
+            padding: const EdgeInsets.only(right: 20),
+            child: AppAction(
+              type: ActionType.CLOSE,
+              onTap: () {
+                Modular.to.pop();
+              },
+            ),
+          ),
+        ],
       ),
       body: Column(
         children: <Widget>[],
