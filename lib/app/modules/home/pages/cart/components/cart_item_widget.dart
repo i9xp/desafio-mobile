@@ -42,6 +42,10 @@ class CartItem extends StatelessWidget {
                 tag: image,
                 child: CachedNetworkImage(
                   imageUrl: image,
+                  imageBuilder: (context, provider) => Image(
+                    image: provider,
+                  ),
+                  errorWidget: (context, url, error) => Container(),
                   width: 85,
                   height: 85,
                 ),

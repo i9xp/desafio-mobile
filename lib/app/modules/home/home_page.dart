@@ -21,7 +21,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends ModularState<HomePage, HomeController> {
-  double get pagePadding => 15;
+  double get pagePadding => 20;
 
   void _initScreenUtil() {
     ScreenUtil.init(width: 375, height: 667, allowFontScaling: false);
@@ -66,9 +66,9 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   CategoryTitle(title: "Categories"),
-                  SizedBox(height: 14),
+                  SizedBox(height: 14.h),
                   CategoryList(categories: controller.categories),
-                  SizedBox(height: 27),
+                  SizedBox(height: 27.h),
                   CategoryTitle(title: "Latest"),
                   LatestPageView(),
                   Observer(builder: (_) {

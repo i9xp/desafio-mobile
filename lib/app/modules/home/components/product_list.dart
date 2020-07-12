@@ -19,9 +19,10 @@ class ProductList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 135.h,
-      child: ListView(
-        scrollDirection: Axis.horizontal,
+      // height: 135.h,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        // scrollDirection: Axis.horizontal,
         children: products.map(_productToWidget).toList(),
       ),
     );
@@ -79,11 +80,12 @@ class ProductCard extends StatelessWidget {
                         height: 80.w,
                         child: Hero(
                           tag: image,
-                          child: Image(
-                            image: CachedNetworkImageProvider(
-                              image,
-                              scale: 1.0,
+                          child: CachedNetworkImage(
+                            imageUrl: image,
+                            imageBuilder: (context, provider) => Image(
+                              image: provider,
                             ),
+                            errorWidget: (context, url, error) => Container(),
                           ),
                         ),
                       ),
@@ -93,7 +95,6 @@ class ProductCard extends StatelessWidget {
                   Text(
                     title,
                     style: AppStyles.PRODUCT_TITLE,
-                    // overflow: TextOverflow.ellipsis,
                   ),
                   SizedBox(height: 3),
                   Text("\$$price", style: AppStyles.PRODUCT_PRICE),

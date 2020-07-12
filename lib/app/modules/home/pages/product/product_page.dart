@@ -105,7 +105,12 @@ class _ProductPageState extends ModularState<ProductPage, ProductController>
             children: widget.productModel.images
                 .map((image) => Hero(
                       tag: image,
-                      child: CachedNetworkImage(imageUrl: image),
+                      child: CachedNetworkImage(
+                        imageUrl: image,
+                        imageBuilder: (context, provider) =>
+                            Image(image: provider),
+                        errorWidget: (context, url, error) => Container(),
+                      ),
                     ))
                 .toList(),
           ),
