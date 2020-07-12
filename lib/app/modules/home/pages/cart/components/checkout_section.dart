@@ -47,6 +47,7 @@ class CheckoutSection extends StatelessWidget {
           BottomButton(
             label: "CHECKOUT",
             color: AppColors.BAGDE_BACKGROUND,
+            labelStyle: AppStyles.CHECKOUT_BOTTOM_BUTTON,
             type: BottomButtonType.CHECKOUT,
             onTap: onCheckout,
           ),
