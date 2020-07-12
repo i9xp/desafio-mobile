@@ -29,41 +29,45 @@ class _CartPageState extends ModularState<CartPage, CartController> {
 
   @override
   Widget build(BuildContext context) {
-    return cartStore.hasProducts
-        ? Container(
-            height: double.infinity,
-            child: Stack(
-              children: [
-                SingleChildScrollView(
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: pagePadding),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        CategoryTitle(title: "Cart"),
-                        SizedBox(height: 30.h),
-                        ..._productsWidget(),
-                        SizedBox(height: 100),
-                      ],
+    return Observer(
+      builder: (_) {
+        return cartStore.hasProducts
+            ? Container(
+                height: double.infinity,
+                child: Stack(
+                  children: [
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: pagePadding),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            CategoryTitle(title: "Cart"),
+                            SizedBox(height: 30.h),
+                            ..._productsWidget(),
+                            SizedBox(height: 100),
+                          ],
+                        ),
+                      ),
                     ),
-                  ),
+                    Positioned(
+                      bottom: 0,
+                      child: Observer(builder: (_) {
+                        return CheckoutSection(
+                          amount: cartStore.totalAmount,
+                          shipping: "Free Domestic Shipping",
+                          onCheckout: () {},
+                        );
+                      }),
+                    ),
+                  ],
                 ),
-                Positioned(
-                  bottom: 0,
-                  child: Observer(builder: (_) {
-                    return CheckoutSection(
-                      amount: cartStore.totalAmount,
-                      shipping: "Free Domestic Shipping",
-                      onCheckout: () {},
-                    );
-                  }),
-                ),
-              ],
-            ),
-          )
-        : Center(
-            child: Text("No products"),
-          );
+              )
+            : Center(
+                child: Text("No products"),
+              );
+      },
+    );
   }
 
   List<Widget> _productsWidget() {
