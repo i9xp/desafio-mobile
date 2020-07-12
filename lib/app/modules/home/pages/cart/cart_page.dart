@@ -49,7 +49,7 @@ class _CartPageState extends ModularState<CartPage, CartController> {
                 Positioned(
                   bottom: 0,
                   child: CheckoutSection(
-                    amount: 81.57,
+                    amount: cartStore.totalAmount,
                     shipping: "Free Domestic Shipping",
                     onCheckout: () {},
                   ),

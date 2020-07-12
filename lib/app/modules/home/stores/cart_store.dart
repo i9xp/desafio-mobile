@@ -20,13 +20,16 @@ abstract class _CartStoreBase with Store {
   bool get hasProducts => length > 0;
 
   @computed
-  double get totalAmount {
-    if (!hasProducts) return 0.0;
-    return cart.fold(
-        0.0,
-        (previousValue, element) =>
-            previousValue +
-            double.parse(element.product.price) * element.amount);
+  String get totalAmount {
+    if (!hasProducts) return "0.0";
+    return cart
+        .fold<double>(
+          0.0,
+          (previousValue, element) =>
+              previousValue +
+              double.parse(element.product.price) * element.amount,
+        )
+        .toStringAsFixed(2);
   }
 
   @action

@@ -9,11 +9,11 @@ class CheckoutSection extends StatelessWidget {
   const CheckoutSection({
     Key key,
     @required this.shipping,
-    this.amount = 00.00,
+    this.amount = "00.00",
     this.onCheckout,
   }) : super(key: key);
 
-  final double amount;
+  final String amount;
   final String shipping;
   final Function onCheckout;
 

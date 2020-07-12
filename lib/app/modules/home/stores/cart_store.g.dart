@@ -22,11 +22,11 @@ mixin _$CartStore on _CartStoreBase, Store {
       (_$hasProductsComputed ??= Computed<bool>(() => super.hasProducts,
               name: '_CartStoreBase.hasProducts'))
           .value;
-  Computed<double> _$totalAmountComputed;
+  Computed<String> _$totalAmountComputed;
 
   @override
-  double get totalAmount =>
-      (_$totalAmountComputed ??= Computed<double>(() => super.totalAmount,
+  String get totalAmount =>
+      (_$totalAmountComputed ??= Computed<String>(() => super.totalAmount,
               name: '_CartStoreBase.totalAmount'))
           .value;
 
