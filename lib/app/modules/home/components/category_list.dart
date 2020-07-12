@@ -3,6 +3,7 @@ import 'package:i9xp/app/modules/home/models/category_image.dart';
 import 'package:i9xp/app/modules/home/models/category_item_model.dart';
 import 'package:i9xp/app/shared/constants/assets.dart';
 import 'package:i9xp/app/shared/constants/styles.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CategoryList extends StatelessWidget {
   final List<CategoryItemModel> categories;
@@ -52,7 +53,10 @@ class _CategoryItemState extends State<CategoryItem> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Image.asset(asset),
+        Image.asset(
+          asset,
+          width: 65.h,
+        ),
         SizedBox(height: 9),
         Text(widget.title, style: AppStyles.CATEGORY_ITEM),
       ],
