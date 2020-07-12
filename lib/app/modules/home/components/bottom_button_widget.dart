@@ -37,9 +37,9 @@ class _BottomButtonState extends State<BottomButton> {
   Widget build(BuildContext context) {
     return Material(
       color: widget.color ?? Colors.white,
-      borderRadius: BorderRadius.circular(23),
+      borderRadius: BorderRadius.circular(23.h),
       child: InkWell(
-        borderRadius: BorderRadius.circular(23),
+        borderRadius: BorderRadius.circular(23.h),
         onTap: widget.onTap,
         child: Container(
           decoration: BoxDecoration(),
@@ -58,7 +58,7 @@ class _BottomButtonState extends State<BottomButton> {
               Expanded(child: Container()),
               Padding(
                 padding: const EdgeInsets.only(right: 8.2),
-                child: Image.asset(asset),
+                child: Image.asset(asset, width: 28.h),
               ),
             ],
           ),

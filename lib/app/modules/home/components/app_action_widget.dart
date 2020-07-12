@@ -43,7 +43,7 @@ class _AppActionState extends State<AppAction> {
             children: [
               Align(
                 alignment: Alignment.topRight,
-                child: Image.asset(asset),
+                child: Image.asset(asset, width: 20),
               ),
               if (hasBadge)
                 Align(
