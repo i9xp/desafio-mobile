@@ -29,6 +29,8 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  hive_flutter: ^0.3.0+2
+  hive: ^1.4.1+1
   cached_network_image: ^2.2.0+1
   smooth_page_indicator: ^0.1.5
   flutter_screenutil: ^2.2.0
@@ -48,8 +50,12 @@ dev_dependencies:
   mockito: ^4.1.1
   mobx_codegen: ^1.1.0+1
   build_runner: ^1.10.0
+  hive_generator: ^0.7.0+2
   flutter_test:
     sdk: flutter
+
+dependency_overrides:
+  dartx: ^0.3.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
