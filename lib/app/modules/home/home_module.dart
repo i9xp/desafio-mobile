@@ -1,3 +1,4 @@
+import 'services/hive_service.dart';
 import 'services/products_service.dart';
 import 'pages/cart/cart_controller.dart';
 import 'stores/cart_store.dart';
@@ -13,7 +14,7 @@ class HomeModule extends ChildModule {
   List<Bind> get binds => [
         Bind((i) => ProductsService()),
         Bind((i) => CartController()),
-        Bind((i) => CartStore()),
+        Bind((i) => CartStore(i.get<HiveService>())),
         Bind((i) => ProductController()),
         Bind((i) => HomeController(i.get<ProductsService>())),
       ];

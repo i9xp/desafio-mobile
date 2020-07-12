@@ -4,12 +4,17 @@
 
 import 'dart:convert';
 
+import 'package:hive/hive.dart';
+
+part 'product_model.g.dart';
+
 List<ProductModel> productsFromJson(String str) => List<ProductModel>.from(
     json.decode(str).map((x) => ProductModel.fromJson(x)));
 
 String productsToJson(List<ProductModel> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
+@HiveType(typeId: 2)
 class ProductModel {
   ProductModel({
     this.id,
@@ -27,18 +32,31 @@ class ProductModel {
     this.score,
   });
 
+  @HiveField(0)
   final String id;
+  @HiveField(1)
   final String name;
+  @HiveField(2)
   final String completeName;
+  @HiveField(3)
   final String brand;
+  @HiveField(4)
   final String sku;
+  @HiveField(5)
   final String condition;
+  @HiveField(6)
   final String material;
+  @HiveField(7)
   final String category;
+  @HiveField(8)
   final String fiting;
+  @HiveField(9)
   final List<String> images;
+  @HiveField(10)
   final String description;
+  @HiveField(11)
   final String price;
+  @HiveField(12)
   final String score;
 
   ProductModel copyWith({

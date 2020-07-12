@@ -1,5 +1,6 @@
 import 'package:i9xp/app/modules/home/models/cart_item_model.dart';
 import 'package:i9xp/app/modules/home/models/product_model.dart';
+import 'package:i9xp/app/modules/home/services/hive_service.dart';
 import 'package:mobx/mobx.dart';
 
 part 'cart_store.g.dart';
@@ -7,8 +8,20 @@ part 'cart_store.g.dart';
 class CartStore = _CartStoreBase with _$CartStore;
 
 abstract class _CartStoreBase with Store {
+  final HiveService hiveService;
+
   @observable
   ObservableList<CartItemModel> cart = <CartItemModel>[].asObservable();
+
+  _CartStoreBase(this.hiveService) {
+    final cart = hiveService.getCart();
+    if (cart != null) {
+      setCart(cart.map((e) => e.toBase()).toList());
+    }
+  }
+
+  @action
+  setCart(List<CartItemModel> cart) => this.cart = cart.asObservable();
 
   @computed
   int get length {
@@ -40,7 +53,11 @@ abstract class _CartStoreBase with Store {
     } else {
       cart[index].amount += 1;
     }
+    _saveCart();
   }
+
+  _saveCart() =>
+      hiveService.saveCart(cart.map((c) => CartItemHive.fromBase(c)).toList());
 
   int contains(String id) => cart.indexWhere((p) => p.product.id == id);
 
@@ -58,5 +75,6 @@ abstract class _CartStoreBase with Store {
         cart.remove(product);
       }
     }
+    _saveCart();
   }
 }

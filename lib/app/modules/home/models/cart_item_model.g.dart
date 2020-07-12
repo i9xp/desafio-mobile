@@ -3,6 +3,37 @@
 part of 'cart_item_model.dart';
 
 // **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class CartItemHiveAdapter extends TypeAdapter<CartItemHive> {
+  @override
+  final typeId = 1;
+
+  @override
+  CartItemHive read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return CartItemHive(
+      fields[1] as ProductModel,
+      amount: fields[0] as int,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, CartItemHive obj) {
+    writer
+      ..writeByte(2)
+      ..writeByte(0)
+      ..write(obj.amount)
+      ..writeByte(1)
+      ..write(obj.product);
+  }
+}
+
+// **************************************************************************
 // StoreGenerator
 // **************************************************************************
 
