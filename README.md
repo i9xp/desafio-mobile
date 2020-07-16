@@ -10,10 +10,12 @@
 ## Requerimentos
  
  - O app deve ser escrito preferencialmente usando Flutter (https://flutter.dev/).
+ - No Flutter, usar o channel stable 
  - Faça uso de boas práticas de desenvolvimento
  - Use conceitos de componentização e reaproveitamento
  - Crie um fluxo de compra mínimo: O aplicativo deve ser capaz de navegar entre as telas (Home, Página de Produto e Carrinho Lateral)
  - Ao tocar em adicionar um produto ao carrinho. o item deve ser adicionado ao carrinho e a tela do carrinho deve serm mostrada com a informação atualizada
+ - O resultado final deste teste será compilado e testado em um dispositivo real, além do emulador,  portanto garanta o seu funcionamento
 
 
 ## Desejável
