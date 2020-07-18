@@ -1,5 +1,5 @@
 name: desafioi9xp
-description: Desafio Flutter i9XP
+description: "Desafio Flutter i9XP"
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
@@ -26,15 +26,20 @@ dependencies:
   mobx: ^1.0.0
   flutter_mobx: ^1.0.0
   flutter_svg: ^0.18.0
+  path_provider: ^1.6.11
   hive: ^1.4.1+1
   hive_flutter: ^0.3.0+2
   dio: ^3.0.9
   smooth_page_indicator: ^0.1.5
   shimmer: ^1.1.1
+  badges: ^1.1.1
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.3
+
+dependency_overrides:
+  path: ^1.7.0
 
 dev_dependencies:
   flutter_test:
@@ -54,9 +59,9 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
-    # To add assets to your application, add an assets section, like this:
-    assets:
-      - assets/
+  # To add assets to your application, add an assets section, like this:
+  assets:
+    - assets/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
