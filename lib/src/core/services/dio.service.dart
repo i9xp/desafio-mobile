@@ -1,6 +1,6 @@
-import 'package:desafioi9xp/src/interfaces/api.interface.dart';
-import 'package:desafioi9xp/src/models/apiresponse.model.dart';
-import 'package:desafioi9xp/src/utils/utils.dart';
+import 'package:desafioi9xp/src/core/interfaces/api.interface.dart';
+import 'package:desafioi9xp/src/core/models/apiresponse.model.dart';
+import 'package:desafioi9xp/src/core/utils/utils.dart';
 import 'package:dio/dio.dart';
 
 class DioService implements IApi {

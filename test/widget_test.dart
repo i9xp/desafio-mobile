@@ -2,14 +2,11 @@
 //
 // To perform an interaction with a widget in your test, use the WidgetTester
 // utility that Flutter provides. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child src.views.widgets in the widget
+// gestures. You can also use WidgetTester to find child src.core.views.widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
-import 'package:desafioi9xp/src/views/main.view.dart';
-import 'package:flutter/material.dart';
+import 'package:desafioi9xp/src/core/views/main.view.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:desafioi9xp/main.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {

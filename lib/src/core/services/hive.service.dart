@@ -1,4 +1,4 @@
-import 'package:desafioi9xp/src/interfaces/localstorage.interface.dart';
+import 'package:desafioi9xp/src/core/interfaces/localstorage.interface.dart';
 import 'package:hive/hive.dart';
 
 class HiveService implements ILocalStorage {

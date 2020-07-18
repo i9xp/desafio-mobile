@@ -1,11 +1,11 @@
-import 'package:desafioi9xp/src/views/main.view.dart';
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
-import 'package:path_provider/path_provider.dart' as path;
+import 'package:flutter_modular/flutter_modular.dart';
+
+import 'src/core/app.module.dart';
 
 void main() async {
   /*final appDocumentDir = await path.getExternalStorageDirectory();
   Hive.init(appDocumentDir.path);
   await Hive.openBox("cart");*/
-  runApp(MyAppView());
+  runApp(ModularApp(module: AppModule()));
 }

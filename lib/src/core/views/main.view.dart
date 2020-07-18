@@ -1,4 +1,6 @@
+import 'package:desafioi9xp/src/modules/home/views/home.view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 class MyAppView extends StatelessWidget {
   @override
@@ -10,7 +12,10 @@ class MyAppView extends StatelessWidget {
         primarySwatch: Colors.yellow,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Container(),
+      home: HomeView(),
+      initialRoute: "/",
+      onGenerateRoute: Modular.generateRoute,
+      navigatorKey: Modular.navigatorKey,
     );
   }
 }
