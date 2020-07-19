@@ -24,6 +24,20 @@ mixin _$HomeStore on _HomeStoreBase, Store {
     });
   }
 
+  final _$_HomeStoreBaseActionController =
+      ActionController(name: '_HomeStoreBase');
+
+  @override
+  dynamic setSelectedIndex(dynamic index) {
+    final _$actionInfo = _$_HomeStoreBaseActionController.startAction(
+        name: '_HomeStoreBase.setSelectedIndex');
+    try {
+      return super.setSelectedIndex(index);
+    } finally {
+      _$_HomeStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''

@@ -5,6 +5,7 @@ import 'package:desafioi9xp/src/modules/dashboard/widgets/latest.widget.dart';
 import 'package:desafioi9xp/src/modules/dashboard/widgets/products.widget.dart';
 import 'package:desafioi9xp/styles/appcolors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 class DashboardView extends StatefulWidget {
   @override
@@ -12,7 +13,13 @@ class DashboardView extends StatefulWidget {
 }
 
 class _DashboardViewState extends State<DashboardView> {
-  DashboardController _dashboardController = new DashboardController();
+  DashboardController _dashboardController = Modular.get<DashboardController>();
+
+  @override
+  void initState() {
+    _dashboardController.dashboardStore.loadProducts();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +39,7 @@ class _DashboardViewState extends State<DashboardView> {
             Divider(height: 30, color: Colors.transparent),
             Latest(_dashboardController.latestPageController),
             Divider(height: 4.0, color: Colors.transparent),
-            Products(),
+            Products(_dashboardController),
           ],
         ),
       ),

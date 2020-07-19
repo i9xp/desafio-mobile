@@ -41,7 +41,7 @@ class _HomeViewState extends State<HomeView> {
   }
 
   Widget buildPageView() {
-    return PageView(
+    return  PageView(
       controller: _homeController.pageController,
       onPageChanged: _homeController.onItemTapped,
       children: <Widget>[

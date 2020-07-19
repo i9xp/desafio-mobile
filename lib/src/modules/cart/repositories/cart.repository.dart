@@ -18,6 +18,18 @@ class HomeRepository implements IRepository {
     }
   }
 
+  insertProduct() async {
+    _loadingStatus = ELoadingStatus.loading;
+    var result = await _hive.get("products");
+    if (result) {
+      _loadingStatus = ELoadingStatus.completed;
+//      return List<CnhModel>.from(response.data["data"].map((x) => CnhModel.fromJson(x)));
+    } else {
+      _loadingStatus = ELoadingStatus.error;
+      throw Exception('Falha ao carregar dados');
+    }
+  }
+
   getStatus() {
     return _loadingStatus;
   }

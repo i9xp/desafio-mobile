@@ -1,14 +1,20 @@
 import 'package:badges/badges.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:desafioi9xp/src/core/widgets/custombutton.widget.dart';
 import 'package:desafioi9xp/src/modules/product/controllers/product.controller.dart';
+import 'package:desafioi9xp/src/modules/product/models/product.model.dart';
 import 'package:desafioi9xp/src/modules/product/styles/product.style.dart';
-import 'package:desafioi9xp/src/modules/product/widgets/productratingstar.widget.dart';
+import 'package:desafioi9xp/src/modules/product/widgets/product_appbar_price.widget.dart';
 import 'package:desafioi9xp/styles/appcolors.dart';
 import 'package:desafioi9xp/styles/appstyle.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class ProductView extends StatefulWidget {
+  final ProductModel product;
+
+  const ProductView({Key key, this.product}) : super(key: key);
+
   @override
   _ProductViewState createState() => _ProductViewState();
 }
@@ -44,22 +50,14 @@ class _ProductViewState extends State<ProductView> with SingleTickerProviderStat
       title: Column(
         children: [
           Text(
-            "Faux Sued Ankle Boots",
+            widget.product.completeName,
             style: ProductStyle.PRODUCT_TITLE,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                "\$49.99",
-                style: ProductStyle.PRODUCT_TITLE,
-              ),
-              Container(width: 5),
-              ProductRatingStar("4.9"),
-            ],
-          ),
         ],
+      ),
+      bottom: ProductPrice(
+        price: widget.product.price,
+        score: widget.product.score,
       ),
       actions: [
         Badge(
@@ -68,18 +66,13 @@ class _ProductViewState extends State<ProductView> with SingleTickerProviderStat
             style: AppStyle.BADGE_NUMBER,
           ),
           badgeColor: AppColors.primaryColor,
-          position: BadgePosition.bottomLeft(left: 0.0, bottom: 10.0),
-          child: Container(
-            width: 32,
-            height: 32,
-            child: FlatButton(
-              padding: EdgeInsets.zero,
-              materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-              onPressed: () {},
-              child: Icon(
-                Icons.shopping_cart,
-                color: Colors.white,
-              ),
+          position: BadgePosition.bottomLeft(left: 5.0, bottom: 0.0),
+          child: IconButton(
+            padding: EdgeInsets.zero,
+            onPressed: () {},
+            icon: Icon(
+              Icons.shopping_cart,
+              color: Colors.white,
             ),
           ),
         ),
@@ -92,7 +85,7 @@ class _ProductViewState extends State<ProductView> with SingleTickerProviderStat
       children: [
         Divider(color: Colors.transparent),
         SmoothPageIndicator(
-          count: 3,
+          count: widget.product.images.length,
           controller: _productController.productImagesPageController,
           effect: WormEffect(
             dotColor: AppColors.dotInidicatorColor,
@@ -106,33 +99,32 @@ class _ProductViewState extends State<ProductView> with SingleTickerProviderStat
         Container(
           width: double.infinity,
           height: 200,
-          child: PageView(
+          child: PageView.builder(
             controller: _productController.productImagesPageController,
-            children: [
-              Container(
-                color: Colors.red,
-                child: Text("1"),
-              ),
-              Container(
-                color: Colors.blue,
-                child: Text("2"),
-              ),
-              Container(
-                color: Colors.green,
-                child: Text("3"),
-              ),
-            ],
+            itemCount: widget.product.images.length,
+            itemBuilder: (context, index) {
+              final image = widget.product.images[index];
+              return Container(
+                child: Hero(
+                  tag: image,
+                  child: CachedNetworkImage(
+                    imageUrl: image,
+                  ),
+                ),
+              );
+            },
           ),
         ),
         Divider(height: 30, color: Colors.transparent),
         Container(
-          height: 30,
+          height: 27,
           child: TabBar(
             isScrollable: true,
             labelPadding: EdgeInsets.symmetric(horizontal: 5.0),
             controller: _productController.productInfoTabController,
             unselectedLabelColor: Colors.white,
             indicatorSize: TabBarIndicatorSize.label,
+            labelColor: AppColors.bgBottomNavBarColor,
             labelStyle: TextStyle(fontFamily: "Neusa"),
             indicator: BoxDecoration(
               borderRadius: BorderRadius.circular(50),
@@ -141,19 +133,19 @@ class _ProductViewState extends State<ProductView> with SingleTickerProviderStat
             tabs: [
               Tab(
                 child: Container(
-                  padding: EdgeInsets.symmetric(vertical: 4.0, horizontal: 10.0),
+                  padding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 15.0),
                   child: Text("Product"),
                 ),
               ),
               Tab(
                 child: Container(
-                  padding: EdgeInsets.symmetric(vertical: 4.0, horizontal: 10.0),
+                  padding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 15.0),
                   child: Text("Details"),
                 ),
               ),
               Tab(
                 child: Container(
-                  padding: EdgeInsets.symmetric(vertical: 4.0, horizontal: 10.0),
+                  padding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 15.0),
                   child: Text("Reviews"),
                 ),
               ),
@@ -184,26 +176,26 @@ class _ProductViewState extends State<ProductView> with SingleTickerProviderStat
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text("BRAND", style: ProductStyle.PRODUCT_DETAILS_TITLE),
-              Text("Lily's Ankle Boots", style: ProductStyle.PRODUCT_DETAILS_TEXT),
+              Text(widget.product.brand, style: ProductStyle.PRODUCT_DETAILS_TEXT),
               Divider(height: 20, color: Colors.transparent),
               Text("CONDITION", style: ProductStyle.PRODUCT_DETAILS_TITLE),
-              Text("Lily's Ankle Boots", style: ProductStyle.PRODUCT_DETAILS_TEXT),
+              Text(widget.product.condition, style: ProductStyle.PRODUCT_DETAILS_TEXT),
               Divider(height: 20, color: Colors.transparent),
               Text("CATEGORY", style: ProductStyle.PRODUCT_DETAILS_TITLE),
-              Text("Lily's Ankle Boots", style: ProductStyle.PRODUCT_DETAILS_TEXT),
+              Text(widget.product.category, style: ProductStyle.PRODUCT_DETAILS_TEXT),
             ],
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Text("SKU", style: ProductStyle.PRODUCT_DETAILS_TITLE),
-              Text("Lily's Ankle Boots", style: ProductStyle.PRODUCT_DETAILS_TEXT),
+              Text(widget.product.sku, style: ProductStyle.PRODUCT_DETAILS_TEXT),
               Divider(height: 20, color: Colors.transparent),
               Text("MATERIAL", style: ProductStyle.PRODUCT_DETAILS_TITLE),
-              Text("Lily's Ankle Boots", style: ProductStyle.PRODUCT_DETAILS_TEXT),
+              Text(widget.product.material, style: ProductStyle.PRODUCT_DETAILS_TEXT),
               Divider(height: 20, color: Colors.transparent),
               Text("FITTING", style: ProductStyle.PRODUCT_DETAILS_TITLE),
-              Text("Lily's Ankle Boots", style: ProductStyle.PRODUCT_DETAILS_TEXT),
+              Text(widget.product.fiting, style: ProductStyle.PRODUCT_DETAILS_TEXT),
             ],
           )
         ],
@@ -215,12 +207,8 @@ class _ProductViewState extends State<ProductView> with SingleTickerProviderStat
     return Padding(
       padding: const EdgeInsets.all(25.0),
       child: Text(
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget lobortis nisl, sit amet finibus nisl. Cras ultricies eros sed ultricies venenatis. Integer sit amet vehicula erat. Sed sollicitudin massa eget neque pulvinar, in convallis justo efficitur. Duis consequat turpis at est placerat, quis egestas ipsum cursus.",
-        style: TextStyle(
-          color: Colors.white,
-          fontFamily: "Neusa",
-          fontWeight: FontWeight.w200,
-        ),
+        widget.product.description,
+        style: ProductStyle.PRODUCT_DESCRIPTION,
       ),
     );
   }
@@ -228,7 +216,7 @@ class _ProductViewState extends State<ProductView> with SingleTickerProviderStat
   Widget buildBottomNavbar() {
     return Container(
       color: AppColors.bgBottomNavBarColor,
-      padding: EdgeInsets.all(15.0),
+      padding: EdgeInsets.only(top: 15.0, left: 15.0, bottom: 25.0, right: 15.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

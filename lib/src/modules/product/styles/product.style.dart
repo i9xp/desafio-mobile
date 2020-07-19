@@ -28,4 +28,10 @@ class ProductStyle {
     fontWeight: FontWeight.w200,
     fontSize: 14,
   );
+
+  static final PRODUCT_DESCRIPTION = TextStyle(
+    color: Colors.white,
+    fontFamily: "Neusa",
+    fontWeight: FontWeight.w200,
+  );
 }

@@ -1,8 +1,12 @@
 import 'package:desafioi9xp/src/core/views/main.view.dart';
+import 'package:desafioi9xp/src/modules/dashboard/controllers/dashboard.controller.dart';
+import 'package:desafioi9xp/src/modules/dashboard/repositories/dashboard.repository.dart';
+import 'package:desafioi9xp/src/modules/dashboard/stores/dashboard.store.dart';
 import 'package:desafioi9xp/src/modules/dashboard/views/dashboard.view.dart';
 import 'package:desafioi9xp/src/modules/home/controllers/home.controller.dart';
 import 'package:desafioi9xp/src/modules/home/stores/home.store.dart';
 import 'package:desafioi9xp/src/modules/home/views/home.view.dart';
+import 'package:desafioi9xp/src/modules/product/views/product.view.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -12,6 +16,9 @@ class AppModule extends MainModule {
   List<Bind> get binds => [
         Bind((i) => HomeController(i.get())),
         Bind((i) => HomeStore()),
+        Bind((i) => DashboardController(i.get())),
+        Bind((i) => DashboardStore(i.get())),
+        Bind((i) => DashboardRepository()),
       ];
 
   @override
@@ -25,6 +32,6 @@ class AppModule extends MainModule {
         Router("/home", child: (_, __) => DashboardView()),
         Router("/cart", child: (_, __) => DashboardView()),
         Router("/cart/success", child: (_, __) => DashboardView()),
-        Router("/product/:id", child: (_, __) => DashboardView()),
+        Router("/product", child: (_, args) => ProductView(product: args.data)),
       ];
 }
