@@ -27,7 +27,7 @@ class HiveService extends Disposable implements ILocalStorage {
   }
 
   void removeAll() {
-    box.deleteFromDisk();
+    box.clear();
   }
 
   @override

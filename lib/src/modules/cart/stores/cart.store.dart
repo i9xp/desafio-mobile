@@ -20,10 +20,10 @@ abstract class _CartStoreBase with Store {
 
   @computed
   String get totalAmount {
-    if (!hasProducts) return "0.0";
+    if (!hasProducts) return "0.00";
     return cartList
         .fold<double>(
-            0.0, (previousValue, element) => previousValue + double.parse(element.product.price) * element.amount)
+            0.00, (previousValue, element) => previousValue + double.parse(element.product.price) * element.amount)
         .toStringAsFixed(2);
   }
 

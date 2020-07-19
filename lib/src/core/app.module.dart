@@ -2,6 +2,7 @@ import 'package:desafioi9xp/src/core/views/main.view.dart';
 import 'package:desafioi9xp/src/modules/cart/controllers/cart.controller.dart';
 import 'package:desafioi9xp/src/modules/cart/repositories/cart.repository.dart';
 import 'package:desafioi9xp/src/modules/cart/stores/cart.store.dart';
+import 'package:desafioi9xp/src/modules/checkout/views/checkout.view.dart';
 import 'package:desafioi9xp/src/modules/dashboard/controllers/dashboard.controller.dart';
 import 'package:desafioi9xp/src/modules/dashboard/repositories/dashboard.repository.dart';
 import 'package:desafioi9xp/src/modules/dashboard/stores/dashboard.store.dart';
@@ -46,7 +47,7 @@ class AppModule extends MainModule {
         Router("/", child: (_, __) => HomeView()),
         Router("/home", child: (_, __) => DashboardView()),
         Router("/cart", child: (_, __) => DashboardView()),
-        Router("/cart/success", child: (_, __) => DashboardView()),
+        Router("/checkout", child: (_, __) => CheckoutView()),
         Router("/product", child: (_, args) => ProductView(product: args.data)),
       ];
 }

@@ -1,18 +1,23 @@
-import 'package:desafioi9xp/src/core/widgets/custombadge.widget.dart';
 import 'package:desafioi9xp/styles/appcolors.dart';
 import 'package:flutter/material.dart';
 
-class CustomAppBar {
+class CustomAppBar extends StatelessWidget implements PreferredSize {
   bool showLogo;
   Color backgroundColor;
+  bool automaticallyImplyLeading;
+  List<Widget> actions;
 
   CustomAppBar({
     this.showLogo = true,
     this.backgroundColor = AppColors.bgBottomNavBarColor,
+    this.automaticallyImplyLeading = false,
+    this.actions,
   });
 
-  AppBar getBar() {
+  @override
+  Widget build(BuildContext context) {
     return AppBar(
+      automaticallyImplyLeading: automaticallyImplyLeading,
       backgroundColor: backgroundColor,
       centerTitle: false,
       elevation: 0,
@@ -22,22 +27,13 @@ class CustomAppBar {
               child: Image.asset("assets/images/logo.png"),
             )
           : Container(),
-      actions: [
-        CustomBadge(
-          count: 5,
-          icon: Icon(
-            Icons.message,
-            color: Colors.white,
-          ),
-        ),
-        CustomBadge(
-          count: 9,
-          icon: Icon(
-            Icons.notifications_none,
-            color: Colors.white,
-          ),
-        ),
-      ],
+      actions: actions,
     );
   }
+
+  @override
+  Widget get child => throw UnimplementedError();
+
+  @override
+  Size get preferredSize => Size(0, 50);
 }

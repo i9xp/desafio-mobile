@@ -67,12 +67,17 @@ class _ProductViewState extends State<ProductView> with SingleTickerProviderStat
         Observer(
           builder: (_) {
             final count = _cartController.cartStore.totalQuantity;
-            return count == 0
-                ? Icon(Icons.shopping_cart)
-                : CustomBadge(
-                    count: count,
-                    icon: Icon(Icons.shopping_cart),
-                  );
+            return CustomBadge(
+              count: count,
+              icon: Icon(
+                Icons.shopping_cart,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                _homeController.onItemTapped(2);
+                Modular.to.pop();
+              },
+            );
           },
         ),
       ],

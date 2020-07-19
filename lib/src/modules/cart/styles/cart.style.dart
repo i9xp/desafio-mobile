@@ -46,4 +46,17 @@ class CartSyle {
     fontFamily: "Neusa",
     fontSize: 15,
   );
+
+  static final EMPTY_STATE_TITLE = TextStyle(
+    fontSize: 30,
+    color: Colors.white,
+    fontFamily: "Neusa",
+    fontWeight: FontWeight.w600,
+  );
+
+  static final EMPTY_STATE_DESCRIPTION = TextStyle(
+    fontSize: 15,
+    color: Colors.white,
+    fontFamily: "Neusa",
+  );
 }

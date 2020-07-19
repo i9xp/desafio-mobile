@@ -9,14 +9,13 @@ class DashboardStyle {
   );
 
   static final PRODUCT_TITLE = TextStyle(
-    fontSize: 12,
     color: Colors.black,
     fontWeight: FontWeight.w300,
     fontFamily: "Neusa",
   );
 
   static final PRODUCT_PRICE = TextStyle(
-    fontSize: 10,
+    fontSize: 12,
     color: AppColors.productPriceColor,
     fontWeight: FontWeight.bold,
     fontFamily: "Neusa",

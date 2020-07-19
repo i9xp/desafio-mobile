@@ -28,13 +28,16 @@ class ProductItemListView extends StatelessWidget {
           width: 97,
           padding: const EdgeInsets.all(10.0),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
-                height: 80,
-                child: Hero(
-                  tag: imageUrl,
-                  child: CachedNetworkImage(imageUrl: imageUrl),
+              Center(
+                child: SizedBox(
+                  height: 80,
+                  child: Hero(
+                    tag: imageUrl,
+                    child: CachedNetworkImage(imageUrl: imageUrl),
+                  ),
                 ),
               ),
               Divider(height: 5, color: Colors.transparent),

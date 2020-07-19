@@ -1,4 +1,5 @@
 import 'package:desafioi9xp/src/core/widgets/appbar.widget.dart';
+import 'package:desafioi9xp/src/core/widgets/custombadge.widget.dart';
 import 'package:desafioi9xp/src/modules/dashboard/controllers/dashboard.controller.dart';
 import 'package:desafioi9xp/src/modules/dashboard/widgets/categories.widget.dart';
 import 'package:desafioi9xp/src/modules/dashboard/widgets/latest.widget.dart';
@@ -24,7 +25,24 @@ class _DashboardViewState extends State<DashboardView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar().getBar(),
+      appBar: CustomAppBar(
+        actions: [
+          CustomBadge(
+            count: 5,
+            icon: Icon(
+              Icons.message,
+              color: Colors.white,
+            ),
+          ),
+          CustomBadge(
+            count: 9,
+            icon: Icon(
+              Icons.notifications_none,
+              color: Colors.white,
+            ),
+          ),
+        ],
+      ),
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(

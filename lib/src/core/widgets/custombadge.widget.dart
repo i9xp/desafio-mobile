@@ -6,19 +6,24 @@ import 'package:flutter/material.dart';
 class CustomBadge extends StatelessWidget {
   int count;
   Icon icon;
+  BadgePosition position;
+  Function onPressed;
 
-  CustomBadge({this.count, this.icon});
+  CustomBadge({
+    this.count,
+    this.icon,
+    this.onPressed,
+    this.position,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return count == 0
+    return count == 0 || count == null
         ? Container(
             width: 48,
-            child: FlatButton(
-              padding: EdgeInsets.zero,
-              materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-              onPressed: () {},
-              child: icon,
+            child: IconButton(
+              icon: icon,
+              onPressed: onPressed,
             ),
           )
         : Badge(
@@ -27,14 +32,12 @@ class CustomBadge extends StatelessWidget {
               style: AppStyle.BADGE_NUMBER,
             ),
             badgeColor: AppColors.primaryColor,
-            position: BadgePosition.bottomLeft(left: 0.0, bottom: 10.0),
+            position: position != null ? position : BadgePosition.bottomLeft(left: 5.0, bottom: 10.0) ,
             child: Container(
               width: 48,
-              child: FlatButton(
-                padding: EdgeInsets.zero,
-                materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                onPressed: () {},
-                child: icon,
+              child: IconButton(
+                icon: icon,
+                onPressed: onPressed,
               ),
             ),
           );
