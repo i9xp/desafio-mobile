@@ -1,6 +1,5 @@
-import 'package:badges/badges.dart';
+import 'package:desafioi9xp/src/core/widgets/custombadge.widget.dart';
 import 'package:desafioi9xp/styles/appcolors.dart';
-import 'package:desafioi9xp/styles/appstyle.dart';
 import 'package:flutter/material.dart';
 
 class CustomAppBar {
@@ -24,44 +23,18 @@ class CustomAppBar {
             )
           : Container(),
       actions: [
-        Badge(
-          badgeContent: Text(
-            "5",
-            style: AppStyle.BADGE_NUMBER,
-          ),
-          badgeColor: AppColors.primaryColor,
-          position: BadgePosition.bottomLeft(left: 0.0, bottom: 10.0),
-          child: Container(
-            width: 48,
-            child: FlatButton(
-              padding: EdgeInsets.zero,
-              materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-              onPressed: () {},
-              child: Icon(
-                Icons.message,
-                color: Colors.white,
-              ),
-            ),
+        CustomBadge(
+          count: 5,
+          icon: Icon(
+            Icons.message,
+            color: Colors.white,
           ),
         ),
-        Badge(
-          badgeContent: Text(
-            "9",
-            style: AppStyle.BADGE_NUMBER,
-          ),
-          badgeColor: AppColors.primaryColor,
-          position: BadgePosition.bottomLeft(left: 0.0, bottom: 10.0),
-          child: Container(
-            width: 48,
-            child: FlatButton(
-              padding: EdgeInsets.zero,
-              materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-              onPressed: () {},
-              child: Icon(
-                Icons.notifications_none,
-                color: Colors.white,
-              ),
-            ),
+        CustomBadge(
+          count: 9,
+          icon: Icon(
+            Icons.notifications_none,
+            color: Colors.white,
           ),
         ),
       ],

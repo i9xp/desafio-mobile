@@ -1,7 +1,7 @@
+import 'package:desafioi9xp/src/modules/cart/models/cart_item.model.dart';
+import 'package:desafioi9xp/src/modules/product/models/product.model.dart';
+
 abstract class ILocalStorage {
-  Future get(String key);
-
-  Future delete(String key);
-
-  Future put(String key, dynamic value);
+  List<CartItemModel> getCart();
+  void insertItem(ProductModel product);
 }
