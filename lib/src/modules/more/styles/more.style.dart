@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class MoreStyle {
   static final UNDER_CONSTRUCTION = TextStyle(
-    color: AppColors.primary,
+    color: AppColors.primaryColor,
     fontFamily: "Neusa",
     fontSize: 46,
     fontWeight: FontWeight.bold,

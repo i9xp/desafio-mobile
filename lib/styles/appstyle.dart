@@ -9,24 +9,10 @@ class AppStyle {
     fontFamily: "Neusa",
   );
 
-  static final CATEGORY_TITLE = TextStyle(
-    fontSize: 15,
-    color: Colors.white,
-    fontFamily: "Neusa",
-  );
-
-  static final PRODUCT_TITLE = TextStyle(
+  static final APPBAR_TITLE = TextStyle(
     fontSize: 12,
-    color: Colors.black,
-    fontWeight: FontWeight.w300,
     fontFamily: "Neusa",
-  );
-
-  static final PRODUCT_PRICE = TextStyle(
-    fontSize: 10,
-    color: AppColors.productPriceColor,
-    fontWeight: FontWeight.bold,
-    fontFamily: "Neusa",
+    decorationColor: AppColors.primaryColor,
   );
 
   static final BADGE_NUMBER = TextStyle(
@@ -35,4 +21,12 @@ class AppStyle {
     fontWeight: FontWeight.bold,
     fontFamily: "Neusa",
   );
+
+  static final CUSTOM_BUTTON_TEXT = TextStyle(
+    color: AppColors.backgroundColor,
+    fontWeight: FontWeight.bold,
+    fontSize: 12,
+    fontFamily: "Neusa",
+  );
+
 }

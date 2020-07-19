@@ -1,8 +1,12 @@
 import 'package:badges/badges.dart';
+import 'package:desafioi9xp/src/modules/cart/views/cart.view.dart';
 import 'package:desafioi9xp/src/modules/dashboard/views/dashboard.view.dart';
 import 'package:desafioi9xp/src/modules/home/controllers/home.controller.dart';
+import 'package:desafioi9xp/src/modules/more/views/more.view.dart';
+import 'package:desafioi9xp/src/modules/profile/views/profile.view.dart';
+import 'package:desafioi9xp/src/modules/search/views/search.view.dart';
 import 'package:desafioi9xp/styles/appcolors.dart';
-import 'package:desafioi9xp/styles/textstyles.dart';
+import 'package:desafioi9xp/styles/appstyle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -18,16 +22,16 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: AppColors.backgroundColor,
       bottomNavigationBar: Observer(
         builder: (BuildContext context) {
           return BottomNavigationBar(
-            backgroundColor: AppColors.bgBottomNavBar,
+            backgroundColor: AppColors.bgBottomNavBarColor,
             type: BottomNavigationBarType.fixed,
             unselectedItemColor: Colors.white,
             items: buildBottomNavBarItems(),
             currentIndex: _homeController.homeStore.selectedIndex,
-            selectedItemColor: AppColors.primary,
+            selectedItemColor: AppColors.primaryColor,
             onTap: _homeController.onItemTapped,
           );
         },
@@ -42,10 +46,10 @@ class _HomeViewState extends State<HomeView> {
       onPageChanged: _homeController.onItemTapped,
       children: <Widget>[
         DashboardView(),
-        SafeArea(child: Text("Search")),
-        SafeArea(child: Text("Cart")),
-        SafeArea(child: Text("Profile")),
-        SafeArea(child: Text("More")),
+        SearchView(),
+        CartView(),
+        ProfileView(),
+        MoreView(),
       ],
     );
   }
@@ -54,28 +58,43 @@ class _HomeViewState extends State<HomeView> {
     return [
       BottomNavigationBarItem(
         icon: Icon(Icons.home),
-        title: Text('Home'),
+        title: Text(
+          'Home',
+          style: AppStyle.APPBAR_TITLE,
+        ),
       ),
       BottomNavigationBarItem(
         icon: Icon(Icons.zoom_in),
-        title: Text('Search'),
+        title: Text(
+          'Search',
+          style: AppStyle.APPBAR_TITLE,
+        ),
       ),
       BottomNavigationBarItem(
         icon: true
             ? Icon(Icons.shopping_cart)
             : Badge(
-                badgeContent: Text("3", style: AppTextStyle.CART_NUMBER_BADGE),
+                badgeContent: Text("3", style: AppStyle.BADGE_NUMBER),
                 child: Icon(Icons.shopping_cart),
               ),
-        title: Text('Cart'),
+        title: Text(
+          'Cart',
+          style: AppStyle.APPBAR_TITLE,
+        ),
       ),
       BottomNavigationBarItem(
         icon: Icon(Icons.person),
-        title: Text('Profile'),
+        title: Text(
+          'Profile',
+          style: AppStyle.APPBAR_TITLE,
+        ),
       ),
       BottomNavigationBarItem(
         icon: Icon(Icons.menu),
-        title: Text('More'),
+        title: Text(
+          'More',
+          style: AppStyle.APPBAR_TITLE,
+        ),
       ),
     ];
   }
