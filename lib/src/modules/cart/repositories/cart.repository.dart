@@ -1,33 +1,44 @@
 import 'package:desafioi9xp/src/core/enums/loading.enum.dart';
 import 'package:desafioi9xp/src/core/interfaces/repository.interface.dart';
 import 'package:desafioi9xp/src/core/services/hive.service.dart';
+import 'package:desafioi9xp/src/modules/cart/models/cart_item.model.dart';
+import 'package:desafioi9xp/src/modules/product/models/product.model.dart';
 
-class HomeRepository implements IRepository {
-  final HiveService _hive = new HiveService("cart");
+class CartRepository implements IRepository {
+  HiveService _hive;
+
+  CartRepository() {
+    _hive = new HiveService("cart");
+  }
+
   ELoadingStatus _loadingStatus = ELoadingStatus.loading;
 
-  getCartProducts() async {
+  List<CartItemModel> getCartProducts() {
     _loadingStatus = ELoadingStatus.loading;
-    var result = await _hive.get("products");
-    if (result) {
+    var result = _hive.getCart();
+    if (result != null) {
       _loadingStatus = ELoadingStatus.completed;
-//      return List<CnhModel>.from(response.data["data"].map((x) => CnhModel.fromJson(x)));
+      return result;
     } else {
       _loadingStatus = ELoadingStatus.error;
       throw Exception('Falha ao carregar dados');
     }
   }
 
-  insertProduct() async {
+  insertProduct(ProductModel product, {int amount = 1}) async {
     _loadingStatus = ELoadingStatus.loading;
-    var result = await _hive.get("products");
-    if (result) {
-      _loadingStatus = ELoadingStatus.completed;
-//      return List<CnhModel>.from(response.data["data"].map((x) => CnhModel.fromJson(x)));
-    } else {
-      _loadingStatus = ELoadingStatus.error;
-      throw Exception('Falha ao carregar dados');
-    }
+    _hive.insertItem(product, amount: amount);
+    _loadingStatus = ELoadingStatus.completed;
+  }
+
+  removeProduct(int product) async {
+    _loadingStatus = ELoadingStatus.loading;
+    _hive.removeItem(product);
+    _loadingStatus = ELoadingStatus.completed;
+  }
+
+  removeAllProduct() async {
+    _hive.removeAll();
   }
 
   getStatus() {

@@ -1,6 +1,5 @@
 import 'package:desafioi9xp/src/modules/dashboard/controllers/dashboard.controller.dart';
 import 'package:desafioi9xp/src/modules/dashboard/widgets/product_item.widget.dart';
-import 'package:desafioi9xp/src/modules/product/models/product.model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -58,15 +57,17 @@ class _ProductsState extends State<Products> {
   }
 
   Widget _loadingWidgets() {
-    return Wrap(
-      spacing: 4.0,
-      runSpacing: 4.0,
-      direction: Axis.horizontal,
-      children: [
-        loadingCard(),
-        loadingCard(),
-        loadingCard(),
-      ],
+    return GridView.builder(
+      shrinkWrap: true,
+      primary: false,
+      gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 3,
+        childAspectRatio: 0.75,
+      ),
+      itemCount: 3,
+      itemBuilder: (context, index) {
+        return loadingCard();
+      },
     );
   }
 

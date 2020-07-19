@@ -1,4 +1,5 @@
 import 'package:badges/badges.dart';
+import 'package:desafioi9xp/src/modules/cart/controllers/cart.controller.dart';
 import 'package:desafioi9xp/src/modules/cart/views/cart.view.dart';
 import 'package:desafioi9xp/src/modules/dashboard/views/dashboard.view.dart';
 import 'package:desafioi9xp/src/modules/home/controllers/home.controller.dart';
@@ -18,6 +19,14 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   HomeController _homeController = Modular.get<HomeController>();
+  CartController _cartController = Modular.get<CartController>();
+
+  @override
+  void initState() {
+    _cartController.cartStore.getProducts();
+//    _cartController.cartStore.removeAll();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +50,7 @@ class _HomeViewState extends State<HomeView> {
   }
 
   Widget buildPageView() {
-    return  PageView(
+    return PageView(
       controller: _homeController.pageController,
       onPageChanged: _homeController.onItemTapped,
       children: <Widget>[
@@ -71,12 +80,18 @@ class _HomeViewState extends State<HomeView> {
         ),
       ),
       BottomNavigationBarItem(
-        icon: true
-            ? Icon(Icons.shopping_cart)
-            : Badge(
-                badgeContent: Text("3", style: AppStyle.BADGE_NUMBER),
-                child: Icon(Icons.shopping_cart),
-              ),
+        icon: Observer(
+          builder: (context) {
+            int count = _cartController.cartStore.totalQuantity;
+            return count == 0
+                ? Icon(Icons.shopping_cart)
+                : Badge(
+                    badgeContent: Text("$count", style: AppStyle.BADGE_NUMBER),
+                    badgeColor: AppColors.primaryColor,
+                    child: Icon(Icons.shopping_cart),
+                  );
+          },
+        ),
         title: Text(
           'Cart',
           style: AppStyle.APPBAR_TITLE,

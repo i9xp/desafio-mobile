@@ -1,13 +1,16 @@
-import 'package:badges/badges.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:desafioi9xp/src/core/widgets/custombadge.widget.dart';
 import 'package:desafioi9xp/src/core/widgets/custombutton.widget.dart';
+import 'package:desafioi9xp/src/modules/cart/controllers/cart.controller.dart';
+import 'package:desafioi9xp/src/modules/home/controllers/home.controller.dart';
 import 'package:desafioi9xp/src/modules/product/controllers/product.controller.dart';
 import 'package:desafioi9xp/src/modules/product/models/product.model.dart';
 import 'package:desafioi9xp/src/modules/product/styles/product.style.dart';
 import 'package:desafioi9xp/src/modules/product/widgets/product_appbar_price.widget.dart';
 import 'package:desafioi9xp/styles/appcolors.dart';
-import 'package:desafioi9xp/styles/appstyle.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class ProductView extends StatefulWidget {
@@ -20,11 +23,12 @@ class ProductView extends StatefulWidget {
 }
 
 class _ProductViewState extends State<ProductView> with SingleTickerProviderStateMixin {
-  ProductController _productController;
+  ProductController _productController = Modular.get<ProductController>();
+  CartController _cartController = Modular.get<CartController>();
+  HomeController _homeController = Modular.get<HomeController>();
 
   @override
   void initState() {
-    _productController = new ProductController();
     _productController.productInfoTabController = TabController(
       length: 3,
       initialIndex: 1,
@@ -60,21 +64,16 @@ class _ProductViewState extends State<ProductView> with SingleTickerProviderStat
         score: widget.product.score,
       ),
       actions: [
-        Badge(
-          badgeContent: Text(
-            "1",
-            style: AppStyle.BADGE_NUMBER,
-          ),
-          badgeColor: AppColors.primaryColor,
-          position: BadgePosition.bottomLeft(left: 5.0, bottom: 0.0),
-          child: IconButton(
-            padding: EdgeInsets.zero,
-            onPressed: () {},
-            icon: Icon(
-              Icons.shopping_cart,
-              color: Colors.white,
-            ),
-          ),
+        Observer(
+          builder: (_) {
+            final count = _cartController.cartStore.totalQuantity;
+            return count == 0
+                ? Icon(Icons.shopping_cart)
+                : CustomBadge(
+                    count: count,
+                    icon: Icon(Icons.shopping_cart),
+                  );
+          },
         ),
       ],
     );
@@ -224,14 +223,14 @@ class _ProductViewState extends State<ProductView> with SingleTickerProviderStat
             "SHARE THIS",
             backgroundColor: Colors.white,
             icon: Image.asset("assets/images/share.png"),
-            onPressed: () {
-              print("click");
-            },
+            onPressed: () {},
           ),
           CustomButton(
             "ADD TO CART",
             onPressed: () {
-              print("click");
+              _homeController.onItemTapped(2);
+              _cartController.insertProduct(widget.product);
+              Modular.to.pop();
             },
           ),
         ],

@@ -1,7 +1,20 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:desafioi9xp/src/modules/cart/models/cart_item.model.dart';
 import 'package:desafioi9xp/src/modules/cart/styles/cart.style.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 class ProductCartItem extends StatefulWidget {
+  CartItemModel item;
+  Function onRemove;
+  Function onAdd;
+
+  ProductCartItem(
+    this.item, {
+    @required this.onAdd,
+    @required this.onRemove,
+  });
+
   @override
   _ProductCartItemState createState() => _ProductCartItemState();
 }
@@ -14,27 +27,40 @@ class _ProductCartItemState extends State<ProductCartItem> {
         padding: EdgeInsets.symmetric(horizontal: 25.0),
         child: Row(
           children: [
-            SizedBox(
-              width: 100,
-              height: 100,
-              child: Image.asset("assets/images/apparel.png"),
+            FlatButton(
+              padding: EdgeInsets.zero,
+              onPressed: () {
+                Modular.to.pushNamed('/product', arguments: widget.item.product);
+              },
+              child: CircleAvatar(
+                backgroundColor: Colors.white,
+                minRadius: 50,
+                maxRadius: 50,
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Hero(
+                    tag: widget.item.product.images[0],
+                    child: CachedNetworkImage(imageUrl: widget.item.product.images[0]),
+                  ),
+                ),
+              ),
             ),
             Container(width: 25),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Faux Sued Ankle Boots",
+                  widget.item.product.name,
                   maxLines: 2,
                   style: CartSyle.PRODUCT_TITLE_TEXT,
                 ),
                 Text(
-                  "7, Hot Pink",
+                  widget.item.product.category,
                   style: CartSyle.PRODUCT_DETAILS_TEXT,
                 ),
                 Divider(height: 10, color: Colors.transparent),
                 Text(
-                  "\$49.00",
+                  "\$${widget.item.product.price}",
                   style: CartSyle.PRODUCT_PRICE_TEXT,
                 ),
                 Divider(height: 10, color: Colors.transparent),
@@ -50,7 +76,7 @@ class _ProductCartItemState extends State<ProductCartItem> {
                       child: FlatButton(
                         padding: EdgeInsets.zero,
                         materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                        onPressed: () {},
+                        onPressed: widget.onRemove,
                         child: Icon(
                           Icons.remove,
                           color: Colors.white,
@@ -60,7 +86,7 @@ class _ProductCartItemState extends State<ProductCartItem> {
                     ),
                     Container(width: 10),
                     Text(
-                      "1",
+                      "${widget.item.amount}",
                       style: CartSyle.PRODUCT_NUM_ITEMS,
                     ),
                     Container(width: 10),
@@ -74,7 +100,7 @@ class _ProductCartItemState extends State<ProductCartItem> {
                       child: FlatButton(
                         padding: EdgeInsets.zero,
                         materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                        onPressed: () {},
+                        onPressed: widget.onAdd,
                         child: Icon(
                           Icons.add,
                           color: Colors.white,
