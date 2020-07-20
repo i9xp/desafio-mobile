@@ -17,4 +17,5 @@
 My biggest challenge while completing this task was the persistence of the shopping cart data and the deadline.
  
 ## Design
- - Link Adobe XD (https://xd.adobe.com/view/e1881f99-b431-43bc-6e6d-aab53f5b5217-97b9/)
+ - HOME PAGE
+ ![](images/home_page)
