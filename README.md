@@ -1,33 +1,30 @@
-# Teste Mobile
+# Teste Mobile i9XP - Marcelo Freitas
+Este projeto é um desafio proposto pela empresa i9XP, o objetivo do projeto é testar minhas habilidades e conhecimentos como desenvolvedor de Flutter.
+Sua principal funcionalidade é baseada em um e-commerce com foco no funcionamento de um fluxo de compras simples: Home -> Produto -> Carrinho -> Checkout.
+O mesmo foi desenvolvido pensando nos princípios básicos do SOLID, usando boas práticas de programação, arquitetura e conceitos.
 
-## Instruções
+### Technologies
+O projeto foi desenvolvido utilizando as seguintes tecnologias:
+* [Modular](https://github.com/Flutterando/modular) - Injeção de Dependência, Rotas e Disposable Singleton
+* [MobX](https://github.com/mobxjs/mobx.dart) - Gerenciamento de Estado
+* [Hive](https://github.com/hivedb/hive) - Local Storage
+* [DIO](https://github.com/flutterchina/dio) - Async HTTP Service
+* [MockAPI](https://mockapi.io) - Site para criação de APIs mockadas
+* [Mockito](https://github.com/dart-lang/mockito) - Mock Unit Test
 
- - Faça um fork deste projeto
- - Crie seu projeto a partir deste fork
- - Use mensagens de commits claras, coesas e que deixem claro a linha do tempo e evolução do código. 
- - Ao Finalizar mande um merge request para o repo principal com instruções para rodar e gerar os binários
+### Features
+* Lista de categorias, campanhas e produtos
+* Lista de produtos
+* Adicionar produto selecionado ao carrinho (banco de dados local)
+* Exibir carrinho com os produtos
+* Remover produto do carrinho
+* Atualizar quantidade de itens
+* Cálculo do valor total do pedido
+* Checkout (limpa o banco de dados local)
 
-## Requerimentos
- 
- - O app deve ser escrito preferencialmente usando Flutter (https://flutter.dev/).
- - No Flutter, usar o channel stable 
- - Faça uso de boas práticas de desenvolvimento
- - Use conceitos de componentização e reaproveitamento
- - Crie um fluxo de compra mínimo: O aplicativo deve ser capaz de navegar entre as telas (Home, Página de Produto e Carrinho Lateral)
- - Ao tocar em adicionar um produto ao carrinho. o item deve ser adicionado ao carrinho e a tela do carrinho deve serm mostrada com a informação atualizada
- - O resultado final deste teste será compilado e testado em um dispositivo real, além do emulador,  portanto garanta o seu funcionamento
+### Installation
 
-
-## Desejável
- 
- - Possuir algum teste unitário ou e2e
- - Documentação
-
-## Design
-
- - Link Adobe XD (https://xd.adobe.com/view/e1881f99-b431-43bc-6e6d-aab53f5b5217-97b9/)
-
-## Bonus
- - Faça chamadas de API usando algum serviço de mock 
- - Persistencia: Ao fechar o aplicativo os produtos devem permaneer no carrinho
- - Fazer uso de algum state manegement (https://flutter.dev/docs/development/data-and-backend/state-mgmt/intro)
+1. Caso não tenha o flutter instalado, [clique aqui](https://flutter.dev/docs/get-started/install/) e leia sua documentação.
+2. Faça o clone do projeto e vá para a pasta raiz.
+3. Execute o comando ```flutter pub get``` para baixar as dependências.
+4. Execute o comando ```flutter run```.
