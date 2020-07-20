@@ -17,5 +17,17 @@
 My biggest challenge while completing this task was the persistence of the shopping cart data and the deadline.
  
 ## Design
- - HOME PAGE
+ ### HOME PAGE
  ![](images/home_page.png)
+ 
+ ### PRODUCTS PAGE
+ ![](images/products_page.png)
+ 
+ ### DETAILS PAGE
+ ![](images/details_page.png)
+ 
+ ### SHOPPING CART
+ ![](images/shopping_cart.png)
+ 
+ ### FAVORITES PAGE
+ ![](images/favorites_page.png)
