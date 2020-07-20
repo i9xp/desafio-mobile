@@ -18,4 +18,4 @@ My biggest challenge while completing this task was the persistence of the shopp
  
 ## Design
  - HOME PAGE
- ![](images/home_page)
+ ![](images/home_page.png)
