@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "587562679281",
+    "firebase_url": "https://testemobile-d7031.firebaseio.com",
+    "project_id": "testemobile-d7031",
+    "storage_bucket": "testemobile-d7031.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:587562679281:android:321fa5c5ad351291262250",
+        "android_client_info": {
+          "package_name": "com.example.teste1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "587562679281-hcuqomjqcegmid62glp7s6348idre2cj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMEWLQa1gkBa_wbhFLbyYiqQpoB0-gc6Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "587562679281-hcuqomjqcegmid62glp7s6348idre2cj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
