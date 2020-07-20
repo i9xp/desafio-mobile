@@ -49,6 +49,7 @@ dev_dependencies:
   hive_generator: ^0.7.0+2
   build_runner: ^1.7.2
   mobx_codegen: ^1.0.0
+  mockito: ^4.1.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

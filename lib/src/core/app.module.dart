@@ -1,3 +1,4 @@
+import 'package:desafioi9xp/src/core/services/hive.service.dart';
 import 'package:desafioi9xp/src/core/views/main.view.dart';
 import 'package:desafioi9xp/src/modules/cart/controllers/cart.controller.dart';
 import 'package:desafioi9xp/src/modules/cart/repositories/cart.repository.dart';
@@ -22,7 +23,8 @@ class AppModule extends MainModule {
         //Cart Module
         Bind((i) => CartController(i.get())),
         Bind((i) => CartStore(i.get())),
-        Bind((i) => CartRepository()),
+        Bind((i) => CartRepository(i.get())),
+        Bind((i) => HiveService()),
 
         //Home Module
         Bind((i) => HomeController(i.get())),

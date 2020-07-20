@@ -7,9 +7,10 @@ import 'package:desafioi9xp/src/modules/product/models/product.model.dart';
 class CartRepository implements IRepository {
   HiveService _hive;
 
-  CartRepository() {
+  CartRepository(this._hive);
+  /* {
     _hive = new HiveService("cart");
-  }
+  }*/
 
   ELoadingStatus _loadingStatus = ELoadingStatus.loading;
 

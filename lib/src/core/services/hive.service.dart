@@ -5,12 +5,8 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:hive/hive.dart';
 
 class HiveService extends Disposable implements ILocalStorage {
-  Box box;
+  Box box = Hive.box<CartItemModel>("cart");
   String boxName;
-
-  HiveService(this.boxName) {
-    box = Hive.box<CartItemModel>(boxName);
-  }
 
   List<CartItemModel> getCart() {
     final list = box.values.toList();

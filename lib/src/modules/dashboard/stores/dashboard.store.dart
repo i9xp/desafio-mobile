@@ -1,4 +1,4 @@
-import 'package:desafioi9xp/src/core/enums/loading.enum.dart';
+  import 'package:desafioi9xp/src/core/enums/loading.enum.dart';
 import 'package:desafioi9xp/src/modules/dashboard/repositories/dashboard.repository.dart';
 import 'package:desafioi9xp/src/modules/product/models/product.model.dart';
 import 'package:mobx/mobx.dart';
