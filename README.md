@@ -10,18 +10,11 @@
  - Cloud Firestore and storage - used to get information about the products
  - Mobx - State Management
  - Modular
- - Hive - Local storage
- - Slidy - Package manager
-
-
+ - Hive - Local Storage
+ 
 ## Challenges
-  
-  My biggest challenge while completing this task was the persistence of data and the deadline. 
 
+My biggest challenge while completing this task was the persistence of the shopping cart data and the deadline.
+ 
 ## Design
  - Link Adobe XD (https://xd.adobe.com/view/e1881f99-b431-43bc-6e6d-aab53f5b5217-97b9/)
-
-## Bonus
- - Faça chamadas de API usando algum serviço de mock 
- - Persistencia: Ao fechar o aplicativo os produtos devem permaneer no carrinho
- - Fazer uso de algum state manegement (https://flutter.dev/docs/development/data-and-backend/state-mgmt/intro)
