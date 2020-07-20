@@ -1,17 +1,14 @@
 # Teste Mobile
 
-## Instruções
+## The project
 
- - Faça um fork deste projeto
- - Crie seu projeto a partir deste fork
- - Use mensagens de commits claras, coesas e que deixem claro a linha do tempo e evolução do código. 
- - Ao Finalizar mande um merge request para o repo principal com instruções para rodar e gerar os binários
+  A Flutter project as a test for i9xp selection process 
 
-## Requerimentos
+## Technologies
  
- - O app deve ser escrito preferencialmente usando Flutter (https://flutter.dev/).
- - No Flutter, usar o channel stable 
- - Faça uso de boas práticas de desenvolvimento
+ - Flutter
+ - Cloud Firestore and storage - used to get information about the products
+ - Mobx - State Management
  - Use conceitos de componentização e reaproveitamento
  - Crie um fluxo de compra mínimo: O aplicativo deve ser capaz de navegar entre as telas (Home, Página de Produto e Carrinho Lateral)
  - Ao tocar em adicionar um produto ao carrinho. o item deve ser adicionado ao carrinho e a tela do carrinho deve serm mostrada com a informação atualizada
