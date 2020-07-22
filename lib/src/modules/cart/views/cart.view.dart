@@ -1,4 +1,5 @@
 import 'package:desafioi9xp/src/core/widgets/appbar.widget.dart';
+import 'package:desafioi9xp/src/core/widgets/custombadge.widget.dart';
 import 'package:desafioi9xp/src/core/widgets/custombutton.widget.dart';
 import 'package:desafioi9xp/src/modules/cart/controllers/cart.controller.dart';
 import 'package:desafioi9xp/src/modules/cart/styles/cart.style.dart';
@@ -32,6 +33,22 @@ class _CartViewState extends State<CartView> {
         appBar: CustomAppBar(
           showLogo: false,
           backgroundColor: AppColors.backgroundColor,
+          actions: [
+            CustomBadge(
+              count: 5,
+              icon: Icon(
+                Icons.message,
+                color: Colors.white,
+              ),
+            ),
+            CustomBadge(
+              count: 9,
+              icon: Icon(
+                Icons.notifications_none,
+                color: Colors.white,
+              ),
+            ),
+          ],
         ),
         backgroundColor: AppColors.backgroundColor,
         body: Column(
